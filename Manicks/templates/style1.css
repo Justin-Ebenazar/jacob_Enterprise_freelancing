@@ -1,0 +1,114 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background: url("wallpap.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header{
+    width: auto;
+    height: 50px;
+    background-color: rgba(110, 109, 109,0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+}
+#shop-name{
+    color: white;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+#nav-bar{
+    width: 250px;
+}
+nav ul{
+    display: flex;
+}
+nav ul li{
+    width: 83px;
+    height: 50px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+nav ul li:hover{
+    background-color: gray;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.income-view{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    animation: blink 1s linear infinite;
+}
+/* Header completed */
+section{
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+.home-search-bar, .service-nav , .service-nav div{
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgba(225, 204, 204,0.8);
+    border-radius: 10px;
+}
+input,select{
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+}
+.home-table, .services{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+.home-detail-table, .home-detail-th, .home-detail-td{ 
+    border: 1px solid black;
+    padding: 10px;
+    text-align: justify;
+    border-collapse: collapse;
+    background:rgba(233, 225, 225,0.5);
+}
+.service-nav div{
+    cursor: pointer;
+    transition: 0.5s;
+}
+.tab.active{
+    color: white;
+    background-color: rgba(89, 43, 43,0.8);
+}
+.service-table,th,td{
+    background-color: rgba(218, 203, 203,0.8);
+    font-size: 18px;
+    padding: 10px;
+}
+@keyframes blink{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 100;
+    }
+    100%{
+        opacity: 0;
+    }
+}

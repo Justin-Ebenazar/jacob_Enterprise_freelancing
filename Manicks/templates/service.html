@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <main>
+        <header class="header">
+            <div id="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                </ul>
+            </nav>
+            <div class="income-view">
+                <p>Today Income Rs.100000</p>
+            </div>
+        </header>
+        <section>
+            <div class="service-nav">
+                <div class="tab active">Fan</div>
+                <div class="tab">Motor</div>
+                <div class="tab">PowerTools</div>
+            </div>
+            <div class="services">
+                <form action="{{url_for('home')}}" method="post">
+                    <table class="service-table">
+                        <tr>
+                            <th class="form-title" colspan="2">Fan Details Entry</th>
+                        </tr>
+                        <tr>
+                            <td>Product ID:</td>
+                            <td><input type="text" value="" name="ID"></td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" name="NAME"></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile No:</td>
+                            <td><input type="number" name="MOBILE"></td>
+                        </tr>
+                        <tr class="ignore">
+                            <td>Motor HP:</td>
+                            <td><input type="text" name="HP"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const tabSelect = document.querySelectorAll('.tab-selected');
+        const hp=document.querySelector('.ignore');
+        const formTitle=document.querySelector('.form-title')
+
+        function showTab(index) {
+            tabs.forEach((tab) => {
+            tab.classList.remove('active');
+        });
+        tabs[index].classList.add('active');
+        if (tabs[index].textContent == 'Motor'){
+            formTitle.textContent='Motor Detail Entry'
+            hp.style.display='block';
+        }
+        else{
+            hp.style.display='none';
+        }
+        if (tabs[index].textContent == 'Fan'){
+            formTitle.textContent='Fan Detail Entry'
+        }
+        if (tabs[index].textContent == 'PowerTools'){
+            formTitle.textContent='PowerTools Detail Entry'
+        }
+        }
+
+        // Initial active tab
+        showTab(0);
+
+        tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            showTab(index);
+        });
+        });
+
+    </script>
+</body>
+</html>

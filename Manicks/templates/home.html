@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <!-- {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{message}}');</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %} -->
+    <main>
+        <header class="header">
+            <div id="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                </ul>
+            </nav>
+            <div class="income-view">
+                <p>Today Income Rs.100000</p>
+            </div>
+        </header>
+        <section>
+            <div class="home-search-bar">
+                <div>
+                    Search:<input type="text" name="search_input" placeholder="search by id">
+                </div>
+                <div>
+                    Filter:
+                    <select name="search_filter">
+                        <option value="">Fan</option>
+                        <option value="">Motor</option>
+                        <option value="">PowerTools</option>
+                    </select>
+                </div>
+                <div>
+                    <input id="search-btn" type="submit" value="search">
+                </div>
+            </div>
+            <div class="home-table">
+                <table cellspacing="10px" class="home-detail-table">
+                    <tr>
+                        <th class="home-detail-th">Id</th>
+                        <th class="home-detail-th">Name</th>
+                        <th class="home-detail-th">Mobile no</th>
+                        <th class="home-detail-th">Machine Type</th>
+                        <th class="home-detail-th">Product Brand</th>
+                        <th class="home-detail-th">Puropse</th>
+                        <th class="home-detail-th">Motor HP</th>
+                        <th class="home-detail-th">Advance</th>
+                        <th class="home-detail-th">Payment Status</th>
+                        <th class="home-detail-th">Date Given</th>
+                        <th class="home-detail-th">Date Return</th>
+                        <th class="home-detail-th">Total Bill</th>
+                    </tr>
+                    <!-- {% for info in infos %}
+                            <tr>
+                                <td class="home-detail-td">{{info.id}}</td>
+                                <td class="home-detail-td">{{info.cname}}</td>
+                                <td class="home-detail-td">{{info.phno}}</td>
+                                <td class="home-detail-td">{{info.mtype}}</td>
+                                <td class="home-detail-td">{{info.brand}}</td>
+                                <td class="home-detail-td">{{info.purpose}}</td>
+                                <td class="home-detail-td">{{info.mhp}}</td>
+                                <td class="home-detail-td">{{info.advance}}</td>
+                                <td class="home-detail-td">{{info.payment}}</td>
+                                <td class="home-detail-td">{{info.dog}}</td>
+                                <td class="home-detail-td">{{info.dor}}</td>
+                                <td class="home-detail-td">{{info.total}}</td>
+                                <td class="home-detail-td"><a href="">Bill</a></td>
+                            </tr>
+                    {% endfor %} -->
+                </table>
+            </div>
+        </div>
+        </section>
+    </main>
+</body>
+</html>
