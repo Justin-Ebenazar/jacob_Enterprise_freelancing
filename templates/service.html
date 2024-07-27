@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div class="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                </ul>
+            </nav>
+            <div class="income">
+                <p>Today Income Rs.100000</p>
+            </div>
+        </header>
+        <section>
+            <div>
+                <nav>
+                    <ul>
+                        <li><a href="">Motor</a></li>
+                        <li><a href="">Fan</a></li>
+                        <li><a href="">PowerTools</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div style="margin-top:40px;height: 630px; border-radius: 10px; border: 1px solid black;">
+            <form action="{{url_for('home')}}" method="post">
+                <table class="service-table">
+                    <tr>
+                        <th class="service-td" colspan="2">Product Details</th>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Id</td>
+                        <td class="service-td"><input type="text" name="idval" value=""></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Name</td>
+                        <td class="service-td"><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Ph no</td>
+                        <td class="service-td"><input type="number" name="phno" id=""></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Company/Brand</td>
+                        <td class="service-td"><input type="text" name="brand" id=""></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Missing Parts</td>
+                        <td class="service-td"><input type="text" name="parts" id="" style="height:50px;"></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Motor HP</td>
+                        <td class="service-td"><input type="text" name="hp"></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Identify(color)</td>
+                        <td class="service-td"><input type="color" name="color" id=""></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Purpose</td>
+                        <td class="service-td">
+                            <select name="purpose" >
+                                <option value="repair">Repair</option>
+                                <option value="service">Service</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Advance Amount</td>
+                        <td class="service-td"><input type="number" name="advanc"></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Date of Given</td>
+                        <td class="service-td"><input type="datetime-local" name="dog" id=""></td>
+                    </tr>
+                    <tr>
+                        <td class="service-td">Payment Status</td>
+                        <td class="service-td">
+                            <select name="status">
+                                <option value="Unpaid">Unpaid</option>
+                                <option value="Paid">Paid</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="service-td" style="text-align: center;"><input type="reset" value="Reset" style="width: 100px; height: 50px;background-color: red;color: white;border-radius: 10px;"></td>
+                        <td class="service-td" style="text-align: center;"><input type="submit" value="Add" style="width: 100px; height: 50px;background-color: lawngreen;color: black;border-radius: 10px;"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        </section>
+    </main>
+</body>
+</html>

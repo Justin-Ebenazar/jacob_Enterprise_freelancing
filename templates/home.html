@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{message}}');</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <center>
+        <header>
+            <div class="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav>
+                <ul>
+                    <li id="veedu"><a href="">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                    <li><span onclick="openNav()">About</span></li>
+                </ul>
+            </nav>
+            <div class="income">
+                <p>Today Income Rs.1000</p>
+            </div>
+        </header>
+    </center>
+        <section>
+            
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">Finance</a>
+                <a href="#">Spares</a>
+              </div>
+              
+              <!-- Use any element to open the sidenav -->
+              
+              <span onclick="openNav()">open
+            </span>
+              
+              <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+              <div id="main">
+                ...
+              </div>
+            
+              <script src="java.js">
+
+              </script>  
+
+              <div>
+            <div class="search-bar">
+                <div>Search: <input class="inputs" type="text" placeholder="search by id" style="border-radius: 5px;height: 30px;border: none;"></div>
+                <div>
+                    Filter:
+                    <select name="" id="" style="border-radius: 5px;height: 30px;border: none;">
+                        <option value="">Fan</option>
+                        <option value="">Motor</option>
+                        <option value="">PowerTools</option>
+                        <option value="">Spares</option>
+                        <option value="">RepairStatus</option>
+                    </select>
+                </div>
+                <input type="submit" value="search" style="border-radius: 5px;height: 28px;border: none;width: 70px;background-color:lawngreen;font-weight:lighter;;">
+            </div>
+            <div class="table-bar">
+                <table cellspacing="10px" class="home-table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile no</th>
+                        <th>Machine Type</th>
+                        <th>Product Brand</th>
+                        <th>Puropse</th>
+                        <th>Motor HP</th>
+                        <th>Advance</th>
+                        <th>Payment Status</th>
+                        <th>Date Given</th>
+                        <th>Date Return</th>
+                        <th>Total Bill</th>
+                    </tr>
+                    {% for info in infos %}
+                            <tr>
+                                <td>{{info.id}}</td>
+                                <td>{{info.cname}}</td>
+                                <td>{{info.phno}}</td>
+                                <td>{{info.mtype}}</td>
+                                <td>{{info.brand}}</td>
+                                <td>{{info.purpose}}</td>
+                                <td>{{info.mhp}}</td>
+                                <td>{{info.advance}}</td>
+                                <td>{{info.payment}}</td>
+                                <td>{{info.dog}}</td>
+                                <td>{{info.dor}}</td>
+                                <td>{{info.total}}</td>
+                                <td><a href="">Bill</a></td>
+                            </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        </section>
+    </main>
+</body>
+</html>
