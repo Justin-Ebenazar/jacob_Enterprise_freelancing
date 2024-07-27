@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home page</title>
     <link rel="stylesheet" href="style1.css">
+    <script src="javascp.js"></script>
 </head>
 <body>
     <!-- {% with messages=get_flashed_messages() %}
@@ -16,25 +17,26 @@
     {% endwith %} -->
     <main>
         <header class="header">
+            <button id="sidepane_button" onclick="openNav()"></button>
             <div id="shop-name">
                 <p>Jacob Enterprises</p>
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li id="veedu"><a href="">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
                     <li><a href="">Spares</a></li>
+                    
+                    
                 </ul>
             </nav>
-            <div class="income-view">
-                <p>Today Income Rs.100000</p>
-            </div>
+            <input type="text" name="search_input" placeholder="Search by Name">
         </header>
         <section>
             <div class="home-search-bar">
-                <div>
+                <!--<div>
                     Search:<input type="text" name="search_input" placeholder="search by id">
-                </div>
+                </div>-->
                 <div>
                     Filter:
                     <select name="search_filter">
@@ -83,6 +85,14 @@
                 </table>
             </div>
         </div>
+
+    <!--side navigaiton panel oda code ithu-->>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Finance</a>
+            <a href="#">Spares</a>
+        </div>
+        
         </section>
     </main>
 </body>
