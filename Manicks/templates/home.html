@@ -17,7 +17,9 @@
     {% endwith %} -->
     <main>
         <header class="header">
-            <button id="sidepane_button" onclick="openNav()"></button>
+            <div>
+                <button id="sidepane_button" onclick="openNav()"></button>
+            </div>
             <div id="shop-name">
                 <p>Jacob Enterprises</p>
             </div>
@@ -26,17 +28,12 @@
                     <li id="veedu"><a href="">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
                     <li><a href="">Spares</a></li>
-                    
-                    
                 </ul>
             </nav>
             <input type="text" name="search_input" placeholder="Search by Name">
         </header>
         <section>
             <div class="home-search-bar">
-                <!--<div>
-                    Search:<input type="text" name="search_input" placeholder="search by id">
-                </div>-->
                 <div>
                     Filter:
                     <select name="search_filter">

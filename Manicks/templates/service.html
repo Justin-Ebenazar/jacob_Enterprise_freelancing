@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style1.css">
+    <script src="javascp.js"></script>
 </head>
 <body>
     <main>
         <header class="header">
+            <div>
+                <button id="sidepane_button" onclick="openNav()"></button>
+            </div>
             <div id="shop-name">
                 <p>Jacob Enterprises</p>
             </div>
@@ -19,15 +23,12 @@
                     <li><a href="">Spares</a></li>
                 </ul>
             </nav>
-            <div class="income-view">
-                <p>Today Income Rs.100000</p>
-            </div>
         </header>
         <section>
             <div class="service-nav">
-                <div class="tab active">Fan</div>
-                <div class="tab">Motor</div>
-                <div class="tab">PowerTools</div>
+                <div class="tab active" onclick="navigation()">Fan</div>
+                <div class="tab" onclick="navigation()">Motor</div>
+                <div class="tab" onclick="navigation()">PowerTools</div>
             </div>
             <div class="services">
                 <form action="{{url_for('home')}}" method="post">
@@ -57,41 +58,10 @@
             </div>
         </section>
     </main>
-    <script>
-        const tabs = document.querySelectorAll('.tab');
-        const tabSelect = document.querySelectorAll('.tab-selected');
-        const hp=document.querySelector('.ignore');
-        const formTitle=document.querySelector('.form-title')
-
-        function showTab(index) {
-            tabs.forEach((tab) => {
-            tab.classList.remove('active');
-        });
-        tabs[index].classList.add('active');
-        if (tabs[index].textContent == 'Motor'){
-            formTitle.textContent='Motor Detail Entry'
-            hp.style.display='table-row';
-        }
-        else{
-            hp.style.display='none';
-        }
-        if (tabs[index].textContent == 'Fan'){
-            formTitle.textContent='Fan Detail Entry'
-        }
-        if (tabs[index].textContent == 'PowerTools'){
-            formTitle.textContent='PowerTools Detail Entry'
-        }
-        }
-
-        // Initial active tab
-        showTab(0);
-
-        tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => {
-            showTab(index);
-        });
-        });
-
-    </script>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Finance</a>
+        <a href="#">Spares</a>
+    </div>
 </body>
 </html>
