@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style1.css">
-    <script src="javascp.js"></script>
 </head>
 <body>
     <main>
@@ -26,7 +25,7 @@
         </header>
         <section>
             <div class="service-nav">
-                <div class="tab active" onclick="navigation()">Fan</div>
+                <button class="tab active" onclick="navigation()">Fan</button>
                 <div class="tab" onclick="navigation()">Motor</div>
                 <div class="tab" onclick="navigation()">PowerTools</div>
             </div>
@@ -40,20 +39,23 @@
                             <td>Register ID:</td>
                             <td><input type="text" value="" name="ID"></td>
                         </tr>
+
                         <tr>
                             <td>Customer Name:</td>
                             <td><input type="text" name="NAME"></td>
                         </tr>
                         
-                        <tr class="motorexculusive">
-                            <td>Motor HP:</td>
-                            <td><input type="text" name="HP"></td>
-                        </tr>
                         <tr>
                             <td>Mobile No:</td>
                             <td><input type="number" name="MOBILE"></td>
                         </tr>
-                        <tr class="fanexculusive ">
+
+                        <tr class="motorexclusive">
+                            <td>Motor HP:</td>
+                            <td><input type="text" name="HP"></td>
+                        </tr>
+
+                        <tr class="fanexclusive ">
                             <td>Fan type:</td>
                             <td><select>
                                   <option>Celling fan</option>
@@ -61,9 +63,9 @@
                                   <option>Almonard pedestal</option>
                                   <option>Almonard Wall mounding</option>
                             </select>
-                        </td>
+                            </td>
                         </tr>
-                        <tr class="powerexculusive">
+                        <tr class="powerexclusive">
                             <td>Powertools Type:</td>
                             <td>
                                 <select name="POWERTOOLS">
@@ -74,7 +76,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="powerexculusive">
+                        <tr class="powerexclusive">
                             <td>Company:</td>
                             <td><select name="COMPANY">
                                 <option>Bosch</option>
@@ -85,8 +87,8 @@
                             </select>
                         </td>
                         </tr>
-                        <tr class="powerexculusive">
-                            <td>Model no:</td>
+                        <tr class="powerexclusive">
+                            <td class="powerexclusive">Model no:</td>
                             <td><input type="text" name="MODEL NO"></td>
                         </tr>
                         <tr>
@@ -108,5 +110,7 @@
         <a href="#">Finance</a>
         <a href="#">Spares</a>
     </div>
+    <script src="javascp.js"></script>
+
 </body>
 </html>
