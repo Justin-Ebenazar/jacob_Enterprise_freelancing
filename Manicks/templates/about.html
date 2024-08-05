@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JE-HomePage</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="javascp.js"></script>
+</head>
+<body>
+    <!-- {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{message}}');</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %} -->
+    <main>
+        <header class="header">
+            <div>
+                <button id="sidepane_button" onclick="openNav()"></button>
+            </div>
+            <div id="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li id="veedu"><a href="">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                </ul>
+            </nav>
+            <input type="text" name="search_input" placeholder="Search by Name">
+        </header>
+        <section>
+            <div class="about_page">
+                <!-- kadai adrees name etc., -->
+                <h2 id="title">Jacob Enterprises</h2>
+                <br>
+                <p id="catch"><span id="phrase">Expertise in AC, DC Motor Repair, and Powertools | Sales & Service</span></p>
+                
+            </div>
+            <div id="dev_details">
+                <div class="devs">
+                    <p>hello</p>
+                </div>
+                <div class="devs">
+                    <p>hello</p>
+                </div>
+                <div class="devs">
+                    <p>hello</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
