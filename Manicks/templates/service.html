@@ -25,7 +25,7 @@
         </header>
         <section>
             <div class="service-nav">
-                <button class="tab active" onclick="navigation()">Fan</button>
+                <div class="tab active" onclick="navigation()">Fan</div>
                 <div class="tab" onclick="navigation()">Motor</div>
                 <div class="tab" onclick="navigation()">PowerTools</div>
             </div>
@@ -36,36 +36,41 @@
                             <th class="form-title" colspan="2">Fan Details Entry</th>
                         </tr>
                         <tr>
-                            <td>Register ID:</td>
+                            <td>Product ID:</td>
                             <td><input type="text" value="" name="ID"></td>
                         </tr>
-
                         <tr>
-                            <td>Customer Name:</td>
+                            <td>Name:</td>
                             <td><input type="text" name="NAME"></td>
                         </tr>
-                        
-                        <tr>
-                            <td>Mobile No:</td>
-                            <td><input type="number" name="MOBILE"></td>
-                        </tr>
-
-                        <tr class="motorexclusive">
-                            <td>Motor HP:</td>
-                            <td><input type="text" name="HP"></td>
-                        </tr>
-
-                        <tr class="fanexclusive ">
+                        <!-- FAN DETAILS -->
+                        <tr class="fan-ignore" style="display: none;">
                             <td>Fan type:</td>
-                            <td><select>
+                            <td>
+                                <select>
                                   <option>Celling fan</option>
                                   <option>Table fan</option>
                                   <option>Almonard pedestal</option>
                                   <option>Almonard Wall mounding</option>
-                            </select>
+                                </select>
                             </td>
                         </tr>
-                        <tr class="powerexclusive">
+                        <!-- MOTOR DETAIL -->
+                        <tr class="motor-ignore" style="display: none;">
+                            <td>Motor HP:</td>
+                            <td>
+                                <select name="HP" id="">
+                                    <option value="1/2">1/2</option>
+                                    <option value="3/4">3/4</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="5">5</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- POWER TOOLS DETAILS -->
+                        <tr class="powertool-ignore" style="display: none;">
                             <td>Powertools Type:</td>
                             <td>
                                 <select name="POWERTOOLS">
@@ -76,29 +81,37 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="powerexclusive">
+                        <tr class="powertool-ignore" style="display: none;">
                             <td>Company:</td>
-                            <td><select name="COMPANY">
-                                <option>Bosch</option>
-                                <option>Makita</option>
-                                <option>Dewalt</option>
-                                <option>Hitachi</option>
-                                <option>China made</option>
-                            </select>
-                        </td>
+                            <td>
+                                <select name="COMPANY">
+                                    <option>Bosch</option>
+                                    <option>Makita</option>
+                                    <option>Dewalt</option>
+                                    <option>Hitachi</option>
+                                    <option>China made</option>
+                                </select>
+                            </td>
                         </tr>
-                        <tr class="powerexclusive">
+                        <tr class="powertool-ignore" style="display: none;">
                             <td class="powerexclusive">Model no:</td>
                             <td><input type="text" name="MODEL NO"></td>
                         </tr>
                         <tr>
-                            <td>Color:</td><td><input type="color" name="COLOR"></td>
+                            <td>Mobile No:</td>
+                            <td><input type="number" name="MOBILE"></td>
                         </tr>
                         <tr>
-                            <td>Date given:</td><td><input type="date" name="DATE"></td>
+                            <td>Color:</td>
+                            <td><input type="color" name="COLOR" id=""></td>
                         </tr>
                         <tr>
-                            <td>Return Date:</td><td><input type="date" name="RETURN"></td>
+                            <td>Date given:</td>
+                            <td><input type="date" name="DATEOFGIVEN"></td>
+                        </tr>
+                        <tr>
+                            <td>Advance:</td>
+                            <td><input type="number" name="ADVANCE" VALUE=0></td>
                         </tr>
                     </table>
                 </form>
@@ -110,7 +123,7 @@
         <a href="#">Finance</a>
         <a href="#">Spares</a>
     </div>
+    
     <script src="javascp.js"></script>
-
 </body>
 </html>
