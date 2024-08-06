@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spares Lookup</title>
     <link rel="stylesheet" href="style1.css">
-    <script src="javascp.js"></script>
+    <script src="javascp_common.js"></script>
 </head>
 <body>
     <main>
@@ -35,11 +35,11 @@
                     </select>
                 </div>
                 <div>
-                    <input id="search-btn" type="submit" value="search">
+                    <input id="search-btn" type="submit" value="search" onclick="search_criteria">
                 </div>
             </div>
             <div class="home-table">
-                <table cellspacing="10px" class="home-detail-table">
+                <table cellspacing="10px" class="helo">
                     <tr>
                         <th class="home-detail-th">Spare ID</th>
                         <th class="home-detail-th">Spare Name</th>
