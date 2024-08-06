@@ -14,9 +14,17 @@ function openNav() {
 // spares lookup page
 
 function search_criteria(){
-    const serach_criteria=document.querySelectorAll('.helo');
+    const dates=document.querySelector('.dates');
+    const search_box=document.querySelector('.search-dabba');
     var dropdown = document.getElementById("searchfilter");
-    var selectedValue = dropdown.value;
-    console.log(selectedValue)
-
+    
+    if(dropdown.value=="date"){
+        dates.style.display='block';
+        search_box.style.display='none';    
+    }
+    else{
+        dates.style.display='none';
+        search_box.style.display='block';
+    }
 }
+search_criteria()

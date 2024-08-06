@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spares Lookup</title>
     <link rel="stylesheet" href="style1.css">
-    <script src="javascp_common.js"></script>
+    
 </head>
 <body>
     <main>
@@ -29,27 +29,34 @@
             <div class="home-search-bar">
                 <div>
                     Filter:
-                    <select name="search_filter">
-                        <option value="">Search by Date</option>
-                        <option value="">Serach by Product</option>
+                    <select name="search_filter" id="searchfilter" onchange="search_criteria()">
+                        <option value="product">Search by Product</option>
+                        <option value="date">Search by date</option>
                     </select>
                 </div>
+                
+                <div class="dates">
+                    <input type="date" name="Start date">
+                    <input type="date" name="End date">    
+                </div>
+                <div class="search-dabba">
+                    <input type="text" name="product_entry">
+                </div>
+                
                 <div>
-                    <input id="search-btn" type="submit" value="search" onclick="search_criteria">
+                    <input id="search-btn" type="submit" value="search" onclick="search_criteria()">
                 </div>
             </div>
+            
             <div class="home-table">
-                <table cellspacing="10px" class="helo">
+                <table cellspacing="10px" class="by_product">
                     <tr>
-                        <th class="home-detail-th">Spare ID</th>
                         <th class="home-detail-th">Spare Name</th>
+                        <th class="home-detail-th">Spare ID</th>
                         <th class="home-detail-th">Use case</th>
-                        <th class="home-detail-th">Actual price</th>
-                        <th class="home-detail-th">Selling price</th>
-                        <th class="home-detail-th">Profit</th>
+                        <th class="home-detail-th">Units</th>
+                        <th class="home-detail-th">Date</th>
                     </tr>
-
-                </table>
             </div>
         </div>
 
@@ -63,5 +70,7 @@
         
         </section>
     </main>
+
 </body>
+<script src="javascp_common.js"></script>
 </html>
