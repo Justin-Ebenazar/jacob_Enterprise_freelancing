@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="javascp.js"></script>
+</head>
+<body>
+    <main>
+        <header class="header">
+            <div>
+                <button id="sidepane_button" onclick="openNav()"></button>
+            </div>
+            <div id="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li id="veedu"><a href="">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                </ul>
+            </nav>
+            <input type="text" name="search_input" placeholder="Search by Name">
+        </header>
+        <section>
+            <div class="home-search-bar">
+                <div>
+                    Filter:
+                    <select name="search_filter">
+                        <option value="">Fan</option>
+                        <option value="">Motor</option>
+                        <option value="">PowerTools</option>
+                    </select>
+                </div>
+                <div>
+                    <input id="search-btn" type="submit" value="search">
+                </div>
+            </div>
+            <div class="home-table">
+                <table cellspacing="10px" class="home-detail-table">
+                    <tr>
+                        <th class="home-detail-th">Spare ID</th>
+                        <th class="home-detail-th">Spare Name</th>
+                        <th class="home-detail-th">Use case</th>
+                        <th class="home-detail-th">Actual price</th>
+                        <th class="home-detail-th">Selling price</th>
+                        <th class="home-detail-th">Profit</th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    <!--side navigaiton panel oda code ithu-->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Finance</a>
+            <a href="#">Spares Lookup</a>
+            <a href="#">Spares Update</a>
+        </div>
+        
+        </section>
+    </main>
+</body>
+</html>
