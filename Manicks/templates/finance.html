@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="javascp_common.js"></script>
+</head>
+<body>
+    <!-- {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{message}}');</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %} -->
+    <main>
+        <header class="header">
+            <div>
+                <button id="sidepane_button" onclick="openNav()"></button>
+            </div>
+            <div id="shop-name">
+                <p>Jacob Enterprises</p>
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li id="veedu"><a href="">Home</a></li>
+                    <li><a href="{{url_for('service')}}">Services</a></li>
+                    <li><a href="">Spares</a></li>
+                </ul>
+            </nav>
+            <input type="text" name="search_input" placeholder="Search by Name">
+        </header>
+        <section>
+            <center>
+            <table>
+                <tr>
+                    <td>product ID:</td><td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Customer Name:</td><td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Product Type:</td>
+                    <td>
+                        <select>
+                            <option>MOTOR</option>
+                            <option>POWER TOOLS</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="profit">Profit made:</td><td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="total-profit" id="totalProfit">Total Profit:</td>
+                </tr>
+            </table>
+        </center>
+        </section>
+        <script>
+            function calculateTotalProfit() {
+                const profitCells = document.querySelectorAll('.profit');
+                let totalProfit = 0;
+                profitCells.forEach(cell => {
+                    totalProfit += parseFloat(cell.textContent.replace('$', ''));
+                });
+                document.getElementById('totalProfit').textContent = 'Total Profit: $' + totalProfit;
+            }
+    
+            // Calculate total profit when the page loads
+            window.onload = calculateTotalProfit;
+        </script>
+    </main>
+</body>
+</html>
