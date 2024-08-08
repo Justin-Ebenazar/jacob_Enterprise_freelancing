@@ -314,8 +314,81 @@ text-align: center;
 /*repair status*/
 
 .repair_status{
-    margin-top: 70px;
+    margin-top: 110px;
 }
+
+#heading_for_repairstatus{
+    display: flex;
+    background-color: rgb(255,255,255,0.3);
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 15px 15px 0px 0px;
+    height: 40px;
+}
+
+#footer_rpstatus{
+    display: flex;
+    background-color: rgb(255,255,255,0.3);
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 0px 0px 15px 15px;
+    height: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#machine_code{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 162, 255);
+    margin-left: 25px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    padding-top: 4px;
+    padding-right: 7px;
+    padding-left: 7px;
+    text-align: center;
+
+}
+
+.repair_status_details{
+    display: flex;
+    background-color: rgb(255,255,255,0.5);
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#left_half_rpstatus{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 10px;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    width: 100%;
+}
+
+#right_half_rpstatus{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: red;
+}
+
+#machine_type_color{
+    color: white;
+    background-color: aquamarine;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 
 /* sparelooup page */
 
