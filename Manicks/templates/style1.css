@@ -491,7 +491,6 @@ text-align: center;
 .spares-lookup-table{
     position: fixed;
     margin-top: 50px;
-    background-color: red;
     width: 100%;
     align-items: center;
 }
