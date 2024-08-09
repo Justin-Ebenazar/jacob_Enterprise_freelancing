@@ -26,7 +26,7 @@
             <input type="text" name="search_input" placeholder="Search by Name">
         </header>
         <section class="main_contentof_page">
-            <div class="home-search-bar">
+            <div class="spares-lookup-filter">
                 <div>
                     Filter:
                     <select name="search_filter" id="searchfilter" onchange="search_criteria()">
@@ -47,8 +47,8 @@
                     <input id="search-btn" type="submit" value="search" onclick="search_criteria()">
                 </div>
             </div>
-            
-            <div class="home-table">
+            <div class="spares-lookup-table">
+                <center>
                 <table cellspacing="10px" class="by_product">
                     <tr>
                         <th class="home-detail-th">Spare Name</th>
@@ -57,6 +57,8 @@
                         <th class="home-detail-th">Units</th>
                         <th class="home-detail-th">Date</th>
                     </tr>
+                </table>
+                </center>
             </div>
         </div>
 

@@ -172,20 +172,25 @@ a{
 section{
     height: 100vh;
 }
+
 .home-search-bar{
-    margin-top: 100px;
-    height: 50px;
+    height: 45px;
     display: flex;
-    position: relative;
+    position: fixed;
     justify-content: space-evenly;
     align-items: center;
     font-size: 18px;
     font-weight: bold;
     background-color: rgba(225, 204, 204,0.8);
     border-radius: 30px;
+    width: 95%;
+    margin-left: 25px;
 }
 .service-nav{
     color: rgb(0,0,0,0.5);
+    position: fixed;
+    margin-top: 100px;
+    width: 97%;
     justify-content: space-evenly;
     align-items: center;
     background-color: rgb(0,0,0,0.3);
@@ -193,22 +198,27 @@ section{
     box-shadow: 0px 2px 2px;
     height: 50px;
     display: flex;
-    margin-top: 100px;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
+    z-index: 999;
 }
 input,select{
     width: 150px;
     height: 30px;
     border-radius: 5px;
 }
-.home-table, .services{
-    /*width: 100vw;*/
-    display: flex;
+
+.services{
+    margin-top: 100px;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     padding-top: 10px;
+    position: static;
+    margin-left: 35%;
+    margin-right: 30%;
+    
 }
 .home-detail-table, .home-detail-th, .home-detail-td{ 
     border: 1px solid black;
@@ -217,14 +227,16 @@ input,select{
     border-collapse: collapse;
     background:rgba(233, 225, 225,0.5);
 }
+
+
 .service-nav div{
-    /*width: 100vw;*/
-    cursor: pointer;
+    cursor: pointer;    
     transition: 0.5s;
     justify-content: space-evenly;
     align-items: center;
     display: flex;    
 }
+
 /*finance page*/
 #finance_table{
     margin-top: 100px;
@@ -457,7 +469,7 @@ text-align: center;
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: red;
+    background-color: rgb(255,255,255,0.5);
 }
 
 #machine_type_color{
@@ -475,3 +487,25 @@ text-align: center;
 .main_contentof_page{
     margin-top: 120px;
 }
+
+.spares-lookup-table{
+    position: fixed;
+    margin-top: 50px;
+    background-color: red;
+    width: 100%;
+    align-items: center;
+}
+
+.spares-lookup-filter{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    height:50px;
+    position:fixed;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+

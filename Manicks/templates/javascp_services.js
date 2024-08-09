@@ -1,47 +1,41 @@
   //services page tab switch code 
 
-  function navigation(){
+  function navigation(page){
+    console.log(page)
     const tabs = document.querySelectorAll('.tab');
     const tabSelect = document.querySelectorAll('.tab-selected');
-    const motor_ignore=document.querySelector('.motor-ignore');
-    const fan_ignore=document.querySelector('.fan-ignore');
-    const powertool_ignore=document.querySelectorAll('.powertool-ignore');
+    const fan_tab=document.querySelector('.service_table_fan');
+    const motor_tab=document.querySelector('.service_table_motor');
+    const powertool_tab=document.querySelector('.service-tab-powertools');
     
     const formTitle=document.querySelector('.form-title')
-  
+
     function showTab(index) {
         tabs.forEach((tab) => {
         tab.classList.remove('active');
     });
     tabs[index].classList.add('active');
-    if (tabs[index].textContent == 'Motor'){
-        formTitle.textContent='Motor Detail Entry'
-        motor_ignore.style.display='table-row';
+
+    if(page=='motor'){
+        formTitle.textContent="Motor Details Entry";
+        fan_tab.style.display='none';
+        powertool_tab.style.display='none';
+        motor_tab.style.display='block';
+    }
+    else if(page=='fan'){
+        formTitle.textContent="Fan Details Entry";
+        motor_tab.style.display='none';
+        powertool_tab.style.display='none';
+        fan_tab.style.display='block';
     }
     else{
-        motor_ignore.style.display='none';
+        formTitle.textContent="PowerTools Details Entry";
+        motor_tab.style.display='none';
+        fan_tab.style.display='none';
+        powertool_tab.style.display='block';
     }
-    if (tabs[index].textContent == 'Fan'){
-        formTitle.textContent='Fan Detail Entry';
-        fan_ignore.style.display='table-row';
-      }
-      else{
-          fan_ignore.style.display='none';
-      }
-    if (tabs[index].textContent == 'PowerTools'){
-        formTitle.textContent='PowerTools Detail Entry'
-        powertool_ignore.forEach((tool)=>{
-          tool.style.display='table-row';
-      });
-      }
-      else{
-          powertool_ignore.forEach((tool)=>{
-              tool.style.display='none';
-          });
-      }
     }
-  
-    // Initial active tab
+
     showTab(0);
   
     tabs.forEach((tab, index) => {
@@ -50,6 +44,5 @@
     });
     });
   }
-  navigation();
-  
-  // service page tab switch code end
+
+  navigation('fan')
