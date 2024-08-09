@@ -175,6 +175,7 @@ section{
 }
 
 .home-search-bar{
+    top: 100px;
     height: 45px;
     display: flex;
     position: fixed;
@@ -230,6 +231,11 @@ input,select{
     background:rgba(233, 225, 225,0.5);
 }
 
+.home-table{
+    position:fixed;
+    top:160px;
+    margin-left: 5%;
+}
 
 .service-nav div{
     cursor: pointer;    
