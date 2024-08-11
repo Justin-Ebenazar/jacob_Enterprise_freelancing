@@ -35,31 +35,32 @@
         </header>
         <section>
             <center>
-            <table id="finance_table">
+                <div id="upbox">
+                    Monthly TOTAL PROFIT : <p id="mon_profit">10000</p>
+                    Today's Profit : <p id="tod_profit">1000</p>
+                </div>
+            <div id="finance_table">
+            <table>
                 <tr>
-                    <td>product ID:</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Customer Name:</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Product Type:</td>
-                    <td>
-                        <select>
-                            <option>MOTOR</option>
-                            <option>POWER TOOLS</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="profit">Profit made:</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td class="total-profit" id="totalProfit">Total Profit:</td>
+                    <th>Product ID</th>
+                    <th>Customer Name</th>
+                    <th>Product Type</th>
+                    <th class="profit">Profit made</th>
                 </tr>
             </table>
+            </div>
+            
         </center>
         </section>
+        
+        <!--side navigaiton panel oda code ithu-->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Finance</a>
+            <a href="#">Spares Lookup</a>
+            <a href="#">Spares Update</a>
+        </div>
+
         <script>
             function calculateTotalProfit() {
                 const profitCells = document.querySelectorAll('.profit');
