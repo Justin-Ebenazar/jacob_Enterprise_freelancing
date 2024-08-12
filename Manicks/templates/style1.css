@@ -605,12 +605,17 @@ text-align: center;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%-40px;
-    background-color: white;
+    width: 100%-600px;
+    background-color: rgba(255,255,255,0.3);
+    backdrop-filter: blur(4px);
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
+    -2px -4px 4px rgba(0,0,0,0.3),
+    -2px 4px 4px rgba(0,0,0,0.3),
+    2px -4px 4px rgba(0,0,0,0.3);
     height: 45px;
     border-radius: 10px;
-    right: 20px;
-    left: 20px;
+    right: 300px;
+    left: 300px;
 }
 
 .spares-update-table{
@@ -620,6 +625,72 @@ text-align: center;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 45px;
     border-radius: 10px;
+}
+
+.spare-detail-table{
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.spare-detail-table th{
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    box-shadow: 4px 4px 7px rgba(0,0,0,0.8);
+}
+
+.spare-detail-table th:first-child{
+    border-radius: 10px 0px 0px 0px;
+}
+
+.spare-detail-table th:last-child{
+    border-radius: 0px 10px 0px 0px;
+}
+
+.spare-detail-table tr{
+    border-radius: 10px;
+}
+
+.spare-detail-table td{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#upbutt{
+    background-color: rgba(0, 119, 255, 0.7);
+    color: white;
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
+    -2px -4px 4px rgba(0,0,0,0.3),
+    -2px 4px 4px rgba(0,0,0,0.3),
+    2px -4px 4px rgba(0,0,0,0.3);
+    box-shadow: inset -4px -4px 7px rgba(0,0,0,0.5);
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 7px;
+}
+
+#upbutt:hover{
+    /*background-color: rgb(1, 94, 1);*/
+    box-shadow: inset -4px -4px 7px rgba(0,0,0,0.5);
+    box-shadow: 2px 4px 4px rgba(0,119,255,0.1),
+    -2px -4px 4px rgba(0,119,255,0.1),
+    -2px 4px 4px rgba(0,119,255,0.1),
+    2px -4px 4px rgba(0,119,255,0.1);
+}
+
+#add_new_item{
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
+}
+
+#del_item{
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
 }
