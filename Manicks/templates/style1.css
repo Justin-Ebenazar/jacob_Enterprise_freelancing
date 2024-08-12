@@ -305,11 +305,10 @@ input,select{
 
 }
 
-#upbox{
+.upbox{
     top: 100px;
     position: fixed;
     display: flex;
-    /*background-color: rgb(0,0,0,0.5);*/
     border-radius: 10px;
     height: 40px;
     align-items: center;
@@ -318,14 +317,14 @@ input,select{
     left: 30px;
     right: 30px;
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
     
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px); 
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-
-  
 }
+
 
 .tab.active{
     color: black;
@@ -473,9 +472,10 @@ text-align: center;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #443f3f;
+    background-color: #574949;
     -webkit-transition: .4s;
     transition: .4s;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4),inset -2px -2px 4px rgba(0, 0, 0, 0.4);
   }
   
   .slider:before {
@@ -488,10 +488,12 @@ text-align: center;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
+    box-shadow: 2px 2px 4px rgba(248, 0, 0, 0.575) ,-2px -2px 4px rgba(248, 0, 0, 0.575),
+    2px -2px 4px rgba(248, 0, 0, 0.575),-2px 2px 4px rgba(248, 0, 0, 0.575);
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #21f360;
   }
   
   input:focus + .slider {
@@ -502,6 +504,8 @@ text-align: center;
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(26px);
     transform: translateX(18px);
+    box-shadow: none;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4),inset -2px -2px 4px rgba(0, 0, 0, 0.4);
   }
   
   /* Rounded sliders */
@@ -513,7 +517,7 @@ text-align: center;
     border-radius: 50%;
   }
 
-  /*toggle end button*/
+  /*toggle button end*/
 
 #machine_code{
     font-family: 'Times New Roman', Times, serif;
