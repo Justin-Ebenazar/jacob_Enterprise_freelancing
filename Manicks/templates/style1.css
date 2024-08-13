@@ -643,6 +643,7 @@ text-align: center;
 
 .spare-detail-table{
     background-color: rgba(255,255,255,0.3);
+    background-color: rgba(0,0,0,0.3);
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.2);
     box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
@@ -676,14 +677,22 @@ text-align: center;
     color: white;
 }
 
+.spare-detail-table td:last-child{
+    background-color: rgba(0,0,0,0);
+}
+
 #upbutt{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0);
     color: white;
     /*box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
     -2px -4px 4px rgba(0,0,0,0.3),
     -2px 4px 4px rgba(0,0,0,0.3),
     2px -4px 4px rgba(0,0,0,0.3);*/
-    border: 0.2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-right: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-left: 0.2px solid rgba(255, 255, 255, 0.1);
+    border-top: 0.2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(1px);
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 7px;
