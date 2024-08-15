@@ -9,6 +9,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 100% 100%;
+
 }
 header{
     height: 60px;
@@ -257,13 +258,20 @@ input,select{
 
 #finance-maintenance{
     border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0);
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
+    -2px -4px 4px rgba(0,0,0,0.3),
+    -2px 4px 4px rgba(0,0,0,0.3),
+    2px -4px 4px rgba(0,0,0,0.3);
     backdrop-filter: blur(5px);
+    padding: 0px;
     border-collapse: collapse;
 }
 
 #finance-maintenance th{
     background-color: rgb(255,255,255,0.3);
     backdrop-filter: blur(5px);
+    border: none;
 }
 
 #finance-maintenance th:first-child{
@@ -275,9 +283,14 @@ input,select{
 }
 
 #finance-maintenance td{
+    border: none;
+}
+
+#finance-maintenance td{
     background-color: rgb(0,0,0,0.2);
     color: white;
     text-align: center;
+    border: none;
     border-bottom: 0.1px solid rgb(255,255,255,0.2);
 }
 
@@ -605,12 +618,17 @@ text-align: center;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%-40px;
-    background-color: white;
+    width: 100%-600px;
+    background-color: rgba(255,255,255,0.3);
+    backdrop-filter: blur(4px);
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
+    -2px -4px 4px rgba(0,0,0,0.3),
+    -2px 4px 4px rgba(0,0,0,0.3),
+    2px -4px 4px rgba(0,0,0,0.3);
     height: 45px;
     border-radius: 10px;
-    right: 20px;
-    left: 20px;
+    right: 300px;
+    left: 300px;
 }
 
 .spares-update-table{
@@ -620,6 +638,109 @@ text-align: center;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 45px;
     border-radius: 10px;
+}
+
+.spare-detail-table{
+    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
+    -2px -4px 4px rgba(0,0,0,0.3),
+    -2px 4px 4px rgba(0,0,0,0.3),
+    2px -4px 4px rgba(0,0,0,0.3);
+}
+
+.spare-detail-table th{
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    box-shadow: 4px 4px 7px rgba(0,0,0,0.8);
+}
+
+.spare-detail-table th:first-child{
+    border-radius: 10px 0px 0px 0px;
+}
+
+.spare-detail-table th:last-child{
+    border-radius: 0px 10px 0px 0px;
+}
+
+.spare-detail-table tr{
+    border-radius: 10px;
+}
+
+.spare-detail-table td{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.spare-detail-table td:last-child{
+    background-color: rgba(0,0,0,0);
+}
+
+#upbutt{
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    /*box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
+    -2px -4px 4px rgba(0,0,0,0.3),
+    -2px 4px 4px rgba(0,0,0,0.3),
+    2px -4px 4px rgba(0,0,0,0.3);*/
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-right: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-left: 0.2px solid rgba(255, 255, 255, 0.1);
+    border-top: 0.2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(1px);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+#upbutt:active{
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1),
+    -2px -4px 4px rgba(0, 0, 0, 0.1),
+    -2px 4px 4px rgba(0, 0, 0, 0.1),
+    2px -4px 4px rgba(0, 0, 0, 0.1);
+}
+
+#upbutt:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+    rgba(146, 148, 248, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+#upbutt:hover:before {
+  left: 100%;
+}
+
+#add_new_item{
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
+    color: black;
+    background-color: rgba(0, 183, 255,0.4)
+}
+
+#del_item{
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
+    color: black;
+    background-color: rgba(255, 80, 67,0.5);
 }
