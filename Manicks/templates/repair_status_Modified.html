@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repair_status</title>
     <link rel="stylesheet" href="style1.css">
-    <script src="javascp_common.js"></script>
+    <script src="javascp_services.js"></script>
     <link rel="icon" href="pics/repairstut.png" type="image/png">
 </head>
 <body>
@@ -73,13 +73,16 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="EQUIPMENT">
-                                            <option value="">value1</option>
-                                            <option value="">value2</option>
-                                            <option value="">value3</option>
-                                        </select>
+                                        <input type="text" placeholder="theduga" class="spare_search_rpstat" onkeyup="search_filter_rps()">
+                                        <div class="search_result">
+                                            <ul style="list-style-type: none;">
+                                                <li>javascript</li>
+                                                <li>python</li>
+                                                <li>manikarja</li>
+                                            </ul>
+                                        </div>
+
                                     </td>
-                                    <td><input type="number" placeholder="cost" name="COST"></td>
                                     <td><button style="background-color: lawngreen; width: 80px; height: 30px; border-radius: 5px;">ADD</button></td>
                                 </tr>
                             </table>
@@ -89,7 +92,7 @@
                                 <tr>
                                     <td>{{info.P_spare}}</td>
                                     <td>{{info.P_cost}}</td>
-                                    <td><button style="background-color: rgb(252, 0, 0); width: 80px; height: 30px; border-radius: 5px;color: white;">Remove</button></td>
+                                    <td><button style="background-color: rgb(252, 0, 0);padding:0px 7px 0px 7px; font-style:bold; border-radius: 50px;color: white;">-</button></td>
                                 </tr>
                             </table>
                         </div>
@@ -122,6 +125,12 @@
                         <button style="background-color: lawngreen; width: 80px; height: 30px; border-radius: 5px;"><a href="" style="color: black;">Update</a></button>
                     </div>
                 </div>
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">Finance</a>
+                <a href="#">Spares Lookup</a>
+                <a href="#">Spares Update</a>
             </div>
         </section>
     </main>

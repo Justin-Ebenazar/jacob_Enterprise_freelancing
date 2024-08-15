@@ -72,11 +72,11 @@ nav ul li{
 }
 
 
-input[type="text"],input[type="number"] {
+input[type="text"],input[type="number"]{
     text-align: start;
     font-family: 'Times New Roman';
     font-size: 20px;
-    color: #818181;
+    color: rgba(0,0,0,0);
     padding-left: 20px;
     height: 30px;
     border-radius: 20px;
@@ -89,6 +89,16 @@ input[type="text"],input[type="number"] {
     font-family: navfont;
     text-align: left;
     font-size: 15px;
+    color: #574949;
+  }
+
+  #home-search{
+    border: none;
+    background-color: #ffffff;
+  }
+
+  #home-search:active{
+    border: none;
   }
 
 #sidepane_button{
@@ -214,6 +224,8 @@ input,select{
     border-radius: 5px;
 }
 
+
+
 .services{
     position: absolute;
     top: 150px;
@@ -269,7 +281,7 @@ input,select{
 }
 
 #finance-maintenance th{
-    background-color: rgb(255,255,255,0.3);
+    background-color: rgba(251, 255, 0, 0.781);
     backdrop-filter: blur(5px);
     border: none;
 }
