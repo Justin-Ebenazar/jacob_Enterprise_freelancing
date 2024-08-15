@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>service</title>
-    <link rel="stylesheet" href="style1.css">
-    <link rel="icon" href="pics/service-page.png" type="image/png">
+    <link rel="stylesheet" href="static/style1.css">
 </head>
 <body>
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{message}}');</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     <main>
         <header class="header">
             <div>
@@ -26,165 +32,174 @@
         </header>
         <section>
             <div class="service-nav">
-                <div class="tab active" onclick="navigation('fan')">Fan</div>
-                <div class="tab" onclick="navigation('motor')">Motor</div>
-                <div class="tab" onclick="navigation('powertools')">PowerTools</div>
+                <div class="tab active" onclick="showTab(0)">Fan</div>
+                <div class="tab" onclick="showTab(1)">Motor</div>
+                <div class="tab" onclick="showTab(2)">PowerTools</div>
             </div>
-            <center>
             <div class="services">
-                <!-- <form action="{{url_for('home')}}" method="post"> -->
-                    
+                <form action="/fan_submit" class="tab-contant" method="post">
                     <div class="service_table_fan">
-                    <table >
-                        <tr>
-                            <th class="form-title" colspan="2">Fan Details Entry</th>
-                        </tr>
-                        <tr>
-                            <td>Product ID:</td>
-                            <td><p>P1010280</p></td>
-                        </tr>
-                        <tr>
-                            <td>Customer Name:</td>
-                            <td><input type="text" name="NAME"></td>
-                        </tr>
-                        <tr>
-                            <td>Mobile No:</td>
-                            <td><input type="number" name="MOBILE"></td>
-                        </tr>
-                        <tr>
-                            <td>Color:</td>
-                            <td><input type="color" name="COLOR" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>Fan type:</td>
-                            <td>
-                                <select>
-                                  <option>Celling fan</option>
-                                  <option>Table fan</option>
-                                  <option>Almonard pedestal</option>
-                                  <option>Almonard Wall mounding</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Date given:</td>
-                            <td><input type="date" name="DATEOFGIVEN"></td>
-                        </tr>
-                        <tr>
-                            <td>Advance:</td>
-                            <td><input type="number" name="ADVANCE" VALUE=0></td>
-                        </tr>
-                        
-                    </table> 
-                    </div>                   
-                    
+                        <table >
+                            <tr>
+                                <th class="form-title" colspan="2">Fan Details Entry</th>
+                            </tr>
+                            <tr>
+                                <td>Product ID:</td>
+                                <td><input type="text" placeholder="null" name="ID"></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Name:</td>
+                                <td><input type="text" name="NAME"></td>
+                            </tr>
+                            <tr>
+                                <td>Mobile No:</td>
+                                <td><input type="number" name="MOBILE"></td>
+                            </tr>
+                            <tr>
+                                <td>Color:</td>
+                                <td><input type="color" name="COLOR" id=""></td>
+                            </tr>
+                            <tr>
+                                <td>Fan type:</td>
+                                <td>
+                                    <select name="FANTYPE">
+                                        <option value="Celling fan">Celling fan</option>
+                                        <option value="Table fan">Table fan</option>
+                                        <option value="Almonard pedestal">Almonard pedestal</option>
+                                        <option value="Almonard Wall mounding">Almonard Wall mounding</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date given:</td>
+                                <td><input type="date" name="DATEOFGIVEN"></td>
+                            </tr>
+                            <tr>
+                                <td>Advance:</td>
+                                <td><input type="number" name="ADVANCE" VALUE=0></td>
+                            </tr>
+                            <tr>
+                                <td><input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);"></td>
+                                <td><input type="submit" value="Submit" style="background-color: lawngreen;"></td>
+                            </tr>
+                        </table> 
+                    </div>
+                </form>                
+                <form action="/motor_submit" class="tab-contant" method="post">
                     <div class="service_table_motor">
-                    <table >
-                        <tr>
-                            <th class="form-title" colspan="2">Fan Details Entry</th>
-                        </tr>
-                        <tr>
-                            <td>Product ID:</td>
-                            <td><p>P1010280</p></td>
-                        </tr>
-                        <tr>
-                            <td>Customer Name:</td>
-                            <td><input type="text" name="NAME"></td>
-                        </tr>
-                        <tr>
-                            <td>Mobile No:</td>
-                            <td><input type="number" name="MOBILE"></td>
-                        </tr>
-                        <tr>
-                            <td>Color:</td>
-                            <td><input type="color" name="COLOR" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>Motor HP:</td>
-                            <td>
-                                <select name="HP" id="">
-                                    <option value="1/2">1/2</option>
-                                    <option value="3/4">3/4</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="5">5</option>
-                                    <option value="100">100</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Date given:</td>
-                            <td><input type="date" name="DATEOFGIVEN"></td>
-                        </tr>
-                        <tr>
-                            <td>Advance:</td>
-                            <td><input type="number" name="ADVANCE" VALUE=0></td>
-                        </tr>
-                    </table>
+                        <table >
+                            <tr>
+                                <th class="form-title" colspan="2">Motor Details Entry</th>
+                            </tr>
+                            <tr>
+                                <td>Product ID:</td>
+                                <td><input type="text" placeholder="null" name="ID"></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Name:</td>
+                                <td><input type="text" name="NAME"></td>
+                            </tr>
+                            <tr>
+                                <td>Mobile No:</td>
+                                <td><input type="number" name="MOBILE"></td>
+                            </tr>
+                            <tr>
+                                <td>Color:</td>
+                                <td><input type="color" name="COLOR" id=""></td>
+                            </tr>
+                            <tr>
+                                <td>Motor HP:</td>
+                                <td>
+                                    <select name="HP" id="">
+                                        <option value="1/2">1/2</option>
+                                        <option value="3/4">3/4</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="5">5</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date given:</td>
+                                <td><input type="date" name="DATEOFGIVEN"></td>
+                            </tr>
+                            <tr>
+                                <td>Advance:</td>
+                                <td><input type="number" name="ADVANCE" VALUE=0></td>
+                            </tr>
+                            <tr>
+                                <td><input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);"></td>
+                                <td><input type="submit" value="Submit" style="background-color: lawngreen;"></td>
+                            </tr>
+                        </table>
                     </div>
-
+                </form>
+                <form action="/powertool_submit" class="tab-contant" method="post">
                     <div class="service-tab-powertools">
-                    <table >
-                        <tr>
-                            <th class="form-title" colspan="2">Fan Details Entry</th>
-                        </tr>
-                        <tr>
-                            <td>Product ID:</td>
-                            <td><p>P1010280</p></td>
-                        </tr>
-                        <tr>
-                            <td>Customer Name:</td>
-                            <td><input type="text" name="NAME"></td>
-                        </tr>
-                        <tr>
-                            <td>Mobile No:</td>
-                            <td><input type="number" name="MOBILE"></td>
-                        </tr>
-                        <tr>
-                            <td>Color:</td>
-                            <td><input type="color" name="COLOR" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>Powertools Type:</td>
-                            <td>
-                                <select name="POWERTOOLS">
-                                    <option>Wood cutter</option>
-                                    <option>Drilling</option>
-                                    <option>cut off saw</option>
-                                    <option>Grinding</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Company:</td>
-                            <td>
-                                <select name="COMPANY">
-                                    <option>Bosch</option>
-                                    <option>Makita</option>
-                                    <option>Dewalt</option>
-                                    <option>Hitachi</option>
-                                    <option>China made</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Model no:</td>
-                            <td><input type="text" name="MODEL NO"></td>
-                        </tr>
-                        <tr>
-                            <td>Date given:</td>
-                            <td><input type="date" name="DATEOFGIVEN"></td>
-                        </tr>
-                        <tr>
-                            <td>Advance:</td>
-                            <td><input type="number" name="ADVANCE" VALUE=0></td>
-                        </tr>
-                    </table>
+                        <table >
+                            <tr>
+                                <th class="form-title" colspan="2">PowerTools Details Entry</th>
+                            </tr>
+                            <tr>
+                                <td>Product ID:</td>
+                                <td><input type="text" placeholder="null" name="ID"></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Name:</td>
+                                <td><input type="text" name="NAME"></td>
+                            </tr>
+                            <tr>
+                                <td>Mobile No:</td>
+                                <td><input type="number" name="MOBILE"></td>
+                            </tr>
+                            <tr>
+                                <td>Color:</td>
+                                <td><input type="color" name="COLOR" id=""></td>
+                            </tr>
+                            <tr>
+                                <td>Powertools Type:</td>
+                                <td>
+                                    <select name="POWERTOOLS">
+                                        <option>Wood cutter</option>
+                                        <option>Drilling</option>
+                                        <option>cut off saw</option>
+                                        <option>Grinding</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Company:</td>
+                                <td>
+                                    <select name="COMPANY">
+                                        <option>Bosch</option>
+                                        <option>Makita</option>
+                                        <option>Dewalt</option>
+                                        <option>Hitachi</option>
+                                        <option>China made</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Model no:</td>
+                                <td><input type="number" name="MODELNO"></td>
+                            </tr>
+                            <tr>
+                                <td>Date given:</td>
+                                <td><input type="date" name="DATEOFGIVEN"></td>
+                            </tr>
+                            <tr>
+                                <td>Advance:</td>
+                                <td><input type="number" name="ADVANCE" VALUE=0></td>
+                            </tr>
+                            <tr>
+                                <td><input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);"></td>
+                                <td><input type="submit" value="Submit" style="background-color: lawngreen;"></td>
+                            </tr>
+                        </table>
                     </div>
-                    
-                <!-- </form> -->
+                </form>  
             </div>
-        </center>
         </section>
     </main>
     <div id="mySidenav" class="sidenav">
@@ -194,7 +209,6 @@
         <a href="#">Spares Update</a>
     </div>
     
-    <script src="javascp_services.js"></script>
-    <script src="javascp_common.js"></script>
+    <script src="static/javascp_services.js"></script>
 </body>
 </html>
