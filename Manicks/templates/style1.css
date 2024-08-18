@@ -23,7 +23,7 @@ header{
 
     background-color: rgba(0, 0, 0,0.2);
     display: flex;
-    justify-content: right ;
+    justify-content: left ;
     align-items: center;
     margin-right: 90px;
     margin-left:20px;
@@ -40,11 +40,15 @@ header{
     width: 30px;
     border: none;
     padding-right: 30px;
-    border-radius: 0px 20px 20px 0px;
+    border-radius: 0px 12px 12px 0px;
     text-indent: -9999px;
     background-color: #ffffff;
     height: 30px;
     border: 1px solid rgb(133, 133, 133);
+}
+
+#search-btn:active{
+    background-color: #9e9595;
 }
 
 @font-face {
@@ -63,18 +67,17 @@ header{
     font-style: italic;
     font-family: jusfont;
     letter-spacing: 3px;
-    padding-right: 250px;
+    padding-left: 70px;
 }
 #nav-bar{
-    width: 200px;
-    padding-right: 110px;
+    padding-right: 10px;
+    padding-left: 265px;
 }
 nav ul{
     display: flex;
 }
 nav ul li{
-    width: 100px;
-    height: 15px;
+    height: 10px;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -86,8 +89,19 @@ nav ul li{
     padding: 10px;
     padding-top: 12px;
     margin: 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0);
 }
 
+nav ul li:hover{
+    height: 10px;
+    /* border: 1px solid white; */
+    border-radius: 20px;
+    box-shadow: -2px -2px 30px rgba(255,255,255,0),
+    -2px -2px 4px rgba(255,255,255,0),
+    2px -2px 7px rgba(0,0,0,0.7),
+    -2px -2px 3px rgba(255,255,255,0.3);
+}
 
 input[type="text"],input[type="number"]{
     text-align: start;
@@ -114,10 +128,10 @@ input[type="text"],input[type="number"]{
     -moz-appearance: none;
     appearance: none;
     outline: none;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 12px 0px 0px 12px;
     padding-left: 10px;
     border: 1px solid rgba(133, 133, 133,0.2);
-    font-family: navfont;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     width: 250px;
   }
@@ -146,7 +160,7 @@ input[type="text"],input[type="number"]{
         border: none;
         width: 50px;
         height: 30px;
-        padding-right: 140px; 
+        margin-left: 10px; 
         transition: 0.7s;
       
 }
@@ -203,11 +217,7 @@ input[type="text"],input[type="number"]{
 
   /*sidepane code mudinthathu*/
 
-nav ul li:hover{
-    height: 10px;
-    border: 1px solid white;
-    border-radius: 20px;
-}
+
 
 a{
     text-decoration: none;
@@ -424,9 +434,11 @@ input,select{
 }
 
 .about_page{
-justify-content:  center;
-align-items: normal;
-text-align: center;
+    position: relative;
+    top: 80px;
+    justify-content:  center;
+    align-items: normal;
+    text-align: center;
 }
 
 #catch{
@@ -458,7 +470,8 @@ text-align: center;
 }
 
 #dev_details{
-    margin-top: 20px;
+    position: relative;
+    top: 110px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
