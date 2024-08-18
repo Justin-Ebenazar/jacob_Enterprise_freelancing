@@ -3,7 +3,7 @@ import pymysql as ps
 
 
 #DATABASE CCONNECCTION
-con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+con=ps.connect(host="localhost",user="root",password="********",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 app=Flask(__name__)#DEFINING INITIALIZE

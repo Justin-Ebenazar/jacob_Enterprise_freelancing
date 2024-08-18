@@ -23,11 +23,28 @@ header{
 
     background-color: rgba(0, 0, 0,0.2);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: right ;
     align-items: center;
     margin-right: 90px;
     margin-left:20px;
     z-index: 0;
+}
+
+#search-btn{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    background: url(pics/sarc.png) center center no-repeat;
+    background-size: contain;
+    width: 30px;
+    border: none;
+    padding-right: 30px;
+    border-radius: 0px 20px 20px 0px;
+    text-indent: -9999px;
+    background-color: #ffffff;
+    height: 30px;
+    border: 1px solid rgb(133, 133, 133);
 }
 
 @font-face {
@@ -46,11 +63,11 @@ header{
     font-style: italic;
     font-family: jusfont;
     letter-spacing: 3px;
-    padding-right: 400px;
+    padding-right: 250px;
 }
 #nav-bar{
     width: 200px;
-    padding-right: 50px;
+    padding-right: 110px;
 }
 nav ul{
     display: flex;
@@ -93,8 +110,28 @@ input[type="text"],input[type="number"]{
   }
 
   #home-search{
-    border: none;
-    background-color: #ffffff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-radius: 15px 0px 0px 15px;
+    padding-left: 10px;
+    border: 1px solid rgba(133, 133, 133,0.2);
+    font-family: navfont;
+    font-size: 20px;
+    width: 250px;
+  }
+
+  #home-search:focus{
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1),
+    inset -2px -2px 4px rgba(0,0,0,0.1),
+    inset -2px 2px 4px rgba(0,0,0,0.1),
+    inset 2px -2px 4px rgba(0,0,0,0.1);;
+}
+
+  #form-ku-name{
+    display: flex;
+    padding-right: 15px;
   }
 
   #home-search:active{
@@ -109,7 +146,7 @@ input[type="text"],input[type="number"]{
         border: none;
         width: 50px;
         height: 30px;
-        padding-right: 150px; 
+        padding-right: 140px; 
         transition: 0.7s;
       
 }
@@ -166,11 +203,6 @@ input[type="text"],input[type="number"]{
 
   /*sidepane code mudinthathu*/
 
-#veedu{
-    height: 10px;
-    border: 1px solid white;
-    border-radius: 10px;
-}
 nav ul li:hover{
     height: 10px;
     border: 1px solid white;
@@ -439,6 +471,7 @@ text-align: center;
     background-color: red;
 }
 
+/* repair status code */
 
 .repair_status{ 
     margin-top: 110px;
@@ -595,6 +628,11 @@ text-align: center;
     padding-bottom: 5px;
 }
 
+#spare_search_rpstat{
+    color: black;
+    padding-left: 10px;
+}
+/* repair status end */
 
 /* sparelooup page */
 

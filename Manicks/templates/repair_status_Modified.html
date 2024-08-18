@@ -73,15 +73,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" placeholder="theduga" class="spare_search_rpstat" onkeyup="search_filter_rps()">
                                         <div class="search_result">
-                                            <ul style="list-style-type: none;">
-                                                <li>javascript</li>
-                                                <li>python</li>
-                                                <li>manikarja</li>
-                                            </ul>
+                                            <datalist id="suggestions">
+                                                <option>First option</option>
+                                                <option>Second Option</option>
+                                            </datalist>    
                                         </div>
-
+                                        <input type="text" placeholder="theduga" id="spare_search_rpstat" list="suggestions">
                                     </td>
                                     <td><button style="background-color: lawngreen; width: 80px; height: 30px; border-radius: 5px;">ADD</button></td>
                                 </tr>
