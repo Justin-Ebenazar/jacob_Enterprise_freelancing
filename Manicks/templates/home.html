@@ -32,6 +32,7 @@
             </nav>
         </header>
         <section>
+<<<<<<< HEAD
             <div class="home-bar">
                 <div>
                     <form action="/record_search" method="post">
@@ -40,6 +41,9 @@
                     </form>
                 </div>
             </div>
+=======
+            <center>
+>>>>>>> ca26aa5ddb1ce9836148904311dac41c2e08040a
             <div class="home-table">
                 <table cellspacing="10px" class="home-detail-table">
                     <tr>
@@ -58,20 +62,27 @@
                                 <td class="home-detail-td">{{info.P_id}}</td>
                                 <td class="home-detail-td">{{info.C_name}}</td>
                                 <td class="home-detail-td">{{info.C_mobile}}</td>
-                                <td class="home-detail-td" style="border-radius: 50%; background-color: {{info.P_color}}; "></td>
+
+                                <td class="home-detail-td" style="border-radius: 25px; background-color: {{info.P_color}};
+                                 box-shadow: 2px 4px 4px {{info.P_color}},
+                                -2px -4px 4px {{info.P_color}},
+                                -2px 4px 4px {{info.P_color}},
+                                2px -4px 4px {{info.P_color}}; 
+                                align-items: center;
+                                justify-content: center;
+                                display: flex;
+                                border: none;"></td>
+
                                 <td class="home-detail-td">{{info.Machine}}</td>
                                 <td class="home-detail-td">{{info.DateGiven}}</td>
                                 <td class="home-detail-td">{{info.RepairStatus}}</td>
                                 <td class="home-detail-td">{{info.DeliveryStatus}}</td>
                                 <td class="home-detail-td">{{info.Advance}}</td>
-                                <!-- <td class="home-detail-td" style="background-color: red;"><a href="">Status</a></td> -->
+                                <!-- <td class="home-detail-td" style="background-color: red;"><a href="">Status</a></td>  -->
                                 <td class="home-detail-td" style="background-color: green;"><a href="">Edit</a></td>
                             </tr>
                     {% endfor %}
                 </table>
-            </div>
-            <div class="repair-status">
-                
             </div>
         </section>
     </main>
