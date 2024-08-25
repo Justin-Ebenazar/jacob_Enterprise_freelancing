@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance</title>
-    <link rel="stylesheet" href="style1.css">
-    <script src="javascp_common.js"></script>
+    <link rel="stylesheet" href="static/style1.css">
     <link rel="icon" href="pics/finance.png" type="image/png">
 </head>
 <body>
@@ -26,15 +25,13 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li id="veedu"><a href="">Home</a></li>
+                    <li id="veedu"><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
-                    <li><a href="">Spares</a></li>
+                    <li><a href="{{url_for('spares_update')}}">Spares</a></li>
                 </ul>
             </nav>
-            <input type="text" name="search_input" placeholder="Search by Name">
         </header>
         <section>
-            <center>
             <table id="finance_table">
                 <tr>
                     <td>product ID:</td><td><input type="text"></td>
@@ -58,7 +55,7 @@
                     <td class="total-profit" id="totalProfit">Total Profit:</td>
                 </tr>
             </table>
-        </center>
+            
         </section>
         <script>
             function calculateTotalProfit() {
@@ -74,5 +71,14 @@
             window.onload = calculateTotalProfit;
         </script>
     </main>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/finance">Finance</a>
+        <a href="#">Spares Lookup</a>
+        <a href="/spares_update">Spares Update</a>
+    </div>
+    <script src=static/javascp_services.js""></script>
 </body>
+
 </html>
