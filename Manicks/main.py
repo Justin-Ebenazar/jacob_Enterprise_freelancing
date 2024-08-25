@@ -171,6 +171,12 @@ def spares_update():
 def service():
     return render_template('service.html')
 
+@app.route('/finance')
+def finance():
+    return render_template('finance.html')
+
+
+
 if __name__=="__main__":
     app.secret_key="admin480"
     app.run(debug=True)
