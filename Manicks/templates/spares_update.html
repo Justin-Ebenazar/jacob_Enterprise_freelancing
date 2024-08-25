@@ -27,10 +27,9 @@
                 <ul>
                     <li id="veedu"><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
-                    <li><a href="">Spares</a></li>
+                    <li><a href="{{url_for('spares_update')}}">Spares</a></li>
                 </ul>
             </nav>
-            <input type="text" name="search_input" placeholder="Search by Name">
         </header>
         <section>
             <div class="additem">
@@ -105,7 +104,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Finance</a>
             <a href="#">Spares Lookup</a>
-            <a href="#">Spares Update</a>
+            <a href="/spares_update">Spares Update</a>
         </div>
         
         </section>

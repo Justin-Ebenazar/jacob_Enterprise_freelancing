@@ -25,17 +25,21 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li id="veedu"><a href="">Home</a></li>
+                    <li id="veedu"><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
-                    <li><a href="">Spares</a></li>
+                    <li><a href="{{url_for('spares_update')}}">Spares</a></li>
                 </ul>
             </nav>
-            <form action="/record_search" method="post">
-                <input type="search" name="SEARCH" placeholder="Search by Name or ID or Phno">
-                <input type="submit" value="Search" style="background-color: lawngreen; width: 50px;">
-            </form>
         </header>
         <section>
+            <div class="home-bar">
+                <div>
+                    <form action="/record_search" method="post">
+                        <input type="search" name="SEARCH" placeholder="Search by Name or ID or Phno">
+                        <input type="submit" value="Search" style="background-color: lawngreen; width: 50px;">
+                    </form>
+                </div>
+            </div>
             <div class="home-table">
                 <table cellspacing="10px" class="home-detail-table">
                     <tr>
