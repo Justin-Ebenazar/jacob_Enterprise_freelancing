@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>service</title>
-    <link rel="stylesheet" href="style1.css">
-    <link rel="icon" href="pics/service-page.png" type="image/png">
+    <link rel="stylesheet" href="static/style1.css">
 </head>
 <body>
     {% with messages=get_flashed_messages() %}
@@ -28,7 +27,6 @@
                     <li><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
                     <li><a href="">Spares</a></li>
-                    <li><a href="">About</a></li>
                 </ul>
             </nav>
         </header>
@@ -71,6 +69,10 @@
                                         <option value="Almonard Wall mounding">Almonard Wall mounding</option>
                                     </select>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Missing Parts:</td>
+                                <td><input type="text" name="MISSINGPARTS"></td>
                             </tr>
                             <tr>
                                 <td>Date given:</td>
@@ -121,6 +123,10 @@
                                         <option value="100">100</option>
                                     </select>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Missing Parts:</td>
+                                <td><input type="text" name="MISSINGPARTS"></td>
                             </tr>
                             <tr>
                                 <td>Date given:</td>
@@ -187,6 +193,10 @@
                                 <td><input type="number" name="MODELNO"></td>
                             </tr>
                             <tr>
+                                <td>Missing Parts:</td>
+                                <td><input type="text" name="MISSINGPARTS"></td>
+                            </tr>
+                            <tr>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
@@ -211,6 +221,6 @@
         <a href="#">Spares Update</a>
     </div>
     
-    <script src="javascp_services.js"></script>
+    <script src="static/javascp_services.js"></script>
 </body>
 </html>
