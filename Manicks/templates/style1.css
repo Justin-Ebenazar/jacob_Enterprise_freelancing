@@ -280,20 +280,24 @@ input,select{
     margin-right: 30%;
     
 }
-.home-detail-table, .home-detail-th, .home-detail-td{ 
-    border: 1px solid black;
-    padding: 10px;
-    text-align: justify;
-    border-collapse: collapse;
-    background:rgba(233, 225, 225,0.5);
-}
 
 .home-table{
     position:fixed;
     top:160px;
-    margin-left: 5%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    background-color: red;
 }
 
+.home-detail-table{ 
+    border: 1px solid black;
+    /*padding: 10px;*/
+    text-align: justify;
+    border-collapse: collapse;
+    background:rgba(233, 225, 225,0.5);
+}
 .service-nav div{
     cursor: pointer;    
     transition: 0.5s;

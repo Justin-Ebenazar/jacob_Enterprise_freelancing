@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spares Update</title>
-    <link rel="stylesheet" href="style1.css">
-    <script src="javascp_common.js"></script>
+    <link rel="stylesheet" href="static/style1.css">
     <link rel="icon" href="pics/icons-update.png" type="image/png">
 </head>
 <body>
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>alert('{{message}}');</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     <main>
         <header class="header">
             <div>
@@ -19,68 +25,77 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li id="veedu"><a href="">Home</a></li>
+                    <li id="veedu"><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
                     <li><a href="">Spares</a></li>
-                    <li><a href="">About</a></li>
                 </ul>
             </nav>
+            <input type="text" name="search_input" placeholder="Search by Name">
         </header>
         <section>
+            <div class="additem">
+                <div class="additem-container">
+                    <form action="/add_new_item" method="post">
+                        <table>
+                            <tr>
+                                <th colspan="2">Add Item</th>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td><input type="text" name="SPARENAME"></td>
+                            </tr>
+                            <tr>
+                                <td>Used for:</td>
+                                <td>
+                                    <select name="USECASE">
+                                        <option value="fan">Fan</option>
+                                        <option value="motor">Motor</option>
+                                        <option value="powertool">Powertool</option>
+                                        <option value="common">Common</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Available:</td>
+                                <td><input type="number" name="SPAREAVAILABLE"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="+ADD"></td>
+                                <td style="text-align: center;"><button style="width: 80px; background-color: red; height: 20px;color: white;" onclick="additemDeactive()">Close</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
             <div class="spares-update-bar">
                 <div>
-                    Filter:
-                    <select name="search_filter">
-                        <option value="">Product name</option>
-                        <option value="">Product ID</option>
-                    </select>
-                </div>
-                <div><input type="text" name="search_input" placeholder="Search by Name"></div>
-                <div>
-                    <input id="search-btn" type="submit" value="🔍">
+                    <form action="/record_search_spare" method="post">
+                        <input type="text" placeholder="Search by name" name="SEARCH">
+                        <input type="submit" value="Search" style="background-color: rgb(171, 253, 89);">
+                    </form>
                 </div>
                 <div>
-                    <button id="add_new_item">+ New Item </button>
+                    <button id="add_new_item"><a  onclick="additemActive()">+New Item</a> </button>
                     <!-- new spare adder -->
-                </div>
-                <div>
-                    <button id="del_item">🗑 Delete</button>
-                    <!-- delete an unused spare detail -->
                 </div>
 
             </div>
             <div class="spares-update-table">
                 <table cellspacing="10px" class="spare-detail-table">
                     <tr>
-                        <th class="home-detail-th">Spare ID</th>
                         <th class="home-detail-th">Spare Name</th>
                         <th class="home-detail-th">Use case</th>
                         <th class="home-detail-th">Units Available</th>
-                        <th class="home-detail-th">Update</th>
-
                     </tr>
-                    <tr>
-                        <td class="spare-details">M10203</td>
-                        <td class="spare-details">Washer 10'</td>
-                        <td class="spare-details">Motor</td>
-                        <td class="spare-details">50</td>
-                        <td class="spare-details"><button id="upbutt">Update</button></td>
-                    </tr>
-                    <tr>
-                        <td class="spare-details">M10203</td>
-                        <td class="spare-details">Washer 10'</td>
-                        <td class="spare-details">Motor</td>
-                        <td class="spare-details">50</td>
-                        <td class="spare-details"><button>Update</button></td>
-                    </tr>
-                    <tr>
-                        <td class="spare-details">M10203</td>
-                        <td class="spare-details">Washer 10'</td>
-                        <td class="spare-details">Motor</td>
-                        <td class="spare-details">50</td>
-                        <td class="spare-details"><button>Update</button></td>
-                    </tr>
-
+                    {% for info in infos %}
+                            <tr>
+                                <td>{{info.S_name}}</td>
+                                <td>{{info.S_use}}</td>
+                                <td>{{info.S_stock}}</td>
+                                <td><button style="background-color: rgb(64, 255, 39);border-radius: 5px;width: 80px;height: 50px;"><a href="{{url_for("update_item",id=info.S_id)}}">Update</a></button></td>
+                                <td><button style="background-color: rgb(245, 92, 92);border-radius: 5px;width: 80px;height: 50px;"><a onclick="return confirm('Are you sure to delete?');" href="{{url_for("delete_item",id=info.S_id)}}">Delete</a></button></td>
+                            </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
@@ -96,4 +111,6 @@
         </section>
     </main>
 </body>
+
+<script src="static/javascp_services.js"></script>
 </html>

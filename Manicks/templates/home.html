@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-    <link rel="stylesheet" href="style1.css">
+    <title>home page</title>
+    <link rel="stylesheet" href="static/style1.css">
     <link rel="icon" href="pics/home.png" type="image/png">
 </head>
 <body>
@@ -15,8 +15,8 @@
         {% endfor %}
     {% endif %}
     {% endwith %}
-    <main >
-        <header class="header" >
+    <main>
+        <header class="header">
             <div>
                 <button id="sidepane_button" onclick="openNav()"></button>
             </div>
@@ -25,18 +25,18 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li id="veedu"><a href="">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
                     <li><a href="">Spares</a></li>
-                    <li><a href="">About</a></li>
                 </ul>
             </nav>
-            <form action="/record_search" method="post" id="form-ku-name">
-                <input type="search" name="SEARCH" placeholder="Search by Name,Id or Phno"  id="home-search">
-                <input type="submit" id="search-btn">
+            <form action="/record_search" method="post">
+                <input type="search" name="SEARCH" placeholder="Search by Name or ID or Phno">
+                <input type="submit" value="Search" style="background-color: lawngreen; width: 50px;">
             </form>
         </header>
-        <section onclick="closeNav()">
+        <section>
+            <center>
             <div class="home-table">
                 <table cellspacing="10px" class="home-detail-table">
                     <tr>
@@ -46,6 +46,8 @@
                         <th class="home-detail-th">Color</th>
                         <th class="home-detail-th">Machine</th>
                         <th class="home-detail-th">DateGiven</th>
+                        <th class="home-detail-th">RepairStatus</th>
+                        <th class="home-detail-th">DeliveryStatus</th>
                         <th class="home-detail-th">Advance</th>
                     </tr>
                     {% for info in infos %}
@@ -53,18 +55,27 @@
                                 <td class="home-detail-td">{{info.P_id}}</td>
                                 <td class="home-detail-td">{{info.C_name}}</td>
                                 <td class="home-detail-td">{{info.C_mobile}}</td>
-                                <td class="home-detail-td" style="border-radius: 50%; background-color: {{info.P_color}}; "></td>
+
+                                <td class="home-detail-td" style="border-radius: 25px; background-color: {{info.P_color}};
+                                 box-shadow: 2px 4px 4px {{info.P_color}},
+                                -2px -4px 4px {{info.P_color}},
+                                -2px 4px 4px {{info.P_color}},
+                                2px -4px 4px {{info.P_color}}; 
+                                align-items: center;
+                                justify-content: center;
+                                display: flex;
+                                border: none;"></td>
+
                                 <td class="home-detail-td">{{info.Machine}}</td>
                                 <td class="home-detail-td">{{info.DateGiven}}</td>
+                                <td class="home-detail-td">{{info.RepairStatus}}</td>
+                                <td class="home-detail-td">{{info.DeliveryStatus}}</td>
                                 <td class="home-detail-td">{{info.Advance}}</td>
-                                <!-- <td class="home-detail-td" style="background-color: red;"><a href="">Status</a></td> -->
+                                <!-- <td class="home-detail-td" style="background-color: red;"><a href="">Status</a></td>  -->
                                 <td class="home-detail-td" style="background-color: green;"><a href="">Edit</a></td>
                             </tr>
                     {% endfor %}
                 </table>
-            </div>
-            <div class="repair-status">
-                
             </div>
         </section>
     </main>
@@ -72,9 +83,9 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="#">Finance</a>
         <a href="#">Spares Lookup</a>
-        <a href="#">Spares Update</a>
+        <a href="/spares_update">Spares Update</a>
     </div>
     
-    <script src="javascp_services.js"></script>
+    <script src="static/javascp_services.js"></script>
 </body>
 </html>

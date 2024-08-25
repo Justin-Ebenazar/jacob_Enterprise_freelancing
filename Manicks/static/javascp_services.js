@@ -34,6 +34,16 @@ tabs.forEach((tab,index)=>{
     });
 });
 
+function additemActive(){
+  const additem=document.querySelector('.additem');
+  additem.style.display="flex";
+}
+
+function additemDeactive(){
+  const additem=document.querySelector('.additem');
+  additem.style.display="none";
+}
+
 // spares lookup page
 
 function search_criteria(){
@@ -51,3 +61,11 @@ function search_criteria(){
   }
 }
 search_criteria()
+
+let listofelements=["python","pyth","py","javascript","java","script","scripter"];
+const rpstat_searchbox=document.querySelector("spare_search_rpstat");
+
+function search_filter_rps(){
+  console.log("worling");
+
+}
