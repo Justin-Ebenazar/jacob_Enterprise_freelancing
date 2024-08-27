@@ -44,28 +44,9 @@ function additemDeactive(){
   additem.style.display="none";
 }
 
-// spares lookup page
-
-function search_criteria(){
-  const dates=document.querySelector('.dates');
-  const search_box=document.querySelector('.search-dabba');
-  var dropdown = document.getElementById("searchfilter");
+function discountamt(){
+  const discount=document.querySelector('.DISCOUNT');
+  const total=document.querySelector('.BILLAMOUNT');
+  console.log(discount,total);
   
-  if(dropdown.value=="date"){
-      dates.style.display='block';
-      search_box.style.display='none';    
-  }
-  else{
-      dates.style.display='none';
-      search_box.style.display='block';
-  }
-}
-search_criteria()
-
-let listofelements=["python","pyth","py","javascript","java","script","scripter"];
-const rpstat_searchbox=document.querySelector("spare_search_rpstat");
-
-function search_filter_rps(){
-  console.log("worling");
-
 }
