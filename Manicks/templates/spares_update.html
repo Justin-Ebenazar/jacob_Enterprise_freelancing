@@ -59,6 +59,10 @@
                                 <td><input type="number" name="SPAREAVAILABLE"></td>
                             </tr>
                             <tr>
+                                <td>Price</td>
+                                <td><input type="number" name="SPARECOST"></td>
+                            </tr>
+                            <tr>
                                 <td><input type="submit" value="+ADD"></td>
                                 <td style="text-align: center;"><button style="width: 80px; background-color: red; height: 20px;color: white;" onclick="additemDeactive()">Close</button></td>
                             </tr>
@@ -85,12 +89,14 @@
                         <th class="home-detail-th">Spare Name</th>
                         <th class="home-detail-th">Use case</th>
                         <th class="home-detail-th">Units Available</th>
+                        <th class="home-detail-th">Price</th>
                     </tr>
                     {% for info in infos %}
                             <tr>
                                 <td>{{info.S_name}}</td>
                                 <td>{{info.S_use}}</td>
                                 <td>{{info.S_stock}}</td>
+                                <td>{{info.S_Cost}}</td>
                                 <td><button style="background-color: rgb(64, 255, 39);border-radius: 5px;width: 80px;height: 50px;"><a href="{{url_for("update_item",id=info.S_id)}}">Update</a></button></td>
                                 <td><button style="background-color: rgb(245, 92, 92);border-radius: 5px;width: 80px;height: 50px;"><a onclick="return confirm('Are you sure to delete?');" href="{{url_for("delete_item",id=info.S_id)}}">Delete</a></button></td>
                             </tr>

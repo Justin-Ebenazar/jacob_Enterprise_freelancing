@@ -7,7 +7,6 @@ con=ps.connect(host="localhost",user="root",password="12345678",database="shop",
 cursor=con.cursor()
 
 app=Flask(__name__)#DEFINING INITIALIZE
-
 @app.route('/')
 @app.route('/home')
 def home():
@@ -108,8 +107,9 @@ def add_new_item():
             Name=request.form['SPARENAME']
             UseCase=request.form['USECASE']
             Available=int(request.form['SPAREAVAILABLE'])
+            Cost=int(request.form['SPARECOST'])
             try:
-                cursor.execute(f"insert into spares(S_name,S_stock,s_use) values('{Name}',{Available},'{UseCase}');")
+                cursor.execute(f"insert into spares(S_name,S_stock,S_use,S_Cost) values('{Name}',{Available},'{UseCase}',{Cost})")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/spares_update")
@@ -136,12 +136,12 @@ def delete_item(id):
 @app.route("/update_item/<int:id>",methods=['POST','GET'])
 def update_item(id):
     if request.method=='POST':
-        print("hello")
         Name=request.form['SPARENAME']
         UseCase=request.form['USECASE']
         Available=int(request.form['SPAREAVAILABLE'])
+        Cost=int(request.form['SPARECOST'])
         try:
-            cursor.execute(f"update spares set  S_name='{Name}' , S_stock={Available} , S_use='{UseCase}' where S_id={id};")
+            cursor.execute(f"update spares set  S_name='{Name}' , S_stock={Available} , S_use='{UseCase}' , S_Cost={Cost} where S_id={id};")
             con.commit();
             flash("Record updated successfully.")
         except:
@@ -159,6 +159,79 @@ def record_search_spare():
         datas=cursor.fetchall()
         return render_template("spares_update.html",infos=datas)
         
+@app.route("/repair_status/<string:id>",methods=['POST','GET'])
+def repair_status(id):
+    if request.method=='POST':
+        # try:
+        #     if (request.form['RepairStatus_check']=='True'):
+        #         try:
+        #             cursor.execute(f"update service set RepairStatus='checked' where P_id='{id}' ")
+        #             con.commit()
+        #         except:
+        #             pass
+        #     else:
+        #         try:
+        #             cursor.execute(f"update service set RepairStatus='None' where P_id='{id}' ")
+        #             con.commit()
+        #         except:
+        #             pass
+        #     if (request.form['DeliveryStatus_check']=='True'):
+        #         try:
+        #             cursor.execute(f"update service set DeliveryStatus='checked' where P_id='{id}' ")
+        #             con.commit()
+        #         except:
+        #             pass
+        #     else:
+        #         try:
+        #             cursor.execute(f"update service set DeliveryStatus='None' where P_id='{id}' ")
+        #             con.commit()
+        #         except:
+        #             pass
+        # except:
+        #     pass  INGA THA PERACHANA
+        try:
+            EXPNSPARE=request.form['EXPNSPARE']
+            COST=int(request.form['COST'])
+            try:
+                try:
+                    cursor.execute(f"select S_Cost from spares where S_name='{EXPNSPARE}'")
+                    COST=cursor.fetchone()['S_Cost']
+                except:
+                    if(COST==0):
+                        flash("Require cost value for new Spare.")
+                if (COST!=0):
+                    cursor.execute(f"insert into expences values('{id}','{EXPNSPARE}',{COST})")
+                    con.commit()
+                # flash("Added Sucessfully")
+            except:
+                flash("Cannot add item.")
+        except:
+            pass
+        
+    cursor.execute(f"select * from service where P_id='{id}'")
+    datas=cursor.fetchone()
+    
+    cursor.execute(f"select * from spares")
+    datas1=cursor.fetchall()
+
+    cursor.execute(f"select * from expences where P_id='{id}'")
+    datas2=cursor.fetchall()
+
+    cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
+    total=cursor.fetchone()
+    return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total)
+
+
+
+@app.route('/expence_del/<string:id>/<string:name>',methods=['POST','GET'])
+def expence_del(id,name):
+    try:
+        cursor.execute(f"delete from expences where P_id='{id}' and S_name='{name}'")
+        con.commit()
+    except:
+        # flash("Cannot delete item.")
+        pass
+    return repair_status(id)
 
 
 @app.route('/spares_update')

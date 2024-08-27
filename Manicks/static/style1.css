@@ -533,14 +533,14 @@ input,select{
 /* repair status code */
 
 .repair_status{ 
-    margin-top: 110px;
+    margin-top: 140px;
 }
 #heading_for_repairstatus{
     display: flex;
     background-color: rgb(255,255,255,0.3);
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    /* width: 60%; */
+    /* margin-left: 20%; */
+    /* margin-right: 20%; */
     border-radius: 15px 15px 0px 0px;
     height: 40px;
 }
@@ -551,9 +551,9 @@ input,select{
 #footer_rpstatus{
     display: flex;
     background-color: rgb(255,255,255,0.3);
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    /* width: 60%; */
+    /* margin-left: 20%; */
+    /* margin-right: 20%; */
     border-radius: 0px 0px 15px 15px;
     height: 40px;
     align-items: center;
@@ -567,6 +567,11 @@ input,select{
     justify-content: center;
     align-items: center;
     z-index: 1;
+}
+.additem-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #rpstatus{
@@ -664,33 +669,50 @@ input,select{
 
 .repair_status_details{
     display: flex;
+    justify-content: space-around;
     background-color: rgb(255,255,255,0.5);
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    /* width: 60%; */
+    /* margin-left: 20%; */
+    /* margin-right: 20%; */
     height: 400px;
+    width: 1000px;
+    padding: 20px;
 }
 
 #left_half_rpstatus{
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    grid-gap: 10px;
+    grid-gap: 5px;
     align-items: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
-    width: 100%;
+    width: 400px;
 }
-
-#right_half_rpstatus{
+.repair-table-div{
+    display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
+}
+.repair-input{
+    width: 100px;
+}
+#right_half_rpstatus{
+    width: 500px;
+    border-radius: 5px;
     background-color: rgb(255,255,255,0.5);
 }
 
+.right_half_rpstatus_bottom{
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+
 #machine_type_color{
-    color: white;
-    background-color: aquamarine;
+    color: rgb(80, 56, 56);
+    background-color: rgb(135, 226, 196);
     text-align: center;
     border-radius: 10px;
     padding-top: 5px;

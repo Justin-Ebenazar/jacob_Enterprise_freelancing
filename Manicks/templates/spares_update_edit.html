@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spares Update</title>
-    <link rel="stylesheet" href="static/style1.css">
+    <link rel="stylesheet" href="{{url_for("static",filename='style1.css')}}">
     <link rel="icon" href="pics/icons-update.png" type="image/png">
 </head>
 <body>
@@ -18,9 +18,9 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li id="veedu"><a href="">Home</a></li>
+                    <li id="veedu"><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
-                    <li><a href="">Spares</a></li>
+                    <li><a href="{{url_for('spares_update')}}">Spares</a></li>
                 </ul>
             </nav>
         </header>
@@ -55,6 +55,10 @@
                         <tr>
                             <td>Available:</td>
                             <td><input type="number" name="SPAREAVAILABLE" value="{{infos.S_stock}}"></td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td><input type="number" name="SPARECOST" value="{{infos.S_Cost}}"></td>
                         </tr>
                         <tr>
                             <td style="text-align: center;"><button style="width: 80px; background-color: lawngreen; height: 20px;">+ Add</button></td>

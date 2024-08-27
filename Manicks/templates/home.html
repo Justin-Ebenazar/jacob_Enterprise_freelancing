@@ -51,7 +51,6 @@
                         <th class="home-detail-th">Date Given</th>
                         <th class="home-detail-th">Repair Status</th>
                         <th class="home-detail-th">Delivery Status</th>
-                        <th class="home-detail-th">Advance</th>
                         <th class="home-detail-th">Edit</th>
                     </tr>
                     {% for info in infos %}
@@ -64,15 +63,10 @@
                                 <td class="home-detail-td">{{info.DateGiven}}</td>
                                 <td class="home-detail-td">{{info.RepairStatus}}</td>
                                 <td class="home-detail-td">{{info.DeliveryStatus}}</td>
-                                <td class="home-detail-td">{{info.Advance}}</td>
-                                <!-- <td class="home-detail-td" style="background-color: red;"><a href="">Status</a></td> -->
-                                <td class="home-detail-td" style="background-color: green;"><a href="">Edit</a></td>
+                                <td class="home-detail-td" style="background-color: rgb(64, 241, 64);"><a href="{{url_for("repair_status",id=info.P_id)}}">Status</a></td>
                             </tr>
                     {% endfor %}
                 </table>
-            </div>
-            <div class="repair-status">
-                
             </div>
         </section>
     </main>
