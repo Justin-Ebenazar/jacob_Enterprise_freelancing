@@ -306,13 +306,12 @@ input,select{
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(2px);
     text-align: center;
-    
+    padding: 10px;
 
 }
 
 .home-detail-table th:first-child{
     border-radius: 15px 0px 0px 0px;
-    /*background-color: ;*/
 }
 
 #edit{
@@ -338,6 +337,7 @@ input,select{
     backdrop-filter: blur(3px);
     color: white;
     text-align: center;
+    padding: 10px;
 }
 
 .home-detail-table th:last-child{
@@ -352,6 +352,7 @@ input,select{
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+
 }
 
 .home-table tr{
@@ -499,18 +500,13 @@ input,select{
     -2px 4px 4px rgba(0,0,0,0.3),
     2px -4px 4px rgba(0,0,0,0.3);
 }
+
 .service-table{
     border-collapse: separate;
-    border-spacing: 100px 0px;
+    border-spacing: 0px 0px;
 }
 
-.service-table th,td{
-    background-color: rgba(0, 0, 0,0.8);
-    font-size: 18px;
-    padding: 10px;
-}
-
-.service-table, th{
+.service-table th{
     background-color: rgb(255,255,255,0);
     border-radius: 10px;
     color: white;
@@ -519,14 +515,19 @@ input,select{
 }
 
 
-.service-table,td{
-    background-color: rgba(255,255,255,0.3);
-    border-radius: 5px;
+.service-table td{
+    background-color: rgba(255,255,255,0);
+    border-radius: 0px;
     color: white;
+    padding: 10px;
 }
 
-.service-table,tr:first-child{
-    border-top: 1px solid white;
+.service-table tr:nth-child(2) td{
+    border-top: 1px solid  rgba(255,255,255,0.5);
+}
+
+.service-table tr:last-child td{
+    border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
 #service-footer{
