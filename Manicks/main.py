@@ -3,7 +3,10 @@ import pymysql as ps
 
 
 #DATABASE CCONNECCTION
-con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+try:
+    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+except:
+    con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 app=Flask(__name__)#DEFINING INITIALIZE
@@ -32,7 +35,7 @@ def fan_submit():
                 flash("Record added successfully.")
                 return redirect("/home")
             except:
-                flash("Tranction failure!!!")
+                flash("Transaction failure!!!")
                 return render_template("service.html")
         except:
             flash("Required all values.")
@@ -57,7 +60,7 @@ def motor_submit():
                 flash("Record added successfully.")
                 return redirect("/home")
             except:
-                flash("Tranction failure!!!")
+                flash("Transaction failure!!!")
                 return render_template("service.html")
         except:
             flash("Required all values.")
@@ -84,7 +87,7 @@ def powertool_submit():
                 flash("Record added successfully.")
                 return redirect("/home")
             except:
-                flash("Tranction failure!!!")
+                flash("Transaction failure!!!")
                 return render_template("service.html")
         except:
             flash("Required all values.")
@@ -114,7 +117,7 @@ def add_new_item():
                 flash("Record added successfully.")
                 return redirect("/spares_update")
             except:
-                flash("Tranction failure!!!")
+                flash("Transaction failure!!!")
                 return redirect("/spares_update")
         except:
             flash("Required all values.")
@@ -129,7 +132,7 @@ def delete_item(id):
         flash('Deleted successfully.')
         return redirect('/spares_update')
     except:
-        flash('Item didnot deleted')
+        flash('Item was not deleted')
         redirect('/spares_update')
     return redirect("/spares_update")
 
@@ -145,7 +148,7 @@ def update_item(id):
             con.commit();
             flash("Record updated successfully.")
         except:
-            flash("Tranction failure!!!")
+            flash("Transaction failure!!!")
         return redirect("/spares_update")
     cursor.execute(f"select * from spares where S_id={id}")
     datas=cursor.fetchone()

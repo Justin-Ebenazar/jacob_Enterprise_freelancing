@@ -384,65 +384,61 @@ input,select{
 
 /*finance page*/
 #finance_table{
-    top: 140px;
+    top: 170px;
     position: fixed;
-    width: 100%;
-    
-}
-
-#finance-maintenance{
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0);
-    box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
-    -2px -4px 4px rgba(0,0,0,0.3),
-    -2px 4px 4px rgba(0,0,0,0.3),
-    2px -4px 4px rgba(0,0,0,0.3);
-    backdrop-filter: blur(5px);
-    padding: 0px;
+    width: 100%-100px;
     border-collapse: collapse;
-}
-
-#finance-maintenance th{
-    background-color: rgba(251, 255, 0, 0.781);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,194,1) 34%, rgba(105,9,121,1) 100%);
     backdrop-filter: blur(5px);
-    border: none;
+    border-radius: 10px;
 }
 
-#finance-maintenance th:first-child{
-    border-radius: 10px 0px 0px 0px;
+#finance_table th,td{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*background-color: rgba(255, 255, 255, 1);*/
+    color: black;
 }
 
-#finance-maintenance th:last-child{
-    border-radius: 0px 10px 0px 0px;
+#finance_table th{
+    /*background-color: rgba(255, 0, 200, 0.5);*/
+    color: rgb(255, 255, 255);
 }
 
-#finance-maintenance td{
-    border: none;
+#finance_table th:nth-child(2){
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-#finance-maintenance td{
-    background-color: rgb(0,0,0,0.2);
-    color: white;
+#finance_table td:nth-child(2){
+    border-right: 1px solid rgba(107,107,107, 0.5);
+    border-left: 1px solid rgba(107,107,107, 0.5);
+}
+
+#finance_table th:last-child{
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#finance_table td:last-child{
+    border-left: 1px solid rgba(107,107,107, 0.5);
+}
+
+#finance_table td{
+    border-top: 1px solid rgba(107, 107, 107, 0.5);
+    background-color: white;
     text-align: center;
-    border: none;
-    border-bottom: 0.1px solid rgb(255,255,255,0.2);
+    color: black;
 }
 
-#finance-maintenance tr:last-child td{
-    border-bottom: none;
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
-}
-
-#finance-maintenance tr:last-child td:first-child{
+#finance_table tr:last-child td:first-child{
     border-radius: 0px 0px 0px 10px;
 }
 
-#finance-maintenance tr:last-child td:last-child{
+#finance_table tr:last-child td:last-child{
     border-radius: 0px 0px 10px 0px;
-}
-
-#finance-maintenance td:last-child{
-    box-shadow: 7px 0px 7px rgba(0, 0, 0, 0.5);
 }
 
 #expenses{
@@ -453,16 +449,16 @@ input,select{
 }
 
 .upbox{
-    top: 100px;
+    top: 110px;
     position: fixed;
     display: flex;
     border-radius: 10px;
     height: 40px;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%-60px;
-    left: 30px;
-    right: 30px;
+    justify-content: left;
+    width: 100%-600px;
+    left: 300px;
+    right: 300px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     
@@ -472,6 +468,21 @@ input,select{
     border-radius: 10px;
 }
 
+#month{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    padding-left: 20px;
+}
+
+#day{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    padding-right: 20px;
+}
 
 .tab.active{
     color: black;
