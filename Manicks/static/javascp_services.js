@@ -48,5 +48,5 @@ function discountamt(){
   const discount=document.querySelector('.DISCOUNT');
   const total=document.querySelector('.BILLAMOUNT');
   console.log(discount,total);
-  
 }
+

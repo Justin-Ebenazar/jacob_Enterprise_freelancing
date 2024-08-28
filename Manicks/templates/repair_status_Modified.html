@@ -102,27 +102,26 @@
                 </div>
                 <form action="" method="post">
                 <div id="footer_rpstatus">
-                        <div class="footer-details">
+                        <div class="footer-details-status">
                             <p id="rpstatus">Repair status :</p>
-                            <label class="switch">
-                                <input type="checkbox" id="repaired_or_not" {{info.RepairStatus}} value="True" name="RepairStatus_check">
-                                <span class="slider round"></span>
-                            </label>
+                            <label class="container">
+                                <input type="checkbox" {{info.RepairStatus}}>
+                                <select  name="RepairStatus_check" id="status-checker"><option value="none">No</option><option value="checked">Yes</option></select>
+                              </label>
                         </div>
-                        <div class="footer-details">
+                        <div class="footer-details-status">
                             <p id="delivstatus">Delivery status :</p>
-                            <label class="switch">
-                                <input type="checkbox" id="delivered_or_not" {{info.DeliveryStatus}} value="True" name="DeliveryStatus_check">
-                                <span class="slider round"></span>
-                            </label>
+                            <label class="container">
+                                <input type="checkbox" {{info.DeliveryStatus}}>
+                                <select name="DeliveryStatus_check" id="status-checker"><option value="none">No</option><option value="checked">Yes</option></select>
+                              </label>
                         </div>
                         <div class="footer-details">
                             <p id="disc">Discount :</p>
-                            <input type="number" name="DISCOUNTAMOUNT" class="DISCOUNT" value="0" style="width: 70px;">
-                            <button style="width: 40px; height: 30px; border-radius: 5px; color: black;" onclick="discountamt()">Set</button>
+                            <input type="number" name="DISCOUNTAMOUNT" class="DISCOUNT" value="{{disc}}" style="width: 70px;">
                         </div>
                         <div class="footer-details">
-                            <p id="tot_amt">Total :</p> <p class="BILLAMOUNT">{{bill.tot-info.Advance}}</p>
+                            <p id="tot_amt">Total :</p> <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
                         </div>
                         <div class="footer-details">
                             <button style="background-color: lawngreen; width: 80px; height: 30px; border-radius: 5px;"><a style="color: black;">Update</a></button>
@@ -138,7 +137,7 @@
             </div>
         </section>
     </main>
-    <script src="{{url_for("static",filename='javascp_services.js')}}"></script>
+    <script src="{{url_for('static',filename='static/javascp_services.js')}}"></script>
 </body>
 </html>
 

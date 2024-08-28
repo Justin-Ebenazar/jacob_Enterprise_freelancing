@@ -613,6 +613,17 @@ input,select{
     display: flex;
     align-items: center;
 }
+.footer-details-status{
+    display: flex;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #footer_rpstatus{
     display: flex;
     background-color: rgb(255,255,255,0.3);
@@ -647,49 +658,7 @@ input,select{
 /* button for toggle */
 
 /* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 22px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #574949;
-    -webkit-transition: .4s;
-    transition: .4s;
-    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4),inset -2px -2px 4px rgba(0, 0, 0, 0.4);
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-    box-shadow: 2px 2px 4px rgba(248, 0, 0, 0.575) ,-2px -2px 4px rgba(248, 0, 0, 0.575),
-    2px -2px 4px rgba(248, 0, 0, 0.575),-2px 2px 4px rgba(248, 0, 0, 0.575);
-  }
-  
-  input:checked + .slider {
+ider {
     background-color: #21f360;
   }
   
@@ -766,7 +735,56 @@ input,select{
     background-color: rgb(255,255,255,0.5);
 }
 
-.right_half_rpstatus_bottom{
+.right_half_rpst.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
+  
+  /* Hide default HTML checkbox */
+  /* .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  /* .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #574949;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4),inset -2px -2px 4px rgba(0, 0, 0, 0.4);
+  } */ 
+  
+  /* .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: 2px 2px 4px rgba(248, 0, 0, 0.575) ,-2px -2px 4px rgba(248, 0, 0, 0.575),
+    2px -2px 4px rgba(248, 0, 0, 0.575),-2px 2px 4px rgba(248, 0, 0, 0.575);
+  } */
+
+
+#status-checker{
+    width: 50px;
+}
+
+
+  
+  input:checked + .slatus_bottom{
     display: flex;
     height: 300px;
     justify-content: center;

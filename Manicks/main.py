@@ -3,7 +3,7 @@ import pymysql as ps
 
 
 #DATABASE CCONNECCTION
-con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
+con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 app=Flask(__name__)#DEFINING INITIALIZE
@@ -161,34 +161,15 @@ def record_search_spare():
         
 @app.route("/repair_status/<string:id>",methods=['POST','GET'])
 def repair_status(id):
+    DiscountAmt=0
     if request.method=='POST':
-        # try:
-        #     if (request.form['RepairStatus_check']=='True'):
-        #         try:
-        #             cursor.execute(f"update service set RepairStatus='checked' where P_id='{id}' ")
-        #             con.commit()
-        #         except:
-        #             pass
-        #     else:
-        #         try:
-        #             cursor.execute(f"update service set RepairStatus='None' where P_id='{id}' ")
-        #             con.commit()
-        #         except:
-        #             pass
-        #     if (request.form['DeliveryStatus_check']=='True'):
-        #         try:
-        #             cursor.execute(f"update service set DeliveryStatus='checked' where P_id='{id}' ")
-        #             con.commit()
-        #         except:
-        #             pass
-        #     else:
-        #         try:
-        #             cursor.execute(f"update service set DeliveryStatus='None' where P_id='{id}' ")
-        #             con.commit()
-        #         except:
-        #             pass
-        # except:
-        #     pass  INGA THA PERACHANA
+        try:
+            DeliveryStatus=request.form['DeliveryStatus_check']
+            RepairStatus=request.form['RepairStatus_check']
+            cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}' where P_id='{id}' ")
+            con.commit()
+        except:
+            pass
         try:
             EXPNSPARE=request.form['EXPNSPARE']
             COST=int(request.form['COST'])
@@ -207,7 +188,12 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        
+        try:
+            DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
+            cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
+            con.commit()
+        except:
+            pass
     cursor.execute(f"select * from service where P_id='{id}'")
     datas=cursor.fetchone()
     
@@ -219,7 +205,12 @@ def repair_status(id):
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
-    return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total)
+    discount=0
+    try:
+        discount=datas2[0]['Discount']
+    except:
+        discount=0
+    return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total,disc=discount)
 
 
 
