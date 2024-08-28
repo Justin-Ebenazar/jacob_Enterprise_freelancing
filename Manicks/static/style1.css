@@ -66,7 +66,7 @@ header{
     font-style: italic;
     font-family: jusfont;
     letter-spacing: 3px;
-    padding-right: 250px;
+    padding-right: 550px;
 }
 #nav-bar{
     width: 200px;
@@ -160,7 +160,7 @@ input[type="text"],input[type="number"]{
         border: none;
         width: 50px;
         height: 30px;
-        padding-right: 140px; 
+        padding-right: 100px; 
         transition: 0.7s;
       
 }
@@ -249,7 +249,7 @@ section{
     /* color: rgb(0,0,0,0.5); */
     position: fixed;
     margin-top: 120px;
-    width: 97%;
+    width: 50%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -272,7 +272,7 @@ input,select{
 
 .services{
     position: absolute;
-    top: 150px;
+    top: 170px;
     display: flex;
     justify-content: center;
     align-items: center;
