@@ -176,16 +176,22 @@ def repair_status(id):
         try:
             EXPNSPARE=request.form['EXPNSPARE']
             COST=int(request.form['COST'])
+            STOCK=0
             try:
                 try:
-                    cursor.execute(f"select S_Cost from spares where S_name='{EXPNSPARE}'")
-                    COST=cursor.fetchone()['S_Cost']
+                    cursor.execute(f"select S_Cost,S_stock from spares where S_name='{EXPNSPARE}'")
+                    cost_and_stock=cursor.fetchone()
+                    COST=cost_and_stock['S_Cost']
+                    STOCK=int(cost_and_stock['S_stock'])
                 except:
                     if(COST==0):
                         flash("Require cost value for new Spare.")
                 if (COST!=0):
-                    cursor.execute(f"insert into expences values('{id}','{EXPNSPARE}',{COST})")
+                    cursor.execute(f"insert into expences values('{id}','{EXPNSPARE}',{COST},{DiscountAmt})")
                     con.commit()
+                    cursor.execute(f"update spares set S_stock={STOCK-1} where S_name='{EXPNSPARE}'")
+                    con.commit()
+                    
                 # flash("Added Sucessfully")
             except:
                 flash("Cannot add item.")
@@ -242,6 +248,13 @@ def service():
 def finance():
     return render_template('finance.html')
 
+@app.route('/spares')
+def spares():
+    return render_template('spares.html')
+
+@app.route('/lookup')
+def lookup():
+    return render_template('spares_lookup.html')
 
 
 if __name__=="__main__":
