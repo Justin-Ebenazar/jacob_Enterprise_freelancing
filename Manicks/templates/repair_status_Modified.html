@@ -104,10 +104,15 @@
                 <div id="footer_rpstatus">
                         <div class="footer-details-status">
                             <p id="rpstatus">Repair status :</p>
+                            
                             <label class="container">
+                                <label class="switch">
+                                    <input type="checkbox" id="repaired_or_not">
+                                    <span class="slider round"></span>
+                                </label>
                                 <input type="checkbox" {{info.RepairStatus}}>
-                                <select  name="RepairStatus_check" id="status-checker"><option value="none">No</option><option value="checked">Yes</option></select>
-                              </label>
+                            </label>
+
                         </div>
                         <div class="footer-details-status">
                             <p id="delivstatus">Delivery status :</p>
@@ -124,19 +129,20 @@
                             <p id="tot_amt">Total :</p> <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
                         </div>
                         <div class="footer-details">
-                            <button style="background-color: lawngreen; width: 80px; height: 30px; border-radius: 5px;"><a style="color: black;">Update</a></button>
+                            <button type="submit" >Update</button>
                         </div>
                 </div>
             </form>
             </div>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="/finance">Finance</a>
-                <a href="/lookup">Spares Lookup</a>
-                <a href="/spares_update">Spares Update</a>
-            </div>
+            
         </section>
     </main>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/finance">Finance</a>
+        <a href="/lookup">Spares Lookup</a>
+        <a href="/spares_update">Spares Update</a>
+    </div>
     <script src="{{url_for('static',filename='static/javascp_services.js')}}"></script>
 </body>
 </html>

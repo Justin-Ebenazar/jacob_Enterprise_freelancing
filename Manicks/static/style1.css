@@ -90,6 +90,7 @@ nav ul li{
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0);
     /*backdrop-filter: blur(10px);*/
+    cursor: pointer;
 }
 
 nav ul li:hover{
@@ -103,16 +104,19 @@ nav ul li:hover{
 }
 
 input[type="text"],input[type="number"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
     text-align: start;
     font-family: 'Times New Roman';
     font-size: 20px;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0,0,0,1);
     padding-left: 20px;
     height: 30px;
     border-radius: 20px;
     background-color: #ffffff;
-    border: 1px solid #000000;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    border: 1px solid #00000000;
   }
 
   input[type="text"]::placeholder {
@@ -122,7 +126,7 @@ input[type="text"],input[type="number"]{
     color: #574949;
   }
 
-  #home-serch{
+  #home-serch , #spare-serch{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -326,6 +330,7 @@ input,select{
     padding-bottom: 2px;
     box-shadow: -2px 4px 4px rgba(0,0,0,0.3),
     2px -4px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
 }
 
 #edit:hover{
@@ -669,8 +674,47 @@ input,select{
 /* button for toggle */
 
 /* The switch - the box around the slider */
-ider {
-    background-color: #21f360;
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #443f3f;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
   }
   
   input:focus + .slider {
@@ -681,8 +725,6 @@ ider {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(26px);
     transform: translateX(18px);
-    box-shadow: none;
-    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4),inset -2px -2px 4px rgba(0, 0, 0, 0.4);
   }
   
   /* Rounded sliders */
@@ -866,7 +908,7 @@ ider {
     left: 300px;
 }
 
-.home-bar{
+.home-bar,.spares-bar{
     position: fixed;
     top: 120px;
     display: flex;
@@ -877,7 +919,7 @@ ider {
     right: 80px;
 }
 
-.spares-update-table{
+.spares-update-table,.spares-sale-table{
     position: fixed;
     top: 180px;
     display: flex;
@@ -889,7 +931,8 @@ ider {
 
 .spare-detail-table{
     background-color: rgba(255,255,255,0.3);
-    background-color: rgba(0,0,0,0.3);
+    /*background-color: rgba(0,0,0,0.3);*/
+    /*backdrop-filter: blur(0px);*/
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.2);
 
@@ -905,10 +948,12 @@ ider {
 }
 
 .spare-detail-table th{
-    background-color: rgba(0, 0, 0, 0.8);
-    color: rgba(255, 255, 255, 1);
+    background-color: /*rgba(255,255,255,0.8);*/rgba(44, 5, 54, 0.637);
+    backdrop-filter: blur(3px);
+    color: rgba(255, 255, 255, 1);/*black*/;
     border: none;
     box-shadow: 4px 4px 7px rgba(0,0,0,0.8);
+    padding: 10px;
 }
 
 .spare-detail-table th:first-child{
@@ -925,8 +970,10 @@ ider {
 
 .spare-detail-table td{
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     color: white;
+    padding: 10px;
+    backdrop-filter: blur(5px);
 }
 
 .spare-detail-table td:last-child{

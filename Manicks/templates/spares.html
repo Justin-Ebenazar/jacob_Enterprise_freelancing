@@ -32,6 +32,34 @@
             </nav>
         </header>
         <section>
+            <div class="spares-bar">
+                <div>
+                    <form action="/record_search" method="post">
+                        <input id="spare-serch" type="search" name="SEARCH" placeholder="Search by Name/ID">
+                        <input id="search-btn" type="submit" value="Search" style="width: 50px;">
+                    </form>
+                </div>
+            </div>
+            <div class="spares-sale-table">
+            <table cellspacing="10px" class="spare-detail-table">
+                <tr>
+                    <th class="home-detail-th">Spare Name</th>
+                    <th class="home-detail-th">Use case</th>
+                    <th class="home-detail-th">Units Available</th>
+                    <th class="home-detail-th">Price</th>
+                    <th class="home-detail-th">Units to sell</th>
+                    <th class="home-detail-th">Sell stocks</th>
+                </tr> 
+                <tr>
+                    <td class="home-detail-td">kishore</td>
+                    <td class="home-detail-td">motor</td>
+                    <td class="home-detail-td">4</td>
+                    <td class="home-detail-td">900</td>
+                    <td class="home-detail-td"><input type="number"></td>
+                    <td class="home-detail-td"><a id="edit">Sale</a></td>
+                </tr> 
+            </table>
+            </div>
         </section>
         </main>
             <div id="mySidenav" class="sidenav">
@@ -40,6 +68,7 @@
                 <a href="/lookup">Spares Lookup</a>
                 <a href="/spares_update">Spares Update</a>
             </div>
+            <script src="static/javascp_services.js"></script>
     </body>
 </html>
             

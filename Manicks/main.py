@@ -168,7 +168,9 @@ def repair_status(id):
     if request.method=='POST':
         try:
             DeliveryStatus=request.form['DeliveryStatus_check']
-            RepairStatus=request.form['RepairStatus_check']
+            RepairStatus=request.form['repaired_or_not']
+            for i in range(10):
+                print("nadanthuchu")
             cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}' where P_id='{id}' ")
             con.commit()
         except:
