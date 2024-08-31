@@ -101,25 +101,26 @@
                     </div>
                 </div>
                 <form action="" method="post">
-                <div id="footer_rpstatus">
+                <div id="footer_rpstatus" style="background-color: aqua;">
                         <div class="footer-details-status">
                             <p id="rpstatus">Repair status :</p>
                             
                             <label class="container">
                                 <label class="switch">
-                                    <input type="checkbox" id="repaired_or_not">
+                                    <input type="checkbox" name="repaired_or_not" {% if info.RepairStatus == 'on' %}checked{% endif %}>
                                     <span class="slider round"></span>
                                 </label>
-                                <input type="checkbox" {{info.RepairStatus}}>
                             </label>
 
                         </div>
                         <div class="footer-details-status">
                             <p id="delivstatus">Delivery status :</p>
                             <label class="container">
-                                <input type="checkbox" {{info.DeliveryStatus}}>
-                                <select name="DeliveryStatus_check" id="status-checker"><option value="none">No</option><option value="checked">Yes</option></select>
-                              </label>
+                                <label class="switch">
+                                    <input type="checkbox" name="delivered_or_not" {% if info.DeliveryStatus == 'on' %}checked{% endif %}>
+                                    <span class="slider round"></span>
+                                </label>
+                            </label>
                         </div>
                         <div class="footer-details">
                             <p id="disc">Discount :</p>
