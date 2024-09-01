@@ -8,13 +8,13 @@
     <link rel="icon" href="pics/finance.png" type="image/png">
 </head>
 <body>
-    <!-- {% with messages=get_flashed_messages() %}
+    {% with messages=get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
             <script>alert('{{message}}');</script>
         {% endfor %}
     {% endif %}
-    {% endwith %} -->
+    {% endwith %}
     <main>
         <header class="header">
             <div>
@@ -34,10 +34,10 @@
         <section>
             <div class="upbox">
                 <div id="month">
-                Monthly Profit : 1000
+                Monthly Profit : 
                 </div>
                 <div id="day">
-                Today's Profit : 10
+                Today's Profit : 
                 </div>
             </div>
             <table id="finance_table">
@@ -47,26 +47,14 @@
                     <th>Product type</th>
                     <th>Profit made</th>
                 </tr>
-                <tr>
-                    <td>M12345</td>
-                    <td>Kishore</td>
-                    <td>motor</td>
-                    <td>10000</td>
-                </tr>
-                </tr>
-                <tr>
-                    <td>M12345</td>
-                    <td>manikraj</td>
-                    <td>motor</td>
-                    <td>10000</td>
-                </tr>
-                </tr>
-                <tr>
-                    <td>M12345</td>
-                    <td>arun kumar</td>
-                    <td>motor</td>
-                    <td>10000</td>
-                </tr>
+                {% for info in infos %}
+                    <tr>
+                        <td>{{info.P_id}}</td>
+                        <td>{{info.C_name}}</td>
+                        <td>{{info.Machine}}</td>
+                        <td>{{info.Totalbill}}</td>
+                    </tr>
+                {% endfor %}
             </table>
             
         <!-- </section>

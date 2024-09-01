@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect,flash
 import pymysql as ps
+import datetime as dt
 
 
 #DATABASE CCONNECCTION
@@ -169,8 +170,6 @@ def repair_status(id):
         try:
             DeliveryStatus=request.form['DeliveryStatus_check']
             RepairStatus=request.form['repaired_or_not']
-            for i in range(10):
-                print("nadanthuchu")
             cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}' where P_id='{id}' ")
             con.commit()
         except:
@@ -216,6 +215,11 @@ def repair_status(id):
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
+    try:
+        cursor.execute(f"update service set Totalbill={total['tot']} where P_id='{id}'")
+        con.commit()
+    except:
+        pass
     discount=0
     try:
         discount=datas2[0]['Discount']
@@ -248,7 +252,9 @@ def service():
 
 @app.route('/finance')
 def finance():
-    return render_template('finance.html')
+    cursor.execute("select P_id,C_name,Machine,Totalbill from service where DeliveryStatus='checked'")
+    datas=cursor.fetchall()
+    return render_template('finance.html',infos=datas)
 
 @app.route('/spares')
 def spares():
