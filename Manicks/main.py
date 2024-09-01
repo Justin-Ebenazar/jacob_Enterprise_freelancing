@@ -10,6 +10,10 @@ except:
     con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
+
+today=dt.datetime.now()
+day=today.strftime("20%y-%m-%d")
+
 app=Flask(__name__)#DEFINING INITIALIZE
 @app.route('/')
 @app.route('/home')
@@ -169,6 +173,9 @@ def repair_status(id):
     if request.method=='POST':
         try:
             DeliveryStatus=request.form.get('delivered_or_not','off')
+            if DeliveryStatus=='on':
+                cursor.execute(f"update service set DateDelivered='{day}' where P_id='{id}'")
+                con.commit()
             RepairStatus=request.form.get('repaired_or_not','off')
             cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}' where P_id='{id}' ")
             con.commit()
@@ -252,9 +259,18 @@ def service():
 
 @app.route('/finance')
 def finance():
-    cursor.execute("select P_id,C_name,Machine,Totalbill from service where DeliveryStatus='checked'")
+    cursor.execute("select P_id,C_name,Machine,DateDelivered,Totalbill from service where DeliveryStatus='on'")
     datas=cursor.fetchall()
-    return render_template('finance.html',infos=datas)
+    todays_income=0
+    month_income=0
+
+    for data in datas:
+        if data['DateDelivered'][8:]==day[8:]:
+            todays_income+=data['Totalbill']
+        if data['DateDelivered'][5:7]==day[5:7]:
+            month_income+=data['Totalbill']
+        
+    return render_template('finance.html',infos=datas,todays_profit=todays_income,month_profit=month_income)
 
 @app.route('/spares')
 def spares():

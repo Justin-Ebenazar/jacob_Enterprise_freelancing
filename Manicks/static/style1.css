@@ -782,6 +782,20 @@ input,select{
     width: 400px;
 }
 
+.right_half_rpstatus_top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right_half_rpstatus_bottom{
+    height: 300px;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
 #right_half_rpstatus{
     width: 500px;
     border-radius: 5px;
