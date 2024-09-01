@@ -168,8 +168,8 @@ def repair_status(id):
     DiscountAmt=0
     if request.method=='POST':
         try:
-            DeliveryStatus=request.form['DeliveryStatus_check']
-            RepairStatus=request.form['repaired_or_not']
+            DeliveryStatus=request.form.get('delivered_or_not','off')
+            RepairStatus=request.form.get('repaired_or_not','off')
             cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}' where P_id='{id}' ")
             con.commit()
         except:
@@ -206,7 +206,7 @@ def repair_status(id):
             pass
     cursor.execute(f"select * from service where P_id='{id}'")
     datas=cursor.fetchone()
-    
+
     cursor.execute(f"select * from spares")
     datas1=cursor.fetchall()
 
