@@ -25,13 +25,13 @@
             </div>
             <nav id="nav-bar">
                 <ul>
-                    <li id="veedu"><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('service')}}">Services</a></li>
                     <li><a href="{{url_for('spares')}}">Spares</a></li>
                 </ul>
             </nav>
         </header>
-        <section>
+        <section onclick="closeNav()">
             <div class="spares-bar">
                 <div>
                     <form action="/record_search" method="post">

@@ -63,42 +63,50 @@ header{
     font-family: tablefont;
     src: url('font/table_head.otf') format('opentype');
   }
+ 
+  @font-face {
+    font-family: servfont;
+    src: url('font/servfont.ttf') format('truetype');
+  }
 #shop-name{
     color: white;
     font-size: 40px;
     font-style: italic;
     font-family: jusfont;
     letter-spacing: 3px;
-    padding-right: 550px;
+    padding-right: 500px;
 }
 #nav-bar{
     width: 200px;
-    padding-right: 110px;
+    padding-right: 150px;
 }
 nav ul{
     display: flex;
+    margin-right: 10px;
 }
+
 nav ul li{
-    height: 10px;
     list-style: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-    transition: 0.5s;
-    font-family:  navfont;
-    letter-spacing: 1px;
-    font-size: 15px;
-    padding: 10px;
-    padding-top: 12px;
-    margin: 5px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0);
-    /*backdrop-filter: blur(10px);*/
-    cursor: pointer;
 }
 
-nav ul li:hover{
+.navli{
+    font-family: navfont;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    font-size: 15px;
+    margin: 5px;
     height: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0);
+    cursor: pointer;
+    padding: 10px;
+}
+
+.navli:hover{
+    height: 10px;
+    padding: 10px;
     /* border: 1px solid white; */
     border-radius: 20px;
     box-shadow: -2px -2px 30px rgba(255,255,255,0),
@@ -526,6 +534,7 @@ input,select{
 .service-table{
     border-collapse: separate;
     border-spacing: 0px 0px;
+    font-family: servfont;
 }
 
 .service-table th{
@@ -910,6 +919,7 @@ input,select{
     border: none;
     box-shadow: 4px 4px 7px rgba(0,0,0,0.8);
     padding: 10px;
+    letter-spacing: 1px;
 }
 
 .spare-detail-table th:first-child{
@@ -930,11 +940,13 @@ input,select{
 
 .spare-detail-table td{
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255,255,255,0.2);
     color: white;
-    padding: 10px;
+    padding: 5px;
     backdrop-filter: blur(5px);
     text-align: center;
+    
 }
 
 .spare-detail-table td:nth-child(5){
