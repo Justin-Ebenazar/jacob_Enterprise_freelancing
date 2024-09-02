@@ -425,7 +425,7 @@ input,select{
 }
 
 #finance_table td:nth-child(2){
-    border-right: 1px solid rgba(107,107,107, 0.5);
+    border-right: 1px solid rgba(255,107,194, 0.5);
     border-left: 1px solid rgba(107,107,107, 0.5);
 }
 
@@ -887,8 +887,8 @@ input,select{
 
 .spare-detail-table{
     background-color: rgba(255,255,255,0.3);
-    /*background-color: rgba(0,0,0,0.3);*/
-    /*backdrop-filter: blur(0px);*/
+    background-color: rgba(0,0,0,0.3);
+    font-family: tablefont;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.2);
 
@@ -904,7 +904,7 @@ input,select{
 }
 
 .spare-detail-table th{
-    background-color: /*rgba(255,255,255,0.8);*/rgba(44, 5, 54, 0.637);
+    background-color: rgba(44, 5, 54, 0.8);
     backdrop-filter: blur(3px);
     color: rgba(255, 255, 255, 1);/*black*/;
     border: none;
@@ -916,8 +916,12 @@ input,select{
     border-radius: 10px 0px 0px 0px;
 }
 
-.spare-detail-table th:last-child{
+.spare-detail-table th:nth-child(4){
     border-radius: 0px 10px 0px 0px;
+}
+
+.spare-detail-table th:last-child{
+    border-radius: 25px;
 }
 
 .spare-detail-table tr{
@@ -930,14 +934,21 @@ input,select{
     color: white;
     padding: 10px;
     backdrop-filter: blur(5px);
+    text-align: center;
 }
 
-.spare-detail-table td:last-child{
+.spare-detail-table td:nth-child(5){
     background-color: rgba(0,0,0,0);
+    text-align: center;
 }
 
-#upbutt{
-    background-color: rgba(255, 255, 255, 0);
+.spare-detail-table td:nth-child(6){
+    background-color: rgba(0,0,0,0);
+    text-align: center;
+}
+
+.update{
+    background-color: rgba(0,0,0, 0.8);
     color: white;
 
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
@@ -955,14 +966,14 @@ input,select{
     position: relative;
 }
 
-#upbutt:active{
+.update:active{
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1),
     -2px -4px 4px rgba(0, 0, 0, 0.1),
     -2px 4px 4px rgba(0, 0, 0, 0.1),
     2px -4px 4px rgba(0, 0, 0, 0.1);
 }
 
-#upbutt:before{
+.update:before{
     content: "";
     position: absolute;
     top: 0;
@@ -978,8 +989,26 @@ input,select{
   transition: all 650ms;
 }
 
-#upbutt:hover:before {
+.update:hover:before {
   left: 100%;
+}
+.delete{
+    background-image: url('pics/trash.jpg');
+    background-size: contain; /* or cover */
+    background-repeat: no-repeat;
+    background-color: rgba(255,0,0,1);
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.delete:hover{
+    background-color: rgba(255,0,0,0.3);
 }
 
 #add_new_item{
