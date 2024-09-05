@@ -18,7 +18,7 @@ app=Flask(__name__)#DEFINING INITIALIZE
 @app.route('/')
 @app.route('/home')
 def home():
-    cursor.execute("select * from service")
+    cursor.execute("select * from service where DeliveryStatus='off'")
     datas=cursor.fetchall()
     return render_template("home.html",infos=datas)
 

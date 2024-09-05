@@ -42,24 +42,28 @@
                 </div>
             </div>
             <div class="spares-sale-table">
-            <table cellspacing="10px" class="spare-detail-table">
-                <tr>
-                    <th class="home-detail-th">Spare Name</th>
-                    <th class="home-detail-th">Use case</th>
-                    <th class="home-detail-th">Units Available</th>
-                    <th class="home-detail-th">Price</th>
-                    <th class="home-detail-th">Units to sell</th>
-                    <th class="home-detail-th">Sell stocks</th>
-                </tr> 
-                <tr>
-                    <td class="home-detail-td">kishore</td>
-                    <td class="home-detail-td">motor</td>
-                    <td class="home-detail-td">4</td>
-                    <td class="home-detail-td">900</td>
-                    <td class="home-detail-td"><input type="number"></td>
-                    <td class="home-detail-td"><a id="edit">Sale</a></td>
-                </tr> 
-            </table>
+                <div>
+                    <table cellspacing="10px" class="spare-detail-table">
+                        <tr>
+                            <th class="home-detail-th">Spare Name</th>
+                            <th class="home-detail-th">Use case</th>
+                            <th class="home-detail-th">Units Available</th>
+                            <th class="home-detail-th">Price</th>
+                            <th class="home-detail-th">Units to sell</th>
+                            <th class="home-detail-th">Sell stocks</th>
+                        </tr> 
+                        {% for info in infos %}
+                                <tr>
+                                    <td>{{info.S_name}}</td>
+                                    <td>{{info.S_use}}</td>
+                                    <td>{{info.S_stock}}</td>
+                                    <td>{{info.S_cost}}</td>
+                                    <td><button class="update"><a href="{{url_for("update_item",id=info.S_id)}}">Update</a></button></td>
+                                    <td><a onclick="return confirm('Are you sure to delete?');" href="{{url_for("delete_item",id=info.S_id)}}"><button class="delete" >Delete</button></a></td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </section>
         </main>
