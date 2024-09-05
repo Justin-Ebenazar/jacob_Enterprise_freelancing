@@ -38,6 +38,7 @@
                 <div class="tab" onclick="showTab(2)">PowerTools</div>
             </div>
             <div class="services">
+                <div id="fan">
                 <form action="/fan_submit" class="tab-contant" method="post">
                     <div class="service_table_fan">
                         <table class="service-table">
@@ -81,8 +82,10 @@
                             <input type="submit" value="Submit" style="background-color: lawngreen;">
                         </div> 
                     </div>
-                </form>   
+                </form>
+                </div>   
 
+                <div id="motor">
                 <form action="/motor_submit" class="tab-contant active" method="post">
                     <div class="service_table_motor">
                         <table class="service-table">
@@ -129,7 +132,9 @@
                         </div>
                     </div>
                 </form>
+                </div>
 
+                <div id="power">
                 <form action="/powertool_submit" class="tab-contant" method="post">
                     <div class="service-tab-powertools">
                         <table class="service-table">
@@ -187,7 +192,9 @@
                             <input type="submit" value="Submit" style="background-color: lawngreen;">
                         </div>
                     </div>
-                </form>  
+                </form>
+                </div>
+
             </div>
         </section>
     </main>
