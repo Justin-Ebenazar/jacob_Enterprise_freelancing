@@ -49,11 +49,11 @@
                                 <td><input type="text" placeholder="null" name="ID"></td>
                                 <td>Fan type:</td>
                                 <td>
-                                    <select name="FANTYPE">
+                                    <select name="FANTYPE" class="dropbtn">
                                         <option value="Celling fan">Celling fan</option>
                                         <option value="Table fan">Table fan</option>
                                         <option value="Almonard pedestal">Almonard pedestal</option>
-                                        <option value="Almonard Wall mounding">Almonard Wall mounding</option>
+                                        <option value="Almonard Wall mounting">Almonard Wall</option>
                                     </select>
                                 </td>
                             </tr>
@@ -83,7 +83,7 @@
                     </div>
                 </form>   
 
-                <form action="/motor_submit" class="tab-contant" method="post">
+                <form action="/motor_submit" class="tab-contant active" method="post">
                     <div class="service_table_motor">
                         <table class="service-table">
                             <tr>
@@ -91,7 +91,7 @@
                             </tr>
                             <tr>
                                 <td>Product ID:</td>
-                                <td><input type="text" placeholder="null" name="ID"></td>
+                                <td><input type="text" placeholder="Enter ID" name="ID"></td>
                                 <td>Motor HP:</td>
                                 <td>
                                     <select name="HP" id="">
@@ -106,13 +106,13 @@
                             </tr>
                             <tr>
                                 <td>Customer Name:</td>
-                                <td><input type="text" name="NAME"></td>
+                                <td><input type="text" name="NAME" placeholder="Customer name"></td>
                                 <td>Missing Parts:</td>
-                                <td><input type="text" name="MISSINGPARTS"></td>
+                                <td><input type="text" name="MISSINGPARTS" placeholder="Parts"></td>
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" name="MOBILE"></td>
+                                <td><input type="number" name="MOBILE" placeholder="Contact"></td>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
@@ -120,13 +120,13 @@
                                 <td>Color:</td>
                                 <td><input type="color" name="COLOR" id=""></td>
                                 <td>Advance:</td>
-                                <td><input type="number" name="ADVANCE" VALUE=0></td>
-                            </tr>
-                            <tr>
-                                <td><input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);"></td>
-                                <td><input type="submit" value="Submit" style="background-color: lawngreen;"></td>
+                                <td><input type="number" name="ADVANCE" placeholder="Enter amout"></td>
                             </tr>
                         </table>
+                        <div id="service-footer">
+                            <input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);">
+                            <input type="submit" value="Submit" style="background-color: lawngreen;">
+                        </div>
                     </div>
                 </form>
 
@@ -181,13 +181,11 @@
                                 <td>Advance:</td>
                                 <td><input type="number" name="ADVANCE" VALUE=0></td>
                             </tr>
-
-                            <tr>
-                                <td><input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);"></td>
-                                <td><input type="submit" value="Submit" style="background-color: lawngreen;"></td>
-                            </tr>
                         </table>
-                        
+                        <div id="service-footer">
+                            <input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);">
+                            <input type="submit" value="Submit" style="background-color: lawngreen;">
+                        </div>
                     </div>
                 </form>  
             </div>

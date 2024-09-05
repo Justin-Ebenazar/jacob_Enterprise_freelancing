@@ -127,8 +127,10 @@ input[type="text"],input[type="number"]{
     padding-left: 20px;
     height: 30px;
     border-radius: 20px;
-    background-color: #ffffff;
-    border: 1px solid #00000000;
+    background-color: rgba(255,255,255,0.2);
+    border: 1px solid #ffffff41;
+    color: rgba(255, 255, 255, 0.63);
+    color: rgba(0, 0, 0, 1);
   }
 
   input[type="text"]::placeholder {
@@ -393,6 +395,38 @@ input,select{
 
 }
 
+/*service page select box styling*/
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+    outline: none;
+    border: none;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%,
+     rgba(255, 255, 255, 0.63) 50%, rgba(255, 255, 255, 0.3) 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+select option{
+    background-color: rgba(0,0,0,1);
+    color: white;
+    font-family: servfont;
+    display: flex;
+    border-radius: 30px;    
+    padding: none;
+    border: 1px solid rgba(0,0,0,0);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select option:hover{
+    color:green;
+    background-color: white;
+    border-radius: 10px;
+}
 .service-nav div{
     cursor: pointer;    
     transition: 0.5s;
@@ -568,6 +602,16 @@ input,select{
     height: 50px;
 }
 
+.tab-contant.active{
+    transform: scale(1);
+    transition: transform 0.5s ease-out;
+    max-width: 100px;
+}
+
+.tab-contant{
+    max-width: 0px;
+}
+
 /* about page oda code starts from here*/
 
 #title{
@@ -674,6 +718,7 @@ input,select{
     justify-content: center;
     align-items: center;
     z-index: 1;
+    perspective: 1000px;
 }
 .additem-container{
     display: flex;
@@ -885,15 +930,28 @@ input,select{
 }
 
 .spares-update-table,.spares-sale-table{
-    position: fixed;
+    position: relative;
     top: 180px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
     border-radius: 10px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
-
+/* test */
+.additem,.spares-update-table{
+position: absolute;
+width: 100%;
+height: 100%;
+-webkit-backface-visibility: hidden; /* Safari */
+backface-visibility: hidden;
+}
+.additem:hover .spares-update-table{
+    transform: rotateY(180deg);
+}
+/* test */
 .spare-detail-table{
     background-color: rgba(255,255,255,0.3);
     background-color: rgba(0,0,0,0.3);
@@ -1024,7 +1082,53 @@ input,select{
     padding-left: 7px;
     padding-right: 7px;
     border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
 }
+
+.delete:hover{
+    box-shadow: 2px 4px 4px rgba(255, 0, 0, 0.5),
+    -2px -4px 4px rgba(255, 0, 0, 0.5),
+    -2px 4px 4px rgba(255, 0, 0, 0.5),
+    2px -4px 4px rgba(255, 0, 0, 0.5);
+    height: 25px;
+}
+
+.delete:active{
+    box-shadow: 2px 4px 4px rgba(255, 0, 0, 0.5),
+    -2px -4px 4px rgba(255, 0, 0, 0.5),
+    -2px 4px 4px rgba(255, 0, 0, 0.5),
+    2px -4px 4px rgba(255, 0, 0, 0.5);
+    height: 40px;
+    background-color: black;
+}
+
+/*.delete:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+    rgba(146, 148, 248, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.delete:hover:before {
+  left: 100%;
+}*/
+
+
 
 #add_new_item{
     padding: 5px;
@@ -1035,10 +1139,3 @@ input,select{
     border: 2px solid white;
 }
 
-.delete{
-    padding: 5px;
-    border-radius: 7px;
-    border: none;
-    color: white;
-    background-color: rgba(255, 80, 67,0.8);
-}

@@ -13,29 +13,27 @@
 
 // end of side pane code
 
-// JavaScript Code
-const tabs = document.querySelectorAll(".tab");
-const tabsContant = document.querySelectorAll(".tab-contant");
+tabs = document.querySelectorAll(".tab");
+tabsContant = document.querySelectorAll(".tab-contant")
 
-function showTab(index) {
-  tabs.forEach((tab) => {
+function showTab(index){
+ tabs.forEach((tab)=>{
     tab.classList.remove("active");
-  });
-  tabs[index].classList.add("active");
+ });
+tabs[index].classList.add('active');
 
-  tabsContant.forEach((contant) => {
-    contant.classList.remove("active");
-  });
-  tabsContant[index].classList.add("active");
-}
-
-showTab(0); // Show the first tab initially
-
-tabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => {
-    showTab(index);
-  });
+tabsContant.forEach((contant)=>{
+  contant.style.display="none";
 });
+tabsContant[index].style.display="flex"
+}
+showTab(0);
+tabs.forEach((tab,index)=>{
+    tab.addEventListener("click",()=>{
+        showTab(index);
+    });
+});
+
 function additemActive(){
   const additem=document.querySelector('.additem');
   additem.style.display="flex";
