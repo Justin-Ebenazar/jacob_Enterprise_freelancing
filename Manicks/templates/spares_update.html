@@ -85,25 +85,27 @@
 
             </div>
             <div class="spares-update-table">
-                <table cellspacing="10px" class="spare-detail-table">
-                    <tr>
-                        <th class="home-detail-th">Spare Name</th>
-                        <th class="home-detail-th">Use case</th>
-                        <th class="home-detail-th">Units Available</th>
-                        <th class="home-detail-th">Price</th>
-                        <th class="home-detail-th" colspan="2">Update controls</th>
-                    </tr>
-                    {% for info in infos %}
-                            <tr>
-                                <td>{{info.S_name}}</td>
-                                <td>{{info.S_use}}</td>
-                                <td>{{info.S_stock}}</td>
-                                <td>{{info.S_cost}}</td>
-                                <td><button class="update"><a href="{{url_for("update_item",id=info.S_id)}}">Update</a></button></td>
-                                <td><a onclick="return confirm('Are you sure to delete?');" href="{{url_for("delete_item",id=info.S_id)}}"><button class="delete" >Delete</button></a></td>
-                            </tr>
-                    {% endfor %}
-                </table>
+                <div>
+                    <table cellspacing="10px" class="spare-detail-table">
+                        <tr>
+                            <th class="home-detail-th">Spare Name</th>
+                            <th class="home-detail-th">Use case</th>
+                            <th class="home-detail-th">Units Available</th>
+                            <th class="home-detail-th">Price</th>
+                            <th class="home-detail-th" colspan="2">Update controls</th>
+                        </tr>
+                        {% for info in infos %}
+                                <tr>
+                                    <td>{{info.S_name}}</td>
+                                    <td>{{info.S_use}}</td>
+                                    <td>{{info.S_stock}}</td>
+                                    <td>{{info.S_cost}}</td>
+                                    <td><button class="update"><a href="{{url_for("update_item",id=info.S_id)}}">Update</a></button></td>
+                                    <td><a onclick="return confirm('Are you sure to delete?');" href="{{url_for("delete_item",id=info.S_id)}}"><button class="delete" >Delete</button></a></td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </div>
 
