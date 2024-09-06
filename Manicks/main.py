@@ -227,22 +227,33 @@ def repair_status(id):
             EXPNSPARE=request.form['EXPNSPARE']
             COST=int(request.form['COST'])
             STOCK=0
+            quantity=1
             try:
                 try:
                     cursor.execute(f"select S_Cost,S_stock from spares where S_name='{EXPNSPARE}'")
                     cost_and_stock=cursor.fetchone()
                     COST=cost_and_stock['S_Cost']
                     STOCK=int(cost_and_stock['S_stock'])
+                    try:
+                        cursor.execute(f"select Quantity from expences where S_name='{EXPNSPARE}' and P_id='{id}'")
+                        quantity+=cursor.fetchone()['Quantity']
+                    except:
+                        quantity=1
                 except:
                     if(COST==0):
                         flash("Require cost value for new Spare.")
-                if (COST!=0):
-                    cursor.execute(f"insert into expences values('{id}','{EXPNSPARE}',{COST},{DiscountAmt})")
-                    con.commit()
+                if (COST!=0 and STOCK>0):
+                    cursor.execute(f"select S_name from expences where P_id='{id}' and S_name='{EXPNSPARE}'")
+                    if (cursor.fetchone()):
+                        cursor.execute(f"update expences set Cost={COST*quantity} , Quantity={quantity} where S_name='{EXPNSPARE}' and P_id='{id}'")
+                        con.commit()
+                    else:
+                        cursor.execute(f"insert into expences values('{id}','{EXPNSPARE}',{COST*quantity},{DiscountAmt},{quantity})")
+                        con.commit()
                     cursor.execute(f"update spares set S_stock={STOCK-1} where S_name='{EXPNSPARE}'")
                     con.commit()
-                    
-                # flash("Added Sucessfully")
+                else:
+                    flash(f"Insufficient ({EXPNSPARE}) Stock.")
             except:
                 flash("Cannot add item.")
         except:
@@ -281,8 +292,20 @@ def repair_status(id):
 @app.route('/expence_del/<string:id>/<string:name>',methods=['POST','GET'])
 def expence_del(id,name):
     try:
-        cursor.execute(f"delete from expences where P_id='{id}' and S_name='{name}'")
-        con.commit()
+        cursor.execute(f"select Cost,Quantity from expences where P_id='{id}' and S_name='{name}'")
+        datas=cursor.fetchone()
+        Old_cost=datas['Cost']
+        Old_quantity=datas['Quantity']
+        print(Old_cost,Old_quantity)
+        if Old_quantity>1:
+            Price=Old_cost/Old_quantity
+            New_cost=Old_cost-Price
+            Old_quantity=Old_quantity-1
+            cursor.execute(f"update expences set Cost={New_cost}, Quantity={Old_quantity} where P_id='{id}' and S_name='{name}'")
+            con.commit()
+        else:
+            cursor.execute(f"delete from expences where P_id='{id}' and S_name='{name}'")
+            con.commit()
     except:
         # flash("Cannot delete item.")
         pass
@@ -320,12 +343,15 @@ def spares():
 def sell_spare(id): 
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
-        if qunantity==0:
+        if qunantity<=0 :
             return redirect('/spares')
         try:
             cursor.execute(f"select S_stock,S_Cost,S_id from spares where S_id={id}")
             datas=cursor.fetchone()
             total_stock=datas['S_stock']
+            if total_stock<=0 or total_stock<qunantity:
+                flash("Insufficient Stock!!!")
+                return redirect('/spares')
             price=datas['S_Cost']*qunantity
             cursor.execute(f"update spares set S_stock={total_stock-qunantity} where S_id={id}")
             con.commit()
@@ -333,7 +359,7 @@ def sell_spare(id):
             con.commit()
             return redirect('/spares')
         except:
-            print("hello")      
+            pass   
     return spares()
 
 @app.route('/lookup')
