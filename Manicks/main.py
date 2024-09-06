@@ -29,10 +29,10 @@ def service():
     datas=0
     try:
         cursor.execute("select * from service")
-        datas=cursor.fetchall()[-1]['P_id']
+        datas=int(cursor.fetchall()[-1]['P_id'])
     except:
         datas=0
-    return render_template('service.html',info=str(datas+1))
+    return render_template("service.html",info=str(datas+1))
 
 @app.route('/fan_submit',methods=['POST','GET'])
 def fan_submit():
@@ -52,10 +52,10 @@ def fan_submit():
                 return redirect("/home")
             except:
                 flash("Transaction failure!!!")
-                return redirect("service.html")
+                return redirect("/service")
         except:
             flash("Required all values.")
-            return redirect("service.html")
+            return redirect("/service")
     return render_template("home.html")
 
 @app.route('/motor_submit',methods=['POST','GET'])
@@ -70,13 +70,13 @@ def motor_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ({Name},{Mobile},{Color},{MotorHP},{Dategiven},{Advance},'Motor',{Missingparts});")
                 con.commit();
                 flash("Record added successfully.")
-                return redirect("/home")
+                return render_template("home.html")
             except:
                 flash("Transaction failure!!!")
-                return redirect("service.html")
+                return render_template("service.html")
         except:
             flash("Required all values.")
             return redirect("service.html")

@@ -65,25 +65,20 @@
                     <div id="right_half_rpstatus">
                         <div class="right_half_rpstatus_top">
                             <form action="" method="post">
-                                <table>
-                                    <tr>
-                                        <th colspan="3">Expenses</th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="search_result">
-                                                <datalist id="suggestions">
-                                                    {% for info1 in infos%}
-                                                        <option>{{info1.S_name}}</option>
-                                                    {% endfor %}
-                                                </datalist>    
-                                            </div>
-                                            <input type="text" placeholder="Search" id="spare_search_rpstat" list="suggestions" name="EXPNSPARE">
-                                        </td>
-                                        <td><input type="number" name="COST" value=0></td>
-                                        <td><button style="background-color: rgb(166, 252, 80); width: 80px; height: 30px; border-radius: 5px;"><a style="color: black;">ADD</a></button></td>
-                                    </tr>
-                                </table>
+                                <br>
+                                <h1>Expenses</h1>
+                                    <datalist id="suggestions">
+                                            {% for info1 in infos%}
+                                                <option>{{info1.S_name}}</option>
+                                            {% endfor %}
+                                    </datalist> 
+                                <br>   
+                                    <div>
+                                    <input type="text" placeholder="Search" id="spare_search_rpstat" list="suggestions" name="EXPNSPARE">
+                                    <input type="number" name="COST" value=0>
+                                    <a><button class="add_new_item">ADD</button></a>
+                                    </div>
+                                <br>
                             </form>
                         </div>
                         <div class="right_half_rpstatus_bottom">
@@ -102,10 +97,10 @@
                     </div>
                 </div>
                 <form action="" method="post">
-                <div id="footer_rpstatus" style="background-color: aqua;">
+                <div id="footer_rpstatus">
                         <div class="footer-details-status">
                             <p id="rpstatus">Repair status :</p>
-                            
+                            <br>
                             <label class="container">
                                 <label class="switch">
                                     <input type="checkbox" name="repaired_or_not" {% if info.RepairStatus == 'on' %}checked{% endif %}>
@@ -116,6 +111,7 @@
                         </div>
                         <div class="footer-details-status">
                             <p id="delivstatus">Delivery status :</p>
+                            <br>
                             <label class="container">
                                 <label class="switch">
                                     <input type="checkbox" name="delivered_or_not" {% if info.DeliveryStatus == 'on' %}checked{% endif %}>
@@ -124,13 +120,14 @@
                             </label>
                         </div>
                         <div class="footer-details">
-                            <p id="disc">Discount :</p>
-                            <input type="number" name="DISCOUNTAMOUNT" class="DISCOUNT" value="{{disc}}" style="width: 70px;">
+                            <p id="disc">Discount :</p><br>
+                            <input type="number" name="DISCOUNTAMOUNT" class="DISCOUNT" value="{{disc}}" style="width: 50px;">
                         </div>
-                        <div class="footer-details">
-                            <p id="tot_amt">Total :</p> <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
+                        <div class="footer-details"style="width: 80px;">
+                            <p id="tot_amt">Total :</p> <br>
+                            <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
                         </div>
-                        <div class="footer-details">
+                        <div class="footer-details" style="width: 80px;">
                             <button type="submit" style="background: rgb(159, 254, 64); width: 70px;height: 30px; border: none; border-radius: 5px;">Update</button>
                         </div>
                 </div>

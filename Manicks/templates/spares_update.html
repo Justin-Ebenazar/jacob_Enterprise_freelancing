@@ -79,7 +79,7 @@
                     </form>
                 </div>
                 <div>
-                    <button id="add_new_item"><a  onclick="additemActive()">+New Item</a> </button>
+                    <button class="add_new_item"><a  onclick="additemActive()">+New Item</a> </button>
                     <!-- new spare adder -->
                 </div>
 
@@ -99,7 +99,7 @@
                                     <td>{{info.S_name}}</td>
                                     <td>{{info.S_use}}</td>
                                     <td>{{info.S_stock}}</td>
-                                    <td>{{info.S_cost}}</td>
+                                    <td>{{info.S_Cost}}</td>
                                     <td><button class="update"><a href="{{url_for("update_item",id=info.S_id)}}">Update</a></button></td>
                                     <td><a onclick="return confirm('Are you sure to delete?');" href="{{url_for("delete_item",id=info.S_id)}}"><button class="delete" >Delete</button></a></td>
                                 </tr>
