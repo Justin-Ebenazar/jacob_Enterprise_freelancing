@@ -20,7 +20,7 @@ window=webview.create_window("justin",app)
 @app.route('/')
 @app.route('/home')
 def home():
-    cursor.execute("select * from service where not DeliveryStatus='on' or DeliveryStatus='-'")
+    cursor.execute("select * from service where not DeliveryStatus='on'")
     datas=cursor.fetchall()
     return render_template("home.html",infos=datas)
 
