@@ -108,9 +108,22 @@ def powertool_submit():
             return redirect("service.html")
     return render_template("home.html")
 
+@app.route('/old_record',methods=['POST','GET'])
+def old_record():
+    cursor.execute("select * from service where DeliveryStatus='on'")
+    datas=cursor.fetchall()
+    return render_template('old_records.html',infos=datas)
+
 @app.route('/old_record_search',methods=['POST','GET'])
 def old_record_search():
-    return render_template('old_records.html')
+    if request.method=='POST':
+        search_element=request.form['SEARCH']
+        Start_date=request.form['Start_date']
+        End_date=request.form['End_date']
+        cursor.execute(f"select * from service where P_id='{search_element}' or C_name='{search_element}' or DateGiven between '{Start_date}' and '{End_date}' and DeliveryStatus='on'")
+        datas=cursor.fetchall()
+        return render_template("old_records.html",infos=datas)
+    return redirect("/old_record")
 
 @app.route('/record_search',methods=['POST','GET'])
 def record_search():
@@ -283,7 +296,24 @@ def finance():
 
 @app.route('/spares')
 def spares():
-    return render_template('spares.html')
+    cursor.execute("select * from spares")
+    datas=cursor.fetchall()
+    return render_template('spares.html',infos=datas)
+
+@app.route('/sell_spare/<int:id>',methods=['POST','GET'])
+def sell_spare(id):       
+    try:
+        cursor.execute(f"select S_stock,S_Cost from spares where S_id={id}")
+        datas=cursor.fetchone()
+        total_stock=datas['S_stock']
+        price=datas['S_Cost']
+        cursor.execute(f"update spares set S_stock={total_stock-1} where S_id={id}")
+        con.commit()
+        cursor.execute(f"insert into service (DeliveryStatus,DateDelivered,Totalbill) values('on','{day}',{price})")
+        con.commit()
+    except:
+        pass
+    return redirect('/spares')
 
 @app.route('/lookup')
 def lookup():

@@ -27,24 +27,16 @@
         </header>
         <section class="main_contentof_page" onclick="closeNav()">
             <div class="spares-lookup-filter">
-                <div>
-                    Filter:
-                    <select name="search_filter" id="searchfilter" onchange="search_criteria()">
-                        <option value="product">Search by Product</option>
-                        <option value="date">Search by date</option>
-                    </select>
-                </div>
-                
-                <div class="dates">
-                    <input type="date" name="Start date">
-                    <input type="date" name="End date">    
-                </div>
-                <div class="search-dabba">
-                    <input type="text" name="product_entry">
-                </div>
                 
                 <div>
-                    <input id="search-btn" type="submit" value="search" onclick="search_criteria()">
+                    <form action="" method="post">
+                        <div>
+                            <input type="date" name="Start_date">
+                            <input type="date" name="End_date"> 
+                        <input id="home-serch" type="search" name="SEARCH" placeholder="Search by Name , ID or Phno">
+                        <input id="search-btn" type="submit" value="Search" style="width: 50px;">
+                    </div>
+                    </form>
                 </div>
             </div>
             <div class="spares-lookup-table">
@@ -52,7 +44,6 @@
                 <table cellspacing="10px" class="by_product">
                     <tr>
                         <th class="home-detail-th">Spare Name</th>
-                        <th class="home-detail-th">Spare ID</th>
                         <th class="home-detail-th">Use case</th>
                         <th class="home-detail-th">Units</th>
                         <th class="home-detail-th">Date</th>
