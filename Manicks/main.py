@@ -18,15 +18,24 @@ app=Flask(__name__)#DEFINING INITIALIZE
 @app.route('/')
 @app.route('/home')
 def home():
-    cursor.execute("select * from service where DeliveryStatus='off'")
+    cursor.execute("select * from service where not DeliveryStatus='on'")
     datas=cursor.fetchall()
     return render_template("home.html",infos=datas)
+
+@app.route('/service')
+def service():
+    datas=0
+    try:
+        cursor.execute("select * from service")
+        datas=cursor.fetchall()[-1]['P_id']
+    except:
+        datas=0
+    return render_template('service.html',info=str(datas+1))
 
 @app.route('/fan_submit',methods=['POST','GET'])
 def fan_submit():
     if request.method== 'POST':
         try:
-            Id=request.form.get('ID')
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
             Color=request.form['COLOR']
@@ -35,23 +44,22 @@ def fan_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (P_id,C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Id}','{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/home")
             except:
                 flash("Transaction failure!!!")
-                return render_template("service.html")
+                return redirect("service.html")
         except:
             flash("Required all values.")
-            return render_template("service.html")
+            return redirect("service.html")
     return render_template("home.html")
 
 @app.route('/motor_submit',methods=['POST','GET'])
 def motor_submit():
     if request.method== 'POST':
         try:
-            Id=request.form.get('ID')
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
             Color=request.form['COLOR']
@@ -60,23 +68,22 @@ def motor_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (P_id,C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Id}','{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/home")
             except:
                 flash("Transaction failure!!!")
-                return render_template("service.html")
+                return redirect("service.html")
         except:
             flash("Required all values.")
-            return render_template("service.html")
+            return redirect("service.html")
     return render_template("home.html")
 
 @app.route('/powertool_submit',methods=['POST','GET'])
 def powertool_submit():
     if request.method== 'POST':
         try:
-            Id=request.form.get('ID')
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
             Color=request.form['COLOR']
@@ -87,16 +94,16 @@ def powertool_submit():
             PowertoolCompany=request.form['COMPANY']
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (P_id,C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Id}','{Name}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/home")
             except:
                 flash("Transaction failure!!!")
-                return render_template("service.html")
+                return redirect("service.html")
         except:
             flash("Required all values.")
-            return render_template("service.html")
+            return redirect("service.html")
     return render_template("home.html")
 
 @app.route('/record_search',methods=['POST','GET'])
@@ -252,10 +259,6 @@ def spares_update():
     cursor.execute("select * from spares")
     datas=cursor.fetchall()
     return render_template('spares_update.html',infos=datas)
-
-@app.route('/service')
-def service():
-    return render_template('service.html')
 
 @app.route('/finance')
 def finance():
