@@ -49,7 +49,7 @@ def fan_submit():
                 cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
-                return redirect("/home")
+                return home()
             except:
                 flash("Transaction failure!!!")
                 return redirect("/service")
@@ -73,13 +73,13 @@ def motor_submit():
                 cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ({Name},{Mobile},{Color},{MotorHP},{Dategiven},{Advance},'Motor',{Missingparts});")
                 con.commit();
                 flash("Record added successfully.")
-                return render_template("home.html")
+                return home()
             except:
                 flash("Transaction failure!!!")
                 return render_template("service.html")
         except:
             flash("Required all values.")
-            return redirect("service.html")
+            return redirect("/service")
     return render_template("home.html")
 
 @app.route('/powertool_submit',methods=['POST','GET'])
@@ -99,13 +99,13 @@ def powertool_submit():
                 cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
-                return redirect("/home")
+                return home()
             except:
                 flash("Transaction failure!!!")
-                return redirect("service.html")
+                return redirect("/service")
         except:
             flash("Required all values.")
-            return redirect("service.html")
+            return redirect("/service")
     return render_template("home.html")
 
 @app.route('/old_record',methods=['POST','GET'])
