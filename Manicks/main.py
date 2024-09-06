@@ -43,6 +43,8 @@ def fan_submit():
             Color=request.form['COLOR']
             Fantype=request.form['FANTYPE']
             Dategiven=request.form['DATEOFGIVEN']
+            if Dategiven=='':
+                Dategiven=day
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
@@ -67,16 +69,18 @@ def motor_submit():
             Color=request.form['COLOR']
             MotorHP=request.form['HP']
             Dategiven=request.form['DATEOFGIVEN']
+            if Dategiven=='':
+                Dategiven=day
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ({Name},{Mobile},{Color},{MotorHP},{Dategiven},{Advance},'Motor',{Missingparts});")
-                con.commit();
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                con.commit()
                 flash("Record added successfully.")
                 return home()
             except:
                 flash("Transaction failure!!!")
-                return render_template("service.html")
+                return redirect("/service")
         except:
             flash("Required all values.")
             return redirect("/service")
@@ -91,6 +95,8 @@ def powertool_submit():
             Color=request.form['COLOR']
             PowertoolType=request.form['POWERTOOLS']
             Dategiven=request.form['DATEOFGIVEN']
+            if Dategiven=='':
+                Dategiven=day
             Advance=int(request.form['ADVANCE'])
             Modelno=int(request.form['MODELNO'])
             PowertoolCompany=request.form['COMPANY']
