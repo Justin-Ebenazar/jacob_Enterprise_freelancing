@@ -286,6 +286,9 @@ def spares():
 def lookup():
     return render_template('spares_lookup.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__=="__main__":
     app.secret_key="admin480"
