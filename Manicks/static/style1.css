@@ -133,7 +133,7 @@ input[type="text"],input[type="number"]{
     color: rgba(0, 0, 0, 1);
   }
 
-  input[type="text"]::placeholder {
+  input[type="text"]::placeholder,input[type="number"]::placeholder {
     font-family: navfont;
     text-align: left;
     font-size: 15px;
@@ -317,6 +317,22 @@ input[type="date"]{
     border: none;
 }
 
+.submit{
+    background-color: #008cff;
+    color: white;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.425) 1px 2px 3px;
+    border-radius: 15px;
+}
+
+.submit:hover{
+    background-color: rgba(0,140,255,0.5);
+    box-shadow: inset rgba(0, 140, 255, 0.425) 1px 2px 3px,
+    inset rgba(0, 140, 255, 0.425) -1px -2px 3px,
+    inset rgba(0, 140, 255, 0.425) 1px -2px 3px,
+    inset rgba(0, 140, 255, 0.425) -1px 2px 3px;
+}
+
 .tab-content{
     display: flex;
     width: 0px;
@@ -334,7 +350,7 @@ input[type="date"]{
 
 .service_table_motor{    
     opacity: 1;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(51, 47, 47, 0.2);
     border-radius: 10px;
 }
 
@@ -642,7 +658,7 @@ input[type="color"]{
 
 #service-footer{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
     height: 50px;
 }
