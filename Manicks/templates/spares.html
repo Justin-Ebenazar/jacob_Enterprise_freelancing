@@ -53,7 +53,7 @@
                             <th class="home-detail-th">Sell stocks</th>
                         </tr> 
                         {% for info in infos %}
-                            <form action="" method="post">
+                            <form action="{{url_for("sell_spare",id=info.S_id)}}" method="post">
                                 <tr>
                                     <td>{{info.S_name}}</td>
                                     <td>{{info.S_use}}</td>
