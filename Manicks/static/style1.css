@@ -303,8 +303,8 @@ input,select{
     align-items: top;
     margin-top: 30px;
     width: 700px;
-    background-color: rgba(0, 0, 0, 0);
-    /*backdrop-filter: blur(2px);*/
+    background-color: rgba(255,255,255, 0.2);
+    backdrop-filter: blur(2px);
     /*position: fixed;*/
     /* margin-left: 35%; */
     /* margin-right: 30%; */
@@ -316,17 +316,18 @@ input,select{
     display: flex;
     width: 0px;
     overflow-x: hidden;
-    transition: 0.5s;
-    /*transform-origin: center; /* 
-        transition: opacity 0.9s ease-in-out;*/
-    /*opacity: 0;*/
-    /* background-color: blue;  */
+    transition: 0.5s ease;
     justify-content: center;
 }
 
 #fan{
     width: 100%;
     opacity: 1;
+    background-color: rgba(44, 31, 31, 0.2);
+}
+
+#power{
+    background-color: rgba(26, 27, 10, 0.2);
 }
 
 .home-detail-table{ 
