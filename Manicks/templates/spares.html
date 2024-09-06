@@ -49,17 +49,20 @@
                             <th class="home-detail-th">Use case</th>
                             <th class="home-detail-th">Units Available</th>
                             <th class="home-detail-th">Price</th>
+                            <th class="home-detail-th">Quantity</th>
                             <th class="home-detail-th">Sell stocks</th>
                         </tr> 
                         {% for info in infos %}
+                            <form action="" method="post">
                                 <tr>
                                     <td>{{info.S_name}}</td>
                                     <td>{{info.S_use}}</td>
                                     <td>{{info.S_stock}}</td>
                                     <td>{{info.S_Cost}}</td>
-                                    <td><a href="{{url_for("sell_spare",id=info.S_id)}}" style="color: white;"><button style="background-color: rgb(249, 60, 60);border-radius: 5px; width: 100px;height: 30px;">Sell</button></a></td>
-                                    
+                                    <td><input type="number" name="quantity"></td>
+                                    <td><a style="color: white;"><button style="background-color: rgb(249, 60, 60);border-radius: 5px; width: 100px;height: 30px;">Sell</button></a></td>
                                 </tr>
+                            </form>
                         {% endfor %}
                     </table>
                 </div>

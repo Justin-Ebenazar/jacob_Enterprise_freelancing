@@ -40,6 +40,9 @@ def fan_submit():
         try:
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
+            if len(str(Mobile))!=10:
+                flash("Moile Number is wrong")
+                return redirect('/service')
             Color=request.form['COLOR']
             Fantype=request.form['FANTYPE']
             Dategiven=request.form['DATEOFGIVEN']
@@ -48,12 +51,12 @@ def fan_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
-                con.commit();
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
+                con.commit()
                 flash("Record added successfully.")
-                return home()
+                return redirect("/home")
             except:
-                flash("Transaction failure!!!")
+                flash("Transaction failure!!! OR Check The entered mobile number.")
                 return redirect("/service")
         except:
             flash("Required all values.")
@@ -66,6 +69,9 @@ def motor_submit():
         try:
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
+            if len(str(Mobile))!=10:
+                flash("Moile Number is wrong")
+                return redirect('/service')
             Color=request.form['COLOR']
             MotorHP=request.form['HP']
             Dategiven=request.form['DATEOFGIVEN']
@@ -74,10 +80,10 @@ def motor_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
                 con.commit()
                 flash("Record added successfully.")
-                return home()
+                return redirect("/home")
             except:
                 flash("Transaction failure!!!")
                 return redirect("/service")
@@ -92,6 +98,9 @@ def powertool_submit():
         try:
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
+            if len(str(Mobile))!=10:
+                flash("Moile Number is wrong")
+                return redirect('/service')
             Color=request.form['COLOR']
             PowertoolType=request.form['POWERTOOLS']
             Dategiven=request.form['DATEOFGIVEN']
@@ -99,13 +108,14 @@ def powertool_submit():
                 Dategiven=day
             Advance=int(request.form['ADVANCE'])
             Modelno=int(request.form['MODELNO'])
+
             PowertoolCompany=request.form['COMPANY']
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
-                return home()
+                return redirect("/home")
             except:
                 flash("Transaction failure!!!")
                 return redirect("/service")
@@ -300,25 +310,30 @@ def finance():
         
     return render_template('finance.html',infos=datas,todays_profit=todays_income,month_profit=month_income)
 
-@app.route('/spares')
+@app.route('/spares',methods=['POST','GET'])
 def spares():
+    if request.method=='POST':
+        qunantity=int(request.form['quantity'])
+        try:
+            cursor.execute("select S_stock,S_Cost,S_id from spares")
+            datas=cursor.fetchone()
+            print(datas)
+            id=datas['S_id']
+            total_stock=datas['S_stock']
+            price=datas['S_Cost']*qunantity
+            cursor.execute(f"update spares set S_stock={total_stock-qunantity} where S_id={id}")
+            con.commit()
+            cursor.execute(f"insert into service (DeliveryStatus,DateDelivered,Totalbill) values('on','{day}',{price})")
+            con.commit()
+            return redirect('/spares')
+        except:
+            print("hello")
     cursor.execute("select * from spares")
     datas=cursor.fetchall()
     return render_template('spares.html',infos=datas)
 
 @app.route('/sell_spare/<int:id>',methods=['POST','GET'])
 def sell_spare(id):       
-    try:
-        cursor.execute(f"select S_stock,S_Cost from spares where S_id={id}")
-        datas=cursor.fetchone()
-        total_stock=datas['S_stock']
-        price=datas['S_Cost']
-        cursor.execute(f"update spares set S_stock={total_stock-1} where S_id={id}")
-        con.commit()
-        cursor.execute(f"insert into service (DeliveryStatus,DateDelivered,Totalbill) values('on','{day}',{price})")
-        con.commit()
-    except:
-        pass
     return redirect('/spares')
 
 @app.route('/lookup')
