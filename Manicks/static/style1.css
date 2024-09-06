@@ -133,7 +133,7 @@ input[type="text"],input[type="number"]{
     color: rgba(0, 0, 0, 1);
   }
 
-  input[type="text"]::placeholder {
+  input[type="text"]::placeholder,input[type="number"]::placeholder {
     font-family: navfont;
     text-align: left;
     font-size: 15px;
@@ -278,7 +278,7 @@ section{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(0,0,0,0.3);
+    background-color: rgb(25,50,100,0.3);
     backdrop-filter: blur(2px);
     box-shadow: 0px 2px 2px;
     height: 50px;
@@ -302,7 +302,7 @@ input,select{
     justify-content: center;
     align-items: top;
     margin-top: 30px;
-    width: 700px;
+    width: 680px;
     background-color: rgba(255,255,255, 0.2);
     backdrop-filter: blur(2px);
     /*position: fixed;*/
@@ -311,23 +311,52 @@ input,select{
     
 }
 
+input[type="date"]{
+    background-color: rgba(255,255,255,0.5);
+    outline: none;
+    border: none;
+}
 
-#fan,#motor,#power{
+.submit{
+    background-color: #008cff;
+    color: white;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.425) 1px 2px 3px;
+    border-radius: 15px;
+}
+
+.submit:hover{
+    background-color: rgba(0,140,255,0.5);
+    box-shadow: inset rgba(0, 140, 255, 0.425) 1px 2px 3px,
+    inset rgba(0, 140, 255, 0.425) -1px -2px 3px,
+    inset rgba(0, 140, 255, 0.425) 1px -2px 3px,
+    inset rgba(0, 140, 255, 0.425) -1px 2px 3px;
+}
+
+.tab-content{
     display: flex;
     width: 0px;
+    height: 0px;
     overflow-x: hidden;
     transition: 0.5s ease;
     justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
-#fan{
+.tab-content.active{
     width: 100%;
-    opacity: 1;
-    background-color: rgba(44, 31, 31, 0.2);
+    height: fit-content;
 }
 
-#power{
+.service_table_motor{    
+    opacity: 1;
+    background-color: rgba(51, 47, 47, 0.2);
+    border-radius: 10px;
+}
+
+.service_table_power{
     background-color: rgba(26, 27, 10, 0.2);
+    border-radius: 10px;
 }
 
 .home-detail-table{ 
@@ -582,10 +611,18 @@ select option:hover{
     border-radius: 10px;
     /*backdrop-filter: blur(5px);*/
     border: 1px solid rgba(255,255,255,0.3);
+    height: fit-content;
     /*box-shadow: 2px 4px 4px rgba(0,0,0,0.3),
     -2px -4px 4px rgba(0,0,0,0.3),
     -2px 4px 4px rgba(0,0,0,0.3),
     2px -4px 4px rgba(0,0,0,0.3);*/
+}
+
+input[type="color"]{
+    all: unset;
+    border-radius: 50px;
+    width: 60px;
+    height: 35px;
 }
 
 .service-table{
@@ -621,7 +658,7 @@ select option:hover{
 
 #service-footer{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
     height: 50px;
 }
@@ -639,11 +676,33 @@ select option:hover{
 }
 
 .about_page{
-    position: relative;
-    top: 80px;
+    /* position: relative;  */
+    margin-top: 120px;
     justify-content:  center;
     align-items: normal;
     text-align: center;
+}
+
+#devops{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: tablefont;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+#team{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 #catch{
@@ -677,15 +736,53 @@ select option:hover{
 #dev_details{
     margin-top: 20px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    /* background-color: yellow; */
+    width: 100%;
+    height: 220px;
+    color: white;
+    font-family: servfont;
 }
 .devs{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: red;
+    justify-content: space-around;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.5);
 }
+
+.sociallinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkedin{
+    background-image: url('pics/linked.png');
+    background-size: contain; /* or cover */
+    background-repeat: no-repeat;
+    background-color: rgb(0,0,0,0);
+    border: none;
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+}
+
+.github{
+    background-image: url('pics/github.png');
+    background-size: contain; /* or cover */
+    background-repeat: no-repeat;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
 /* repair status code */
 
 .repair_status{ 
