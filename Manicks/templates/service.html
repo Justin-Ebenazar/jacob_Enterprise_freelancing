@@ -33,12 +33,12 @@
         </header>
         <section onclick="closeNav()">
             <div class="service-nav">
-                <div class="tab active" onclick="showTab(0)">Fan</div>
-                <div class="tab" onclick="showTab(1)">Motor</div>
+                <div class="tab" onclick="showTab(0)">Fan</div>
+                <div class="tab active" onclick="showTab(1)">Motor</div>
                 <div class="tab" onclick="showTab(2)">PowerTools</div>
             </div>
             <div class="services">
-                <div id="fan">
+            <div class="tab-content">
                 <form action="/fan_submit" class="tab-contant" method="post">
                     <div class="service_table_fan">
                         <table class="service-table">
@@ -47,7 +47,7 @@
                             </tr>
                             <tr>
                                 <td>Product ID:</td>
-                                <td><input type="text" placeholder="null" name="ID"></td>
+                                <td><input type="text" placeholder="Product ID" name="ID"></td>
                                 <td>Fan type:</td>
                                 <td>
                                     <select name="FANTYPE" class="dropbtn">
@@ -60,13 +60,13 @@
                             </tr>
                             <tr>
                                 <td>Customer Name:</td>
-                                <td><input type="text" name="NAME"></td>
+                                <td><input type="text" placeholder="Customer Name" name="NAME"></td>
                                 <td>Missing Parts:</td>
                                 <td><input type="text" name="MISSINGPARTS"></td>
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" name="MOBILE"></td>
+                                <td><input type="number" placeholder="Contact" name="MOBILE"></td>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
@@ -74,18 +74,18 @@
                                 <td>Color:</td>
                                 <td><input type="color" name="COLOR" id=""></td>
                                 <td>Advance:</td>
-                                <td><input type="number" name="ADVANCE" VALUE=0></td>
+                                <td><input type="number" placeholder="Enter amount" name="ADVANCE" VALUE=0></td>
                             </tr>
                         </table>
                         <div id="service-footer">
-                            <input type="reset" value="Reset all" style="background-color: rgb(253, 55, 55);">
-                            <input type="submit" value="Submit" style="background-color: lawngreen;">
+                            <input type="reset" value="Reset all" class="reset">
+                            <input type="submit" value="Submit" class="submit">
                         </div> 
                     </div>
                 </form>
                 </div>   
 
-                <div id="motor">
+                <div class="tab-content active">
                 <form action="/motor_submit" class="tab-contant active" method="post">
                     <div class="service_table_motor">
                         <table class="service-table">
@@ -134,9 +134,9 @@
                 </form>
                 </div>
 
-                <div id="power">
+                <div class="tab-content">
                 <form action="/powertool_submit" class="tab-contant" method="post">
-                    <div class="service-tab-powertools">
+                    <div class="service_table_powertools">
                         <table class="service-table">
                             <tr>
                                 <th class="form-title" colspan="4">PowerTools Details Entry</th>
