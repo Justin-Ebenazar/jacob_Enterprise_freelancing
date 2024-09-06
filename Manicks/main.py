@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect,flash
 import pymysql as ps
 import datetime as dt
-
+import webview
 
 #DATABASE CCONNECCTION
 try:
@@ -15,10 +15,12 @@ today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
 
 app=Flask(__name__)#DEFINING INITIALIZE
+window=webview.create_window("justin",app)
+
 @app.route('/')
 @app.route('/home')
 def home():
-    cursor.execute("select * from service where not DeliveryStatus='on'")
+    cursor.execute("select * from service where not DeliveryStatus='on' or DeliveryStatus='-'")
     datas=cursor.fetchall()
     return render_template("home.html",infos=datas)
 
@@ -285,5 +287,6 @@ def lookup():
 
 
 if __name__=="__main__":
-    app.secret_key="admin480"
-    app.run(debug=True)
+    #app.secret_key="admin480"
+    #app.run(debug=True)
+    webview.start()
