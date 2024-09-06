@@ -108,6 +108,10 @@ def powertool_submit():
             return redirect("service.html")
     return render_template("home.html")
 
+@app.route('/old_record_search',methods=['POST','GET'])
+def old_record_search():
+    return render_template('old_records.html')
+
 @app.route('/record_search',methods=['POST','GET'])
 def record_search():
     if request.method=='POST':
@@ -287,6 +291,6 @@ def lookup():
 
 
 if __name__=="__main__":
-    #app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.secret_key="admin480"
+    app.run(debug=True)
+    #webview.start()

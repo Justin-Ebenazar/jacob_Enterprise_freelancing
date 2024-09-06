@@ -35,13 +35,18 @@
         <section onclick="closeNav()">
             <div class="home-bar">
                 <div>
-                    <form action="/record_search" method="post">
+                    <input type="date" name="Start date">
+                    <input type="date" name="End date"> 
+                    <button class="update">Search by date</button>
+                </div>
+                <div>
+                    <form method="post">
                         <input id="home-serch" type="search" name="SEARCH" placeholder="Search by Name , ID or Phno">
                         <input id="search-btn" type="submit" value="Search" style="width: 50px;">
                     </form>
                 </div>
             </div>
-            <div class="home-table">
+            <!-- <div class="home-table">
                 <table cellspacing="10px" class="home-detail-table">
                     <tr>
                         <th class="home-detail-th">Id</th>
@@ -68,7 +73,7 @@
                             </tr>
                     {% endfor %}
                 </table>
-            </div>
+            </div> -->
         </section>
     </main>
     <div id="mySidenav" class="sidenav">
@@ -76,7 +81,6 @@
         <a href="/finance">Finance</a>
         <a href="/lookup">Spares Lookup</a>
         <a href="/spares_update">Spares Update</a>
-        <a href="/old_record_search">Old records</a>
     </div>
     
     <script src="static/javascp_services.js"></script>
