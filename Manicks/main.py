@@ -209,11 +209,13 @@ def record_search_spare():
         cursor.execute(f"select * from spares where S_name='{search_element}'")
         datas=cursor.fetchall()
         return render_template("spares_update.html",infos=datas)
-        
+
+
 @app.route("/repair_status/<string:id>",methods=['POST','GET'])
 def repair_status(id):
     DiscountAmt=0
     if request.method=='POST':
+        print("ulal")
         try:
             DeliveryStatus=request.form.get('delivered_or_not','off')
             if DeliveryStatus=='on':
@@ -297,7 +299,7 @@ def repair_status(id):
 @app.route('/expence_del/<string:id>/<string:name>',methods=['POST','GET'])
 def expence_del(id,name):
     try:
-        cursor.execute(f"select Cost,Quantity from expences where P_id='{id}' and S_name='{name}'")
+        cursor.execute(f"select Cost,Quantity,S_name from expences where P_id='{id}' and S_name='{name}'")
         datas=cursor.fetchone()
         Old_cost=datas['Cost']
         Old_quantity=datas['Quantity']
@@ -313,7 +315,7 @@ def expence_del(id,name):
     except:
         # flash("Cannot delete item.")
         pass
-    return repair_status(id)
+    return redirect(f'/repair_status/{id}')
 
 
 @app.route('/spares_update')
