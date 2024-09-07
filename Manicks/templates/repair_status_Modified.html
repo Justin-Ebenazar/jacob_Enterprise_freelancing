@@ -52,6 +52,10 @@
                                     <td>Machine:</td>
                                     <td>{{info.Machine}}</td>
                                 </tr>
+                                {% if info.Machine=='Motor' %}
+                                    <td>Motor HP:</td>
+                                    <td>{{info.M_hp}}</td>
+                                {% endif %}
                                 <tr>
                                     <td>Missing parts:</td>
                                     <td>{{info.MachineParts}}</td>
