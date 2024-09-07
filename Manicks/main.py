@@ -322,16 +322,15 @@ def spares_update():
 
 @app.route('/finance')
 def finance():
-    cursor.execute("select P_id,C_name,Machine,DateDelivered,Totalbill from service where DeliveryStatus='on'")
+    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where DeliveryStatus='on' and MONTH(DateDelivered)={day[5:7]}")
     datas=cursor.fetchall()
     todays_income=0
     month_income=0
 
     for data in datas:
-        if data['DateDelivered'][8:]==day[8:]:
+        if data['DateDelivered'][8:]==day[8:]:#DATE
             todays_income+=data['Totalbill']
-        if data['DateDelivered'][5:7]==day[5:7]:
-            month_income+=data['Totalbill']
+        month_income+=data['Totalbill']
         
     return render_template('finance.html',infos=datas,todays_profit=todays_income,month_profit=month_income)
 
