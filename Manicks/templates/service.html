@@ -10,7 +10,7 @@
     {% with messages=get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <script>alert('{{message}}');</script>
+            <h1>{{message}}</h1>
         {% endfor %}
     {% endif %}
     {% endwith %}
@@ -60,19 +60,19 @@
                             </tr>
                             <tr>
                                 <td>Customer Name:</td>
-                                <td><input type="text" placeholder="Customer Name" name="NAME"></td>
+                                <td><input type="text" placeholder="Customer Name" name="NAME" required></td>
                                 <td>Missing Parts:</td>
                                 <td><input type="text" name="MISSINGPARTS"></td>
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" placeholder="Contact" name="MOBILE"></td>
+                                <td><input type="number" placeholder="Contact" name="MOBILE" required></td>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
                             <tr>
                                 <td>Color:</td>
-                                <td><input type="color" name="COLOR" id=""></td>
+                                <td><input type="color" name="COLOR"></td>
                                 <td>Advance:</td>
                                 <td><input type="number" placeholder="Enter amount" name="ADVANCE" VALUE=0></td>
                             </tr>
@@ -96,7 +96,7 @@
                                 <td><h1 class="id" style="font-size: 20px;">{{'M'+info}}</h1></td>
                                 <td>Motor HP:</td>
                                 <td>
-                                    <select name="HP" id="">
+                                    <select name="HP">
                                         <option value="1/2">1/2</option>
                                         <option value="3/4">3/4</option>
                                         <option value="1">1</option>
@@ -108,13 +108,13 @@
                             </tr>
                             <tr>
                                 <td>Customer Name:</td>
-                                <td><input type="text" name="NAME" placeholder="Customer name"></td>
+                                <td><input type="text" name="NAME" placeholder="Customer name" required></td>
                                 <td>Missing Parts:</td>
                                 <td><input type="text" name="MISSINGPARTS" placeholder="Parts"></td>
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" name="MOBILE" placeholder="Contact"></td>
+                                <td><input type="number" name="MOBILE" placeholder="Contact" required></td>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
@@ -155,13 +155,13 @@
                             </tr>
                             <tr>
                                 <td>Customer Name:</td>
-                                <td><input type="text" placeholder="Customer Name" name="NAME"></td>
+                                <td><input type="text" placeholder="Customer Name" name="NAME" required></td>
                                 <td>Model size:</td>
-                                <td><input type="number" placeholder="Enter size" name="MODELNO"></td>
+                                <td><input type="number" placeholder="Enter size" name="MODELNO" required></td>
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" placeholder="Contact" name="MOBILE"></td>
+                                <td><input type="number" placeholder="Contact" name="MOBILE" required></td>
                                 <td>Missing Parts:</td>
                                 <td><input type="text" name="MISSINGPARTS"></td>
                             </tr>
