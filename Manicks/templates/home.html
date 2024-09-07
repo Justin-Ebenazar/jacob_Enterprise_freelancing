@@ -42,36 +42,38 @@
                 </div>
             </div>
             <div class="home-table">
-                <table cellspacing="10px" class="home-detail-table">
-                    <thead>
-                    <tr>
-                        <th class="home-detail-th">Id</th>
-                        <th class="home-detail-th">Name</th>
-                        <th class="home-detail-th">Mobile no</th>
-                        <th class="home-detail-th">Color</th>
-                        <th class="home-detail-th">Machine</th>
-                        <th class="home-detail-th">Date Given</th>
-                        <th class="home-detail-th">Repair Status</th>
-                        <th class="home-detail-th">Delivery Status</th>
-                        <th class="home-detail-th">Edit</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for info in infos %}
-                            <tr>
-                                <td class="home-detail-td">{{info.P_id}}</td>
-                                <td class="home-detail-td">{{info.C_name}}</td>
-                                <td class="home-detail-td">{{info.C_mobile}}</td>
-                                <td class="home-detail-td"><center><div style="background-color: {{info.P_color}} ;" id="colour_indicator"></div></center></td>
-                                <td class="home-detail-td">{{info.Machine}}</td>
-                                <td class="home-detail-td">{{info.DateGiven}}</td>
-                                <td class="home-detail-td">{{info.RepairStatus}}</td>
-                                <td class="home-detail-td">{{info.DeliveryStatus}}</td>
-                                <td class="home-detail-td"><a id="edit" href="{{url_for("repair_status",id=info.P_id)}}">Status</a></td>
-                            </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                <div>
+                    <table cellspacing="10px" class="home-detail-table">
+                        <thead>
+                        <tr>
+                            <th class="home-detail-th">Id</th>
+                            <th class="home-detail-th">Name</th>
+                            <th class="home-detail-th">Mobile no</th>
+                            <th class="home-detail-th">Color</th>
+                            <th class="home-detail-th">Machine</th>
+                            <th class="home-detail-th">Date Given</th>
+                            <th class="home-detail-th">Repair Status</th>
+                            <th class="home-detail-th">Delivery Status</th>
+                            <th class="home-detail-th">Edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for info in infos %}
+                                <tr>
+                                    <td class="home-detail-td">{{info.P_id}}</td>
+                                    <td class="home-detail-td">{{info.C_name}}</td>
+                                    <td class="home-detail-td">{{info.C_mobile}}</td>
+                                    <td class="home-detail-td"><center><div style="background-color: {{info.P_color}} ;" id="colour_indicator"></div></center></td>
+                                    <td class="home-detail-td">{{info.Machine}}</td>
+                                    <td class="home-detail-td">{{info.DateGiven}}</td>
+                                    <td class="home-detail-td">{{info.RepairStatus}}</td>
+                                    <td class="home-detail-td">{{info.DeliveryStatus}}</td>
+                                    <td class="home-detail-td"><a id="edit" href="{{url_for("repair_status",id=info.P_id)}}">Status</a></td>
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>

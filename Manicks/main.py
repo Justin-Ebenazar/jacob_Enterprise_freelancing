@@ -133,10 +133,9 @@ def old_record():
 @app.route('/old_record_search',methods=['POST','GET'])
 def old_record_search():
     if request.method=='POST':
-        search_element=request.form['SEARCH']
         Start_date=request.form['Start_date']
         End_date=request.form['End_date']
-        cursor.execute(f"select * from service where P_id='{search_element}' or C_name='{search_element}' or DateGiven between '{Start_date}' and '{End_date}' and DeliveryStatus='on'")
+        cursor.execute(f"select * from service where DateGiven between '{Start_date}' and '{End_date}' and DeliveryStatus='on'")
         datas=cursor.fetchall()
         return render_template("old_records.html",infos=datas)
     return redirect("/old_record")
@@ -240,6 +239,7 @@ def repair_status(id):
                     except:
                         quantity=1
                 except:
+                    STOCK=1
                     if(COST==0):
                         flash("Require cost value for new Spare.")
                 if (COST!=0 and STOCK>0):

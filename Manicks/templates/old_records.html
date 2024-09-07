@@ -37,49 +37,42 @@
             <div class="home-bar" style="gap: 400px;">
                 <div style="display: flex; gap: 10px; align-items: center;  ">
                     <!-- to serach with date -->
-                    <form>
+                    <form action="/old_record_search" method="post">
                         <input type="date" name="Start_date">
                         <input type="date" name="End_date">
-                        <a><button id="search-btn" style="border-radius: 10px; background-color: rgba(0,0,0,1);">Search</button></a>
-                    </form>
-                </div>
-
-                <div>
-                    <!-- to serach by id -->
-                    <form> 
-                        <input id="home-serch" type="search" name="old-SEARCH" placeholder="Search by Name , ID or Phno">
                         <input id="search-btn" type="submit" value="Search" style="width: 50px;">
                     </form>
                 </div>
             </div>
-
             <div class="home-table">
-                <table cellspacing="10px" class="home-detail-table">
-                    <tr>
-                        <th class="home-detail-th">Id</th>
-                        <th class="home-detail-th">Name</th>
-                        <th class="home-detail-th">Mobile no</th>
-                        <th class="home-detail-th">Color</th>
-                        <th class="home-detail-th">Machine</th>
-                        <th class="home-detail-th">Date Given</th>
-                        <th class="home-detail-th">Repair Status</th>
-                        <th class="home-detail-th">Delivery Status</th>
-                        <th class="home-detail-th">Edit</th>
-                    </tr>
-                    {% for info in infos %}
-                            <tr>
-                                <td class="home-detail-td">{{info.P_id}}</td>
-                                <td class="home-detail-td">{{info.C_name}}</td>
-                                <td class="home-detail-td">{{info.C_mobile}}</td>
-                                <td class="home-detail-td"><div style="background-color: {{info.P_color}};" id="colour_indicator"></div></td>
-                                <td class="home-detail-td">{{info.Machine}}</td>
-                                <td class="home-detail-td">{{info.DateGiven}}</td>
-                                <td class="home-detail-td">{{info.RepairStatus}}</td>
-                                <td class="home-detail-td">{{info.DeliveryStatus}}</td>
-                                <td class="home-detail-td"><a id="edit" href="{{url_for("repair_status",id=info.P_id)}}">Status</a></td>
-                            </tr>
-                    {% endfor %}
-                </table>
+                <div>
+                    <table cellspacing="10px" class="home-detail-table">
+                        <tr>
+                            <th class="home-detail-th">Id</th>
+                            <th class="home-detail-th">Name</th>
+                            <th class="home-detail-th">Mobile no</th>
+                            <th class="home-detail-th">Color</th>
+                            <th class="home-detail-th">Machine</th>
+                            <th class="home-detail-th">Date Given</th>
+                            <th class="home-detail-th">Repair Status</th>
+                            <th class="home-detail-th">Delivery Status</th>
+                            <th class="home-detail-th">Edit</th>
+                        </tr>
+                        {% for info in infos %}
+                                <tr>
+                                    <td class="home-detail-td">{{info.P_id}}</td>
+                                    <td class="home-detail-td">{{info.C_name}}</td>
+                                    <td class="home-detail-td">{{info.C_mobile}}</td>
+                                    <td class="home-detail-td"><div style="background-color: {{info.P_color}};" id="colour_indicator"></div></td>
+                                    <td class="home-detail-td">{{info.Machine}}</td>
+                                    <td class="home-detail-td">{{info.DateGiven}}</td>
+                                    <td class="home-detail-td">{{info.RepairStatus}}</td>
+                                    <td class="home-detail-td">{{info.DeliveryStatus}}</td>
+                                    <td class="home-detail-td"><a id="edit" href="{{url_for("repair_status",id=info.P_id)}}">Status</a></td>
+                                </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </section>
     </main>
