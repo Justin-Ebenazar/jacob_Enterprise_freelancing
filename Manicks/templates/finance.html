@@ -41,13 +41,18 @@
                 Today's Profit : {{month_profit}}
                 </div>
             </div>
-            <table id="finance_table">
+
+            <div class="finance-table-div">
+            <table class="finance_table">
+                <thead>
                 <tr>
                     <th>Product ID</th>
                     <th>Customer name</th>
                     <th>Product type</th>
                     <th>Profit made</th>
                 </tr>
+                </thead>
+                <tbody>
                 {% for info in infos %}
                     <tr>
                         <td>{{info.P_id}}</td>
@@ -56,22 +61,9 @@
                         <td>{{info.Totalbill}}</td>
                     </tr>
                 {% endfor %}
+                </tbody>
             </table>
-            
-        <!-- </section>
-        <script>
-            function calculateTotalProfit() {
-                const profitCells = document.querySelectorAll('.profit');
-                let totalProfit = 0;
-                profitCells.forEach(cell => {
-                    totalProfit += parseFloat(cell.textContent.replace('$', ''));
-                });
-                document.getElementById('totalProfit').textContent = 'Total Profit: $' + totalProfit;
-            }
-    
-            // Calculate total profit when the page loads
-            window.onload = calculateTotalProfit;
-        </script> -->
+            </div>
     </main>
     
     <div id="mySidenav" class="sidenav">

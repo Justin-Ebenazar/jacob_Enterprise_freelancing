@@ -496,61 +496,70 @@ select option:hover{
 }
 
 /*finance page*/
-#finance_table{
-    top: 170px;
-    position: fixed;
-    width: 100%-100px;
-    border-collapse: collapse;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,194,1) 34%, rgba(105,9,121,1) 100%);
-    backdrop-filter: blur(5px);
+
+.finance-table-div{
+    margin-top: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 430px;
+    overflow-y: auto;
     border-radius: 10px;
 }
 
-#finance_table th,td{
+.finance_table{
+    border-collapse: collapse;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,194,1) 34%, rgba(105,9,121,1) 100%);
+    border-radius: 10px;
+}
+
+.finance_table th,td{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    /*background-color: rgba(255, 255, 255, 1);*/
     color: black;
+    font-family: servfont;
 }
 
-#finance_table th{
-    /*background-color: rgba(255, 0, 200, 0.5);*/
+.finance_table th{
+    background-color: rgb(86, 1, 165);
     color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
-#finance_table th:nth-child(2){
+.finance_table th:nth-child(2){
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-#finance_table td:nth-child(2){
+.finance_table td:nth-child(2){
     border-right: 1px solid rgba(255,107,194, 0.5);
     border-left: 1px solid rgba(107,107,107, 0.5);
 }
 
-#finance_table th:last-child{
+.finance_table th:last-child{
     border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-#finance_table td:last-child{
+.finance_table td:last-child{
     border-left: 1px solid rgba(107,107,107, 0.5);
 }
 
-#finance_table td{
+.finance_table td{
     border-top: 1px solid rgba(107, 107, 107, 0.5);
     background-color: white;
     text-align: center;
     color: black;
 }
 
-#finance_table tr:last-child td:first-child{
+.finance_table tr:last-child td:first-child{
     border-radius: 0px 0px 0px 10px;
 }
 
-#finance_table tr:last-child td:last-child{
+.finance_table tr:last-child td:last-child{
     border-radius: 0px 0px 10px 0px;
 }
 
