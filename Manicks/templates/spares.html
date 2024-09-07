@@ -34,8 +34,8 @@
         </header>
         <section onclick="closeNav()">
             <div class="spares-sale-table">
-                <div>
                     <table cellspacing="10px" class="spare-detail-table">
+                        <thead>
                         <tr>
                             <th class="home-detail-th">Spare Name</th>
                             <th class="home-detail-th">Use case</th>
@@ -44,6 +44,8 @@
                             <th class="home-detail-th">Quantity</th>
                             <th class="home-detail-th">Sell stocks</th>
                         </tr> 
+                        </thead>
+                        <tbody>
                         {% for info in infos %}
                             <form action="{{url_for("sell_spare",id=info.S_id)}}" method="post">
                                 <tr>
@@ -56,8 +58,8 @@
                                 </tr>
                             </form>
                         {% endfor %}
+                        </tbody>
                     </table>
-                </div>
             </div>
         </section>
         </main>
