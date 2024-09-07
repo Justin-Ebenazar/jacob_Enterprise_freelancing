@@ -348,8 +348,9 @@ def sell_spare(id):
         if qunantity<=0 :
             return redirect('/spares')
         try:
-            cursor.execute(f"select S_stock,S_Cost,S_id from spares where S_id={id}")
+            cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
             datas=cursor.fetchone()
+            
             total_stock=datas['S_stock']
             if total_stock<=0 or total_stock<qunantity:
                 flash("Insufficient Stock!!!")
@@ -357,7 +358,7 @@ def sell_spare(id):
             price=datas['S_Cost']*qunantity
             cursor.execute(f"update spares set S_stock={total_stock-qunantity} where S_id={id}")
             con.commit()
-            cursor.execute(f"insert into service (DeliveryStatus,DateDelivered,Totalbill) values('on','{day}',{price})")
+            cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
             return redirect('/spares')
         except:
