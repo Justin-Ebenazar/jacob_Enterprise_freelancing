@@ -73,7 +73,9 @@ def motor_submit():
                 flash("Moile Number is wrong")
                 return redirect('/service')
             Color=request.form['COLOR']
-            MotorHP=request.form['HP']
+            MotorHP=request.form['HPI']
+            if (MotorHP==''):
+                MotorHP=request.form['HP']
             Dategiven=request.form['DATEOFGIVEN']
             if Dategiven=='':
                 Dategiven=day
