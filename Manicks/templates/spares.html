@@ -28,19 +28,11 @@
                     <li><a href="{{url_for('home')}}" class="navli" >Home</a></li>
                     <li><a href="{{url_for('service')}}" class="navli">Services</a></li>
                     <li><a href="{{url_for('spares')}}" class="navli">Spares</a></li>
-                    <li><a href="{{url_for('spares')}}" class="navli">About</a></li>
+                    <li><a href="{{url_for('about')}}" class="navli">About</a></li>
                 </ul>
             </nav>
         </header>
         <section onclick="closeNav()">
-            <div class="spares-bar">
-                <div>
-                    <form action="/record_search" method="post">
-                        <input id="spare-serch" type="search" name="SEARCH" placeholder="Search by Name/ID">
-                        <input id="search-btn" type="submit" value="Search" style="width: 50px;">
-                    </form>
-                </div>
-            </div>
             <div class="spares-sale-table">
                 <div>
                     <table cellspacing="10px" class="spare-detail-table">
