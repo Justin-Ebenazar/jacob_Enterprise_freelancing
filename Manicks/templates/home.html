@@ -43,6 +43,7 @@
             </div>
             <div class="home-table">
                 <table cellspacing="10px" class="home-detail-table">
+                    <thead>
                     <tr>
                         <th class="home-detail-th">Id</th>
                         <th class="home-detail-th">Name</th>
@@ -54,6 +55,8 @@
                         <th class="home-detail-th">Delivery Status</th>
                         <th class="home-detail-th">Edit</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {% for info in infos %}
                             <tr>
                                 <td class="home-detail-td">{{info.P_id}}</td>
@@ -67,6 +70,7 @@
                                 <td class="home-detail-td"><a id="edit" href="{{url_for("repair_status",id=info.P_id)}}">Status</a></td>
                             </tr>
                     {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </section>

@@ -364,8 +364,22 @@ input[type="date"]{
     border-radius: 10px;
 }
 
+/* home table styling */
+
+/* the div containing the table */
+
+.home-table{
+    max-height: 435px;
+    margin-top: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: top;
+    width: 100%;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+/* the table */
 .home-detail-table{ 
-    /*border: 1px solid rgba(255,255,255,0.3);*/
     border-radius: 15px 15px 0px 0px;
     padding: 10px;
     text-align: justify;
@@ -373,10 +387,6 @@ input[type="date"]{
     font-family: tablefont;
     font-size: 15px;
     background:rgba(255, 225, 225,0);
-    box-shadow:  4px 4px 4px rgba(0,0,0,0.3),
-    -2px -4px 5px rgba(0,0,0,0.3),
-    -2px 4px 5px rgba(0,0,0,0.3),
-    2px -4px 5px rgba(0,0,0,0.3);
 }
 
 .home-detail-table th{
@@ -384,13 +394,20 @@ input[type="date"]{
     backdrop-filter: blur(2px);
     text-align: center;
     padding: 10px;
-
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    max-height: 20px;
 }
 
 .home-detail-table th:first-child{
     border-radius: 15px 0px 0px 0px;
 }
 
+.home-detail-table th:last-child{
+    border-radius: 0px 15px 0px 0px;
+}
+/* status button styling */
 #edit{
     border-radius: 5px;
     background-color: rgb(0, 195, 255);
@@ -409,33 +426,14 @@ input[type="date"]{
 #edit:hover{
     background-color:  rgb(9, 153, 197);
 }
-
+/* table rows */
 .home-detail-table td{
     background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(0px);
     color: white;
     text-align: center;
     padding: 10px;
-}
-
-.home-detail-table th:last-child{
-    border-radius: 0px 15px 0px 0px;
-    /*background-color: ;*/
-}
-
-.home-table{
-    position: fixed;
-    margin-top: 180px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: top;
-    width: 100%;
-    overflow-y: scroll;
-}
-
-.home-table tr{
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 10px;
+    background-color: rgba(0,0,0,0.3);
 }
 
 #colour_indicator{
