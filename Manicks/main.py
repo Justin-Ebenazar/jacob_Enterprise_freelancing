@@ -146,7 +146,7 @@ def old_record_search():
 def record_search():
     if request.method=='POST':
         search_element=request.form['SEARCH']
-        cursor.execute(f"select * from service where P_id='{search_element}' or C_name='{search_element}'")
+        cursor.execute(f"select * from service where P_id='{search_element}' or C_name='{search_element.lower()}'")
         datas=cursor.fetchall()
         return render_template("home.html",infos=datas)
     return redirect("/home")
@@ -227,23 +227,23 @@ def repair_status(id):
         try:
             EXPNSPARE=request.form['EXPNSPARE']
             COST=int(request.form['COST'])
-            STOCK=0
+            STOCK=1
             quantity=1
             try:
                 try:
                     cursor.execute(f"select S_Cost,S_stock from spares where S_name='{EXPNSPARE}'")
                     cost_and_stock=cursor.fetchone()
-                    COST=cost_and_stock['S_Cost']
+                    COST=int(cost_and_stock['S_Cost'])
                     STOCK=int(cost_and_stock['S_stock'])
-                    try:
-                        cursor.execute(f"select Quantity from expences where S_name='{EXPNSPARE}' and P_id='{id}'")
-                        quantity+=cursor.fetchone()['Quantity']
-                    except:
-                        quantity=1
                 except:
-                    STOCK=1
                     if(COST==0):
                         flash("Require cost value for new Spare.")
+                try:
+                    cursor.execute(f"select Quantity from expences where S_name='{EXPNSPARE}' and P_id='{id}'")
+                    q=cursor.fetchone()['Quantity']
+                    quantity+=q
+                except:
+                    quantity=1
                 if (COST!=0 and STOCK>0):
                     cursor.execute(f"select S_name from expences where P_id='{id}' and S_name='{EXPNSPARE}'")
                     if (cursor.fetchone()):
@@ -252,8 +252,11 @@ def repair_status(id):
                     else:
                         cursor.execute(f"insert into expences values('{id}','{EXPNSPARE}',{COST*quantity},{DiscountAmt},{quantity})")
                         con.commit()
-                    cursor.execute(f"update spares set S_stock={STOCK-1} where S_name='{EXPNSPARE}'")
-                    con.commit()
+                    try:
+                        cursor.execute(f"update spares set S_stock={STOCK-1} where S_name='{EXPNSPARE}'")
+                        con.commit()
+                    except:
+                        pass
                 else:
                     flash(f"Insufficient ({EXPNSPARE}) Stock.")
             except:
@@ -298,7 +301,6 @@ def expence_del(id,name):
         datas=cursor.fetchone()
         Old_cost=datas['Cost']
         Old_quantity=datas['Quantity']
-        print(Old_cost,Old_quantity)
         if Old_quantity>1:
             Price=Old_cost/Old_quantity
             New_cost=Old_cost-Price
