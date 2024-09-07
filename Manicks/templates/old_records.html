@@ -33,19 +33,26 @@
             </nav>
         </header>
         <section onclick="closeNav()">
-            <div class="home-bar">
-                
+
+            <div class="home-bar" style="gap: 400px;">
+                <div style="display: flex; gap: 10px; align-items: center;  ">
+                    <!-- to serach with date -->
+                    <form>
+                        <input type="date" name="Start_date">
+                        <input type="date" name="End_date">
+                        <a><button id="search-btn" style="border-radius: 10px; background-color: rgba(0,0,0,1);">Search</button></a>
+                    </form>
+                </div>
+
                 <div>
-                    <form action="/old_record_search" method="post">
-                        <div>
-                            <input type="date" name="Start_date">
-                            <input type="date" name="End_date"> 
-                        <input id="home-serch" type="search" name="SEARCH" placeholder="Search by Name , ID or Phno">
+                    <!-- to serach by id -->
+                    <form> 
+                        <input id="home-serch" type="search" name="old-SEARCH" placeholder="Search by Name , ID or Phno">
                         <input id="search-btn" type="submit" value="Search" style="width: 50px;">
-                    </div>
                     </form>
                 </div>
             </div>
+
             <div class="home-table">
                 <table cellspacing="10px" class="home-detail-table">
                     <tr>
