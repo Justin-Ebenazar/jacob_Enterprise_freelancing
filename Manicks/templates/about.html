@@ -6,6 +6,11 @@
     <title>About</title>
     <link rel="stylesheet" href="static/style1.css">
     <script src="static/javascp_services.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -42,59 +47,85 @@
                 </div>
 
                 <div id="dev_details">
-                    <div class="devs">
-                        <center>
-                        <br>
-                        <h1>Manikaraj</h1>
-                        <p> B.E CSE</p>
-                        <br>
-                        <p style="color: rgb(8, 60, 105)">manikaraj480@gmail.com</p>
-                        <br>
-                        <p>Game Developer</p>
-                        <br>
-                        <div class="sociallinks">
-                            <a href="https://www.linkedin.com/in/manikaraj-k-a53879265"><div class="linkedin"></div></a>
-                            <a href="https://github.com/Manikarajhp"><div class="github"></div></a>
+                    <div class="flipper" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-inner">
+                            <div class="devs" style="width: 240px;">
+                                <center>
+                                <br>
+                                <h1>Manikaraj</h1>
+                                <p> B.E CSE</p>
+                                <br>
+                                <p style="color: rgb(8, 60, 105)">manikaraj480@gmail.com</p>
+                                <br>
+                                <p>Game Developer</p>
+                                <br>
+                                <div class="sociallinks">
+                                    <a href="https://www.linkedin.com/in/manikaraj-k-a53879265"><div class="linkedin" onclick="event.stopPropagation()"></div></a>
+                                    <a href="https://github.com/Manikarajhp"><div class="github" onclick="event.stopPropagation()"></div></a>
+                                </div>
+                                </center>
+                            </div>
+                            <div class="devs_back" style="width: 240px;">
+                                <div id="man_image">
+
+                                </div>
+                            </div>
                         </div>
-                        </center>
                     </div>
-                    <div class="devs">
-                        <center>
-                        <br>
-                        <h1>Jasmine</h1>
-                        <p>B.Tech IT</p>
-                        <br>
-                        <p style="padding-left: 10px; padding-right: 10px;
-                        color: rgb(8, 60, 105);">jasminejohnepsiba@gmail.com</p>
-                        <br>
-                        <p>Data Analyst</p>
-                        <br>
-                        <div class="sociallinks">
-                            <a href="https://www.linkedin.com/in/jasmine-john-917653284"><div class="linkedin"></div></a>
-                            <a href="https://github.com/Jasmine-2022"><div class="github"></div></a>
+                    <div class="flipper" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-inner">
+                            <div class="devs" >
+                                <center>
+                                    <br>
+                                    <h1>Jasmine</h1>
+                                    <p>B.Tech IT</p>
+                                    <br>
+                                    <p style="padding-left: 10px; padding-right: 10px;
+                                    color: rgb(8, 60, 105);">jasminejohnepsiba@gmail.com</p>
+                                    <br>
+                                    <p>Data Analyst</p>
+                                    <br>
+                                    <div class="sociallinks">
+                                        <a href="https://www.linkedin.com/in/jasmine-john-917653284"><div class="linkedin" onclick="event.stopPropagation()"></div></a>
+                                        <a href="https://github.com/Jasmine-2022"><div class="github" onclick="event.stopPropagation()"></div></a>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="devs_back">
+                                <div id="jas_image">
+
+                                </div>
+                            </div>
                         </div>
-                        </center>
                     </div>
-                    <div class="devs">
-                        <center>
-                        <br>
-                        <h1>Justin</h1>
-                        <p> B.E CSE</p>
-                        <br>
-                        <p style="color: rgb(8, 60, 105)">justinpianist7@gmail.com</p>
-                        <br>
-                        <p>Software Developer</p>
-                        <br>
-                        <div class="sociallinks">
-                            <a href="https://www.linkedin.com/in/justin-ebenazar-3ab934265"><div class="linkedin"></div></a>
-                            <a href="https://github.com/Justin-Ebenazar"><div class="github"></div></a>
+                    <div class="flipper" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-inner">
+                            <div class="devs" style="width: 240px;">
+                                <center>
+                                    <br>
+                                    <h1>Justin</h1>
+                                    <p> B.E CSE</p>
+                                    <br>
+                                    <p style="color: rgb(8, 60, 105)">justinpianist7@gmail.com</p>
+                                    <br>
+                                    <p>Software Developer</p>
+                                    <br>
+                                    <div class="sociallinks">
+                                        <a href="https://www.linkedin.com/in/justin-ebenazar-3ab934265"><div class="linkedin" onclick="event.stopPropagation()"></div></a>
+                                        <a href="https://github.com/Justin-Ebenazar"><div class="github" onclick="event.stopPropagation()"></div></a>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="devs_back" style="width: 240px;">
+                                <div id="jus_image">
+
+                                </div>
+                            </div>
                         </div>
-                        </center>
                     </div>
                 </div>
 
-            </div>
-            <!--side navigaiton panel oda code ithu-->
+            <!--side navigation panel oda code ithu-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="/finance">Finance</a>
