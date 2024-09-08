@@ -50,7 +50,7 @@
                             <tr>
                                 <td>Used for:</td>
                                 <td>
-                                    <select name="USECASE">
+                                    <select name="USECASE" style="width: 170px; border-radius: 50px;">
                                         <option value="fan">Fan</option>
                                         <option value="motor">Motor</option>
                                         <option value="powertool">Powertool</option>
@@ -71,7 +71,8 @@
                                     style="background-color: rgb(0, 255, 0);
                                     border-radius: 15px;
                                     border: 2px solid white;
-                                    font-family: servfont;"></center></td>
+                                    font-family: servfont;
+                                    width: 100px;"></center></td>
                             </tr>
                         </table>
                     </form>
@@ -80,12 +81,12 @@
             <div class="spares-update-bar">
                 <div>
                     <form action="/record_search_spare" method="post">
-                        <input type="text" placeholder="Search by name" name="SEARCH">
-                        <input type="submit" value="Search" style="background-color: rgb(171, 253, 89);">
+                        <input type="text" placeholder="Search by name" name="SEARCH" style="border-radius: 20px 0px 0px 20px;">
+                        <input type="submit" value="" id="search-btn">
                     </form>
                 </div>
                 <div>
-                    <button class="add_new_item"><a  onclick="additemActive()">+New Item</a> </button>
+                    <a  onclick="additemActive()"><button class="add_new_item">+New Item</button></a>
                     <!-- new spare adder -->
                 </div>
 

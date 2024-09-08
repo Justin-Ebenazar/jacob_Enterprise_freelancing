@@ -291,6 +291,7 @@ def repair_status(id):
         discount=datas2[0]['Discount']
     except:
         discount=0
+    print(datas)
     return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total,disc=discount)
 
 
@@ -399,4 +400,4 @@ def about():
 if __name__=="__main__":
     app.secret_key="admin480"
     app.run(debug=True)
-    webview.start()
+    #webview.start()

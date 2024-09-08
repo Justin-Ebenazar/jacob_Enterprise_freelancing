@@ -34,11 +34,12 @@
             <a href="/spares_update">Spares Update</a>
             <a href="/old_record_search">Old records</a>
         </div>
-            <div class="additem-container">
+        <div style=" display:flex; height: 400px; margin-top: 180px;">
+            <div class="additem-container" style="border-radius: 20px; height: 400px; display: flex; flex-direction: column;">
                 <form action="" method="post">
-                    <table>
+                    <table >
                         <tr>
-                            <th colspan="2">Add Item</th>
+                            <th colspan="2" style="font-family: servfont;">Add Item</th>
                         </tr>
                         <tr>
                             <td>Name:</td>
@@ -62,13 +63,34 @@
                             <td>Price</td>
                             <td><input type="number" name="SPARECOST" value="{{infos.S_Cost}}"></td>
                         </tr>
-                        <tr>
-                            <td style="text-align: center;"><button style="width: 80px; background-color: lawngreen; height: 20px;">+ Add</button></td>
-                            <td style="text-align: center;"><button style="width: 80px; background-color: red; height: 20px;color: white;"><a href="{{url_for("spares_update")}}">Close</a></button></td>
-                        </tr>
                     </table>
+                    <br>
+                    <center>
+                    <button style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 80px; 
+                    height: 10px;
+                    background-color: rgba(0,0,0,0.7); 
+                    height: 20px;
+                    border: 1px solid white;
+                    border-radius: 20px;
+                    font-family: servfont;
+                    padding: 10px;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    color: white;
+                    ">Update</button>
+                    </center>
                 </form>
+                <br>
+                <a href="{{url_for("spares_update")}}" style="color: red;
+                font-family: tablefont;
+                text-decoration: underline;">
+                 Cancel</a>
             </div>
+        </div>
         </section>
     </main>
 </body>
