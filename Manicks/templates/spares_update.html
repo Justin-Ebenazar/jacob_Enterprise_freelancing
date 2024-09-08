@@ -34,11 +34,14 @@
         </header>
         <section onclick="closeNav()">
             <div class="additem">
+                <div id="deact">
+                    <p id="close" onclick="additemDeactive()">x</p>
+                </div>
                 <div class="additem-container">
                     <form action="/add_new_item" method="post">
                         <table>
                             <tr>
-                                <th colspan="2">Add Item</th>
+                                <th colspan="2" style="font-family: servfont;">Add Item</th>
                             </tr>
                             <tr>
                                 <td>Name:</td>
@@ -64,8 +67,11 @@
                                 <td><input type="number" name="SPARECOST"></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="+ADD"></td>
-                                <td style="text-align: center;"><button style="width: 80px; background-color: red; height: 20px;color: white;" onclick="additemDeactive()">Close</button></td>
+                                <td colspan="2"><center><input type="submit" value="+ADD"
+                                    style="background-color: rgb(0, 255, 0);
+                                    border-radius: 15px;
+                                    border: 2px solid white;
+                                    font-family: servfont;"></center></td>
                             </tr>
                         </table>
                     </form>

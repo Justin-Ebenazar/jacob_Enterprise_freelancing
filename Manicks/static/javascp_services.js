@@ -37,7 +37,10 @@ function showTab(a){
 
 function additemActive(){
   const additem=document.querySelector('.additem');
+  const additemcon=document.querySelector('.additem-container');
+
   additem.style.display="flex";
+  additemcon.style.opacity="1"
 }
 
 function additemDeactive(){
