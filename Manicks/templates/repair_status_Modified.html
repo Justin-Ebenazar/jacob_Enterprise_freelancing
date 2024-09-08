@@ -77,25 +77,25 @@
                                             {% endfor %}
                                     </datalist> 
                                 <br>   
-                                    <div>
+                                <div>
                                     <input type="text" placeholder="Search" id="spare_search_rpstat" list="suggestions" name="EXPNSPARE">
                                     <input type="number" name="COST" value=0>
                                     <a><button class="add_new_item">ADD</button></a>
-                                    </div>
+                                </div>
                                 <br>
                             </form>
                         </div>
                         <div class="right_half_rpstatus_bottom">
                             <div>
-                            <table>
-                                {% for expn in expns%}
-                                <tr>
-                                    <td>{{expn.S_name}}</td>
-                                    <td>{{expn.Cost}}</td>
-                                    <td><button style="background-color: rgb(249, 60, 60);border-radius: 5px; width: 100px;height: 30px;"><a href="{{url_for("expence_del",id=expn.P_id,name=expn.S_name)}}" style="color: white;">Remove</a></button></td>
-                                </tr>
-                                {% endfor %}
-                            </table>
+                                <table>
+                                    {% for expn in expns%}
+                                    <tr>
+                                        <td>{{expn.S_name}}</td>
+                                        <td>{{expn.Cost}}</td>
+                                        <td><a href="{{url_for("expence_del",id=expn.P_id,name=expn.S_name)}}" style="color: white;"><button style="background-color: rgb(249, 60, 60);border-radius: 5px; width: 100px;height: 30px;">Remove</button></a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
                             </div>
                         </div>
                     </div>
