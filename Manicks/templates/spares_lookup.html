@@ -29,25 +29,37 @@
             <div class="spares-lookup-filter">
                 
                 <div>
-                    <form action="" method="post">
-                        <div>
+                    <form action="/spares_look_search" method="post">
+                        <div style="display: flex; gap: 20px;">
                             <input type="date" name="Start_date">
                             <input type="date" name="End_date"> 
-                        <input id="home-serch" type="search" name="SEARCH" placeholder="Search by Name , ID or Phno">
-                        <input id="search-btn" type="submit" value="Search" style="width: 50px;">
-                    </div>
+                            <input id="home-serch" type="search" name="spl_SEARCH" placeholder="Search by Name" style="width: 150px;">
+                            <input id="search-btn" type="submit" value="Search" style="width: 50px;">
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="spares-lookup-table">
                 <center>
                 <table cellspacing="10px" class="by_product">
+                    <thead>
                     <tr>
                         <th class="home-detail-th">Spare Name</th>
                         <th class="home-detail-th">Use case</th>
                         <th class="home-detail-th">Units</th>
                         <th class="home-detail-th">Date</th>
                     </tr>
+                    </thead>
+                    <tbody>
+                        {% for info in infos %}
+                            <tr>
+                                <td>{{info.spare_name}}</td>
+                                <td>{{info.id}}</td>
+                                <td>{{info.total_quantity}}</td>
+                                <td>{{info.date_delivered}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
                 </center>
             </div>

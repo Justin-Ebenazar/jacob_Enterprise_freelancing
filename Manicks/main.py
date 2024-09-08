@@ -368,6 +368,29 @@ def sell_spare(id):
 def lookup():
     return render_template('spares_lookup.html')
 
+@app.route('/spares_look_search',methods=['POST','GET'])
+def spares_look_search():
+    if request.method=='POST':
+        Start_date=request.form['Start_date']
+        End_date=request.form['End_date']
+        if(Start_date!='' and End_date!=''):
+            cursor.execute(f"SELECT e.S_name AS spare_name , s.P_id AS id, SUM(e.Quantity) AS total_quantity,s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE s.DateDelivered BETWEEN '{Start_date}' AND '{End_date}' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
+            datas1=cursor.fetchall()
+            cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_mobile IS NULL AND s.DateDelivered BETWEEN '{Start_date}' AND '{End_date}';")
+            datas2=cursor.fetchall()
+            print(datas1+datas2)
+            return render_template("spares_lookup.html",infos=datas1+datas2)
+        else:
+            Spare_name=request.form['spl_SEARCH']
+            cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_name='{Spare_name}';")
+            data1=cursor.fetchall()
+            print(type(data1))
+            cursor.execute(f"SELECT e.S_name AS spare_name, s.P_id AS id, SUM(e.Quantity) AS total_quantity, s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE e.S_name = '{Spare_name}' AND s.DeliveryStatus = 'on' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
+            data2=list(cursor.fetchall())
+            print(type(data2))
+            return render_template("spares_lookup.html",infos=data1+data2)
+    return redirect("/lookup")
+
 @app.route('/about')
 def about():
     return render_template('about.html')
