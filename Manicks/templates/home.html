@@ -64,7 +64,9 @@
                         </thead>
                         <tbody>
                         {% for info in infos %}
-                                <tr >
+                                <tr {% if info.RepairStatus=='on' %}
+                                style="background-color: rgba(0,255,0,0.3);"
+                                {% endif %}>
                                     <td class="home-detail-td">{{info.P_id}}</td>
                                     <td class="home-detail-td">{{info.C_name}}</td>
                                     <td class="home-detail-td">{{info.C_mobile}}</td>

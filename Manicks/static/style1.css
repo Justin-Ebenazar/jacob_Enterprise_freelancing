@@ -887,6 +887,7 @@ input[type="color"]{
 
 .repair_status{ 
     margin-top: 140px;
+    width: 1000px;
 }
 #heading_for_repairstatus{
     display: flex;
@@ -1074,7 +1075,7 @@ input[type="color"]{
     border-left: 1px solid rgba(0, 0, 0, 0.4);
     border-right: 1px solid rgba(0, 0, 0, 0.4);
     height: 350px;
-    width: 800px;
+    width: 957px;
     padding: 20px;
 }
 /* second main section la left half */
