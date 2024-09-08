@@ -128,7 +128,7 @@ def powertool_submit():
 
 @app.route('/old_record',methods=['POST','GET'])
 def old_record():
-    cursor.execute("select * from service where DeliveryStatus='on'")
+    cursor.execute("select * from service where DeliveryStatus='on' and C_mobile is not null")
     datas=cursor.fetchall()
     return render_template('old_records.html',infos=datas)
 

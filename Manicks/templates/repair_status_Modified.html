@@ -35,7 +35,7 @@
         <section onclick="closeNav()">
             <div class="repair_status">
                 <div id="heading_for_repairstatus">
-                    <p id="machine_code" style="background-color: {{info.P_color}};">{{info.P_id}}</p>
+                    <p id="machine_code" style="-webkit-text-stroke:0.5px white;color: black;  background-color: {{info.P_color}};">{{info.P_id}}</p>
                 </div>
                 <div class="repair_status_details">
                     <div id="left_half_rpstatus"> 
@@ -56,6 +56,18 @@
                                     <td>Motor HP:</td>
                                     <td>{{info.M_hp}}</td>
                                 {% endif %}
+                                
+                                {% if info.Machine=='Fan' %}
+                                    <td>Fan Type:</td>
+                                    <td>{{info.F_type}}</td>
+                                {% endif %}
+
+                                {% if info.Machine=='PowerTool' %}
+                                    <td>PowerToolType:</td>
+                                    <td>{{info.P_type}}</td>
+                                {% endif %}
+
+
                                 <tr>
                                     <td>Missing parts:</td>
                                     <td>{{info.MachineParts}}</td>
