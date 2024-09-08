@@ -37,7 +37,7 @@
                 <div id="heading_for_repairstatus">
                     <p id="machine_code" style="-webkit-text-stroke:0.5px white;color: black;  background-color: {{info.P_color}};">{{info.P_id}}</p>
                 </div>
-                <div class="repair_status_details">
+                <div class="repair_status_details" style="gap: 10px;">
                     <div id="left_half_rpstatus"> 
                             <table class="rp_status_custinfo">
                                 <tr>
@@ -82,7 +82,7 @@
                         <div class="right_half_rpstatus_top">
                             <form action="" method="post">
                                 <br>
-                                <h1>Expenses</h1>
+                                <h1 style="color: black; ">Expenses</h1>
                                     <datalist id="suggestions">
                                             {% for info1 in infos%}
                                                 <option>{{info1.S_name}}</option>
@@ -144,7 +144,7 @@
                             <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
                         </div>
                         <div class="footer-details" style="width: 80px;">
-                            <button type="submit" style="background: rgb(159, 254, 64); width: 70px;height: 30px; border: none; border-radius: 5px;">Update</button>
+                            <button type="submit" style="background: rgb(159, 254, 64); width: 70px;height: 30px; border: none; border-radius: 15px;">Update</button>
                         </div>
                 </div>
             </form>
