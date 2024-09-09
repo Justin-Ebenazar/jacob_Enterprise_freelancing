@@ -5,7 +5,7 @@ import webview
 
 #DATABASE CCONNECCTION
 try:
-    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
     con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
