@@ -42,13 +42,13 @@ def home():
     global init_pointer
     cursor.execute("select * from service where not paymentstatus='on'")
     datas = cursor.fetchall()
-    # if init_pointer == 0:
-    #     @after_this_request
-    #     def play_wav_file_after_render(response):
-    #         global init_pointer
-    #         play_wav_file("static/audio/welcome.wav")
-    #         init_pointer+=1
-    #         return response
+    if init_pointer == 0:
+        @after_this_request
+        def play_wav_file_after_render(response):
+            global init_pointer
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            init_pointer+=1
+            return response
     return render_template("home.html", infos=datas)
 
 
@@ -293,7 +293,7 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        # play_wav_file("static/audio/update.wav")
+        play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -378,7 +378,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            play_wav_file("C:/Users/User/Documents/fl/Manicks/static/audio/no.wav")
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -393,7 +393,7 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
-            # play_wav_file("static/audio/money.wav") 
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
             return redirect('/spares')
         except:
             pass 
