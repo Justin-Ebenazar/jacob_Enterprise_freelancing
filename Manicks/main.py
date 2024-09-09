@@ -2,9 +2,6 @@ from flask import Flask,render_template,request,redirect,flash
 import pymysql as ps
 import datetime as dt
 import webview
-import sounddevice as sd
-from scipy.io import wavfile
-import numpy as np
 
 #DATABASE CCONNECCTION
 try:
@@ -13,20 +10,6 @@ except:
     con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
-#audio player code
-def play_wav_file(file_path):
-    # Read the WAV file
-    samplerate, data = wavfile.read(file_path)
-    
-    # Normalize data if necessary
-    if data.dtype != 'float32':
-        # Normalize data to float32 if it’s not already
-        data = data / np.max(np.abs(data), axis=0)  # Normalize to [-1, 1]
-        data = data.astype(np.float32)  # Convert to float32
-
-    # Play the sound
-    sd.play(data, samplerate)
-    sd.wait()
 
 today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
@@ -278,10 +261,9 @@ def repair_status(id):
                 else:
                     flash(f"Insufficient ({EXPNSPARE}) Stock.")
             except:
-                flash("Cannot add item.") 
+                flash("Cannot add item.")
         except:
             pass
-        play_wav_file("audio/update.wav") 
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -417,5 +399,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    #webview.start()
