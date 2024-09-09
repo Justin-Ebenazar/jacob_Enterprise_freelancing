@@ -40,7 +40,7 @@ window=webview.create_window("justin",app)
 @app.route('/home')
 def home():
     global init_pointer
-    cursor.execute("select * from service where not paymentstatus='on'")
+    cursor.execute("select * from service where paymentstatus='off' and C_mobile is not null")
     datas = cursor.fetchall()
     if init_pointer == 0:
         @after_this_request
@@ -308,6 +308,7 @@ def repair_status(id):
 
     cursor.execute(f"select * from expences where P_id='{id}'")
     datas2=cursor.fetchall()
+    print(datas2,123)
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
@@ -317,6 +318,7 @@ def repair_status(id):
     except:
         pass
     discount=0
+    print(datas2,456)
     try:
         discount=datas2[0]['Discount']
     except:
@@ -429,5 +431,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    #webview.start()
