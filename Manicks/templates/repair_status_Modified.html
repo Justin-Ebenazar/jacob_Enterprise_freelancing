@@ -135,11 +135,21 @@
                                 </label>
                             </label>
                         </div>
+                        <div class="footer-details-status">
+                            <p id="delivstatus">Payment :</p>
+                            <br>
+                            <label class="container">
+                                <label class="switch">
+                                    <input type="checkbox" name="payed_or_not" {% if info.paymentstatus == 'on' %}checked{% endif %}>
+                                    <span class="slider round"></span>
+                                </label>
+                            </label>
+                        </div>
                         <div class="footer-details">
                             <p id="disc">Discount :</p><br>
                             <input type="number" name="DISCOUNTAMOUNT" class="DISCOUNT" value="{{disc}}" style="width: 50px;">
                         </div>
-                        <div class="footer-details"style="width: 80px;">
+                        <div class="footer-details">
                             <p id="tot_amt">Total :</p> <br>
                             <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
                         </div>
