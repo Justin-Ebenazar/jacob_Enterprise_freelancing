@@ -367,6 +367,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
+            #play_wav_file("no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
