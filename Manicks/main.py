@@ -393,9 +393,10 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
+            play_wav_file("static/audio/money.wav") 
             return redirect('/spares')
         except:
-            pass   
+            pass 
     return spares()
 
 @app.route('/lookup')
