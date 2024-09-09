@@ -1,7 +1,11 @@
 from flask import Flask,render_template,request,redirect,flash
+from flask import after_this_request
 import pymysql as ps
 import datetime as dt
 import webview
+import sounddevice as sd
+from scipy.io import wavfile
+import numpy as np
 
 #DATABASE CCONNECCTION
 try:
@@ -9,6 +13,21 @@ try:
 except:
     con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
+
+init_pointer=0
+def play_wav_file(file_path):
+    # Read the WAV file
+    samplerate, data = wavfile.read(file_path)
+    
+    # Normalize data if necessary
+    if data.dtype != 'float32':
+        # Normalize data to float32 if it’s not already
+        data = data / np.max(np.abs(data), axis=0)  # Normalize to [-1, 1]
+        data = data.astype(np.float32)  # Convert to float32
+
+    # Play the sound
+    sd.play(data, samplerate)
+    sd.wait()  # Wait until the sound has finished playing
 
 
 today=dt.datetime.now()
@@ -20,9 +39,18 @@ window=webview.create_window("justin",app)
 @app.route('/')
 @app.route('/home')
 def home():
+    global init_pointer
     cursor.execute("select * from service where not DeliveryStatus='on'")
-    datas=cursor.fetchall()
-    return render_template("home.html",infos=datas)
+    datas = cursor.fetchall()
+    if init_pointer == 0:
+        @after_this_request
+        def play_wav_file_after_render(response):
+            global init_pointer
+            play_wav_file("static/audio/welcome.wav")
+            init_pointer+=1
+            return response
+    return render_template("home.html", infos=datas)
+
 
 @app.route('/service')
 def service():
@@ -264,6 +292,7 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
+        play_wav_file("static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -349,7 +378,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            #play_wav_file("no.wav")
+            play_wav_file("static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
