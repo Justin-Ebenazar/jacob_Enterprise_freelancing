@@ -11,7 +11,7 @@ import numpy as np
 try:
     con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
-    con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 init_pointer=0
@@ -34,7 +34,7 @@ today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
 
 app=Flask(__name__)#DEFINING INITIALIZE
-window=webview.create_window("justin",app)
+window=webview.create_window("MR.J Services Company",app)
 
 @app.route('/')
 @app.route('/home')
@@ -46,7 +46,7 @@ def home():
         @after_this_request
         def play_wav_file_after_render(response):
             global init_pointer
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/welcome.wav")
             init_pointer+=1
             return response
     return render_template("home.html", infos=datas)
@@ -293,7 +293,7 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
+        play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -308,7 +308,6 @@ def repair_status(id):
 
     cursor.execute(f"select * from expences where P_id='{id}'")
     datas2=cursor.fetchall()
-    print(datas2,123)
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
@@ -318,7 +317,6 @@ def repair_status(id):
     except:
         pass
     discount=0
-    print(datas2,456)
     try:
         discount=datas2[0]['Discount']
     except:
@@ -357,7 +355,7 @@ def spares_update():
 
 @app.route('/finance')
 def finance():
-    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where DeliveryStatus='on' and MONTH(DateDelivered)={day[5:7]}")
+    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where paymentstatus='on' and MONTH(DateDelivered)={day[5:7]}")
     datas=cursor.fetchall()
     todays_income=0
     month_income=0
@@ -380,7 +378,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -395,7 +393,7 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/money.wav") 
             return redirect('/spares')
         except:
             pass 
