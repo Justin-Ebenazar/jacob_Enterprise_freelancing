@@ -1,7 +1,11 @@
 from flask import Flask,render_template,request,redirect,flash
+from flask import after_this_request
 import pymysql as ps
 import datetime as dt
 import webview
+import sounddevice as sd
+from scipy.io import wavfile
+import numpy as np
 
 #DATABASE CCONNECCTION
 try:
@@ -9,6 +13,21 @@ try:
 except:
     con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
+
+init_pointer=0
+def play_wav_file(file_path):
+    # Read the WAV file
+    samplerate, data = wavfile.read(file_path)
+    
+    # Normalize data if necessary
+    if data.dtype != 'float32':
+        # Normalize data to float32 if it’s not already
+        data = data / np.max(np.abs(data), axis=0)  # Normalize to [-1, 1]
+        data = data.astype(np.float32)  # Convert to float32
+
+    # Play the sound
+    sd.play(data, samplerate)
+    sd.wait()  # Wait until the sound has finished playing
 
 
 today=dt.datetime.now()
@@ -20,9 +39,18 @@ window=webview.create_window("justin",app)
 @app.route('/')
 @app.route('/home')
 def home():
-    cursor.execute("select * from service where not DeliveryStatus='on'")
-    datas=cursor.fetchall()
-    return render_template("home.html",infos=datas)
+    global init_pointer
+    cursor.execute("select * from service where paymentstatus='off' and C_mobile is not null")
+    datas = cursor.fetchall()
+    if init_pointer == 0:
+        @after_this_request
+        def play_wav_file_after_render(response):
+            global init_pointer
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            init_pointer+=1
+            return response
+    return render_template("home.html", infos=datas)
+
 
 @app.route('/service')
 def service():
@@ -221,7 +249,8 @@ def repair_status(id):
                 cursor.execute(f"update service set DateDelivered='{day}' where P_id='{id}'")
                 con.commit()
             RepairStatus=request.form.get('repaired_or_not','off')
-            cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}' where P_id='{id}' ")
+            paymentstatus=request.form.get('payed_or_not','off')
+            cursor.execute(f"update service set RepairStatus='{RepairStatus}', DeliveryStatus='{DeliveryStatus}',paymentstatus='{paymentstatus}' where P_id='{id}' ")
             con.commit()
         except:
             pass
@@ -264,6 +293,7 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
+        play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -278,6 +308,7 @@ def repair_status(id):
 
     cursor.execute(f"select * from expences where P_id='{id}'")
     datas2=cursor.fetchall()
+    print(datas2,123)
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
@@ -287,11 +318,11 @@ def repair_status(id):
     except:
         pass
     discount=0
+    print(datas2,456)
     try:
         discount=datas2[0]['Discount']
     except:
         discount=0
-    print(datas)
     return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total,disc=discount)
 
 
@@ -349,6 +380,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -363,9 +395,10 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
             return redirect('/spares')
         except:
-            pass   
+            pass 
     return spares()
 
 @app.route('/lookup')
@@ -382,7 +415,6 @@ def spares_look_search():
             datas1=cursor.fetchall()
             cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_mobile IS NULL AND s.DateDelivered BETWEEN '{Start_date}' AND '{End_date}';")
             datas2=cursor.fetchall()
-            print(datas1+datas2)
             return render_template("spares_lookup.html",infos=datas1+datas2)
         else:
             Spare_name=request.form['spl_SEARCH']
