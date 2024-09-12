@@ -49,6 +49,7 @@
                             <th>Product ID</th>
                             <th>Customer name</th>
                             <th>Product type</th>
+                            <th>Quantity</th>
                             <th>Profit made</th>
                         </tr>
                         </thead>
@@ -58,6 +59,10 @@
                                 <td>{{info.P_id}}</td>
                                 <td>{{info.C_name}}</td>
                                 <td>{{info.Machine}}</td>
+                                <td>{% if info.P_id==-1%} {{info.Machine}}
+                                    {% else %} -
+                                    {% endif %}
+                                </td>
                                 <td>{{info.Totalbill}}</td>
                             </tr>
                         {% endfor %}

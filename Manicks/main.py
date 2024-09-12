@@ -45,6 +45,7 @@ def home():
     global init_pointer
     cursor.execute("select * from service where paymentstatus='off' and C_mobile is not null")
     datas = cursor.fetchall()
+    print(datas)
     if init_pointer == 0:
         @after_this_request
         def play_wav_file_after_render(response):
@@ -405,7 +406,7 @@ def sell_spare(id):
             price=datas['S_Cost']*qunantity
             cursor.execute(f"update spares set S_stock={total_stock-qunantity} where S_id={id}")
             con.commit()
-            cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
+            cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill,paymentstatus) values('{datas['S_name']}','{qunantity}','on','{day}',{price},'on')")
             con.commit()
             try:
                 play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
