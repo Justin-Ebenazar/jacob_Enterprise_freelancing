@@ -10,7 +10,7 @@
     {% with messages=get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <h1>{{message}}</h1>
+            <script>alert({{message}})</script>
         {% endfor %}
     {% endif %}
     {% endwith %}
@@ -66,7 +66,7 @@
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" placeholder="Contact" name="MOBILE" required></td>
+                                <td><input type="tel" placeholder="Contact" name="MOBILE" required pattern="\d{10}" title="Enter a Valid Number"></td>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
@@ -118,7 +118,7 @@
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" name="MOBILE" placeholder="Contact" required></td>
+                                <td><input type="tel" name="MOBILE" placeholder="Contact" required pattern="\d{10}" title="Enter a Valid Number"></td>
                                 <td>Date given:</td>
                                 <td><input type="date" name="DATEOFGIVEN"></td>
                             </tr>
@@ -165,7 +165,7 @@
                             </tr>
                             <tr>
                                 <td>Mobile No:</td>
-                                <td><input type="number" placeholder="Contact" name="MOBILE" required></td>
+                                <td><input type="tel" placeholder="Contact" name="MOBILE" required pattern="\d{10}" title="Enter a Valid Number"></td>
                                 <td>Missing Parts:</td>
                                 <td><input type="text" name="MISSINGPARTS"></td>
                             </tr>

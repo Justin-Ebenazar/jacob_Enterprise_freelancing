@@ -11,7 +11,7 @@ import numpy as np
 try:
     con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
-    con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 init_pointer=0
@@ -34,13 +34,13 @@ today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
 
 app=Flask(__name__)#DEFINING INITIALIZE
-window=webview.create_window("justin",app)
+window=webview.create_window("MR.J Services Company",app)
 
 @app.route('/')
 @app.route('/home')
 def home():
     global init_pointer
-    cursor.execute("select * from service where not paymentstatus='on'")
+    cursor.execute("select * from service where paymentstatus='off' and C_mobile is not null")
     datas = cursor.fetchall()
     if init_pointer == 0:
         @after_this_request
@@ -361,7 +361,7 @@ def spares_update():
 
 @app.route('/finance')
 def finance():
-    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where DeliveryStatus='on' and MONTH(DateDelivered)={day[5:7]}")
+    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where paymentstatus='on' and MONTH(DateDelivered)={day[5:7]}")
     datas=cursor.fetchall()
     todays_income=0
     month_income=0
@@ -441,5 +441,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    #webview.start()

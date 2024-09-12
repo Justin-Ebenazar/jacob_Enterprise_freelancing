@@ -115,7 +115,7 @@ nav ul li{
     -2px -2px 3px rgba(255,255,255,0.3);
 }
 
-input[type="text"],input[type="number"]{
+input[type="text"],input[type="number"],input[type="tel"]{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
