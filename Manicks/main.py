@@ -63,10 +63,11 @@ def home():
 def service():
     datas=0
     try:
-        cursor.execute("select * from service")
-        datas=int(cursor.fetchall()[-1]['P_id'])
+        cursor.execute("SELECT MAX(P_id) + 1 FROM service WHERE C_mobile is not null;")
+        res=cursor.fetchone()
+        datas=int(res['MAX(P_id) + 1'])
     except:
-        datas=0
+        datas=13000
     return render_template("service.html",info=str(datas+1))
 
 @app.route('/fan_submit',methods=['POST','GET'])
@@ -447,6 +448,6 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    #webview.start()
     #pass
