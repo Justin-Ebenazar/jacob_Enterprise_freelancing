@@ -46,7 +46,10 @@ def home():
         @after_this_request
         def play_wav_file_after_render(response):
             global init_pointer
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            try:
+                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            except:
+                play_wav_file("static/audio/welcome.wav")
             init_pointer+=1
             return response
     return render_template("home.html", infos=datas)
@@ -293,7 +296,10 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
+        try:
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
+        except:
+            play_wav_file("static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -378,7 +384,10 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
+            try:
+                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
+            except:
+                play_wav_file("static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -393,7 +402,10 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
+            try:
+                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
+            except:
+                play_wav_file("static/audio/money.wav")
             return redirect('/spares')
         except:
             pass 
@@ -419,7 +431,7 @@ def spares_look_search():
             cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_name='{Spare_name}';")
             data1=cursor.fetchall()
             cursor.execute(f"SELECT e.S_name AS spare_name, s.P_id AS id, SUM(e.Quantity) AS total_quantity, s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE e.S_name = '{Spare_name}' AND s.DeliveryStatus = 'on' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
-            data2=list(cursor.fetchall())
+            data2=cursor.fetchall()
             return render_template("spares_lookup.html",infos=data1+data2)
     return redirect("/lookup")
 
