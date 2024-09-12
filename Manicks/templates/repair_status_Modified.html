@@ -82,15 +82,17 @@
                         <div class="right_half_rpstatus_top">
                             <form action="" method="post">
                                 <br>
-                                <h1 style="color: black; ">Expenses</h1>
-                                    <datalist id="suggestions">
-                                            {% for info1 in infos%}
-                                                <option>{{info1.S_name}}</option>
-                                            {% endfor %}
-                                    </datalist> 
+                                <h1 style="color: black; ">Expenses</h1> 
                                 <br>   
                                 <div>
-                                    <input type="text" placeholder="Search" id="spare_search_rpstat" list="suggestions" name="EXPNSPARE">
+                                    
+                                    <datalist id="suggestions">
+                                        {% for info1 in infos%}
+                                            <option value="{{info1.S_name}}">{{info1.S_name}}</option>
+                                        {% endfor %}
+                                    </datalist>
+                                    <input type="text" placeholder="Search" id="spare_search_rpstat" name="EXPNSPARE" autocomplete="off"  list="suggestions" >
+                                    
                                     <input type="number" name="COST" value=0>
                                     <a><button class="add_new_item">ADD</button></a>
                                 </div>

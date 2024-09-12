@@ -61,14 +61,14 @@ def home():
 
 @app.route('/service')
 def service():
-    datas=0
+    datas=13000
     try:
         cursor.execute("SELECT MAX(P_id) + 1 FROM service WHERE C_mobile is not null;")
         res=cursor.fetchone()
         datas=int(res['MAX(P_id) + 1'])
     except:
         datas=13000
-    return render_template("service.html",info=str(datas+1))
+    return render_template("service.html",info=str(datas))
 
 @app.route('/fan_submit',methods=['POST','GET'])
 def fan_submit():
@@ -429,16 +429,16 @@ def spares_look_search():
         End_date=request.form['End_date']
         if(Start_date!='' and End_date!=''):
             cursor.execute(f"SELECT e.S_name AS spare_name , s.P_id AS id, SUM(e.Quantity) AS total_quantity,s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE s.DateDelivered BETWEEN '{Start_date}' AND '{End_date}' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
-            datas1=cursor.fetchall()
+            datas1=list(cursor.fetchall())
             cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_mobile IS NULL AND s.DateDelivered BETWEEN '{Start_date}' AND '{End_date}';")
-            datas2=cursor.fetchall()
+            datas2=list(cursor.fetchall())
             return render_template("spares_lookup.html",infos=datas1+datas2)
         else:
             Spare_name=request.form['spl_SEARCH']
             cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_name='{Spare_name}';")
-            data1=cursor.fetchall()
+            data1=list(cursor.fetchall())
             cursor.execute(f"SELECT e.S_name AS spare_name, s.P_id AS id, SUM(e.Quantity) AS total_quantity, s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE e.S_name = '{Spare_name}' AND s.DeliveryStatus = 'on' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
-            data2=cursor.fetchall()
+            data2=list(cursor.fetchall())
             return render_template("spares_lookup.html",infos=data1+data2)
     return redirect("/lookup")
 
