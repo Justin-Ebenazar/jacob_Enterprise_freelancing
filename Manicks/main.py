@@ -11,7 +11,10 @@ import numpy as np
 try:
     con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
-    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+    try:
+        con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
+    except:
+        con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 init_pointer=0
@@ -324,7 +327,9 @@ def repair_status(id):
         pass
     discount=0
     try:
-        discount=datas2[0]['Discount']
+        print(type(datas2))
+        print(datas2[0]['discount'])
+        discount=datas2[0]['discount']
     except:
         discount=0
     return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total,disc=discount)
@@ -441,5 +446,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    app.run(debug=True)
-    #webview.start()
+    #app.run(debug=True)
+    webview.start()

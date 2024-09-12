@@ -949,7 +949,7 @@ input[type="color"]{
     margin-bottom: 20px;
     cursor: pointer;
     transition: 0.3s;
-    color: rgb(116, 115, 115);
+    color: rgb(56, 56, 56);
 }
 
 #close:hover{
