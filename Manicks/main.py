@@ -368,7 +368,7 @@ def spares_update():
 
 @app.route('/finance')
 def finance():
-    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where paymentstatus='on' and MONTH(DateDelivered)={day[5:7]}")
+    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where paymentstatus='on' and MONTH(DateDelivered)={day[5:7]} order by DateDelivered")
     datas=cursor.fetchall()
     todays_income=0
     month_income=0
