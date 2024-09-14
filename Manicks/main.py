@@ -234,7 +234,7 @@ def update_item(id):
 def record_search_spare():
     if request.method=='POST':
         search_element=request.form['SEARCH']
-        cursor.execute(f"select * from spares where S_name='{search_element}'")
+        cursor.execute(f"select * from spares where S_name like %'{search_element}'%")
         datas=cursor.fetchall()
         return render_template("spares_update.html",infos=datas)
 
