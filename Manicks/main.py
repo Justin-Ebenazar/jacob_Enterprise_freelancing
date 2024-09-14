@@ -11,10 +11,7 @@ import numpy as np
 try:
     con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
-    try:
-        con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
-    except:
-        con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 init_pointer=0
@@ -37,7 +34,7 @@ today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
 
 app=Flask(__name__)#DEFINING INITIALIZE
-window=webview.create_window("MR.J Services Company",app)
+window=webview.create_window("justin",app)
 
 @app.route('/')
 @app.route('/home')
@@ -45,15 +42,11 @@ def home():
     global init_pointer
     cursor.execute("select * from service where paymentstatus='off' and C_mobile is not null")
     datas = cursor.fetchall()
-    print(datas)
     if init_pointer == 0:
         @after_this_request
         def play_wav_file_after_render(response):
             global init_pointer
-            try:
-                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
-            except:
-                play_wav_file("static/audio/welcome.wav")
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
             init_pointer+=1
             return response
     return render_template("home.html", infos=datas)
@@ -61,14 +54,13 @@ def home():
 
 @app.route('/service')
 def service():
-    datas=13000
+    datas=0
     try:
-        cursor.execute("SELECT MAX(P_id) + 1 FROM service WHERE C_mobile is not null;")
-        res=cursor.fetchone()
-        datas=int(res['MAX(P_id) + 1'])
+        cursor.execute("select * from service")
+        datas=int(cursor.fetchall()[-1]['P_id'])
     except:
-        datas=13000
-    return render_template("service.html",info=str(datas))
+        datas=0
+    return render_template("service.html",info=str(datas+1))
 
 @app.route('/fan_submit',methods=['POST','GET'])
 def fan_submit():
@@ -301,10 +293,7 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        try:
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
-        except:
-            play_wav_file("static/audio/update.wav")
+        play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -319,6 +308,7 @@ def repair_status(id):
 
     cursor.execute(f"select * from expences where P_id='{id}'")
     datas2=cursor.fetchall()
+    print(datas2,123)
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
@@ -328,10 +318,9 @@ def repair_status(id):
     except:
         pass
     discount=0
+    print(datas2,456)
     try:
-        print(type(datas2))
-        print(datas2[0]['discount'])
-        discount=datas2[0]['discount']
+        discount=datas2[0]['Discount']
     except:
         discount=0
     return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total,disc=discount)
@@ -368,7 +357,7 @@ def spares_update():
 
 @app.route('/finance')
 def finance():
-    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where paymentstatus='on' and MONTH(DateDelivered)={day[5:7]} order by DateDelivered")
+    cursor.execute(f"select P_id,C_name,Machine,DateDelivered,Totalbill from service where DeliveryStatus='on' and MONTH(DateDelivered)={day[5:7]}")
     datas=cursor.fetchall()
     todays_income=0
     month_income=0
@@ -391,10 +380,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            try:
-                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
-            except:
-                play_wav_file("static/audio/no.wav")
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -407,12 +393,9 @@ def sell_spare(id):
             price=datas['S_Cost']*qunantity
             cursor.execute(f"update spares set S_stock={total_stock-qunantity} where S_id={id}")
             con.commit()
-            cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill,paymentstatus) values('{datas['S_name']}','{qunantity}','on','{day}',{price},'on')")
+            cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
-            try:
-                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
-            except:
-                play_wav_file("static/audio/money.wav")
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
             return redirect('/spares')
         except:
             pass 
@@ -450,4 +433,3 @@ if __name__=="__main__":
     app.secret_key="admin480"
     #app.run(debug=True)
     webview.start()
-    #pass
