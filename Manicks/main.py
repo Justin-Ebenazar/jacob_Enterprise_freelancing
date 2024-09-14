@@ -79,7 +79,7 @@ def fan_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
                 con.commit()
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -98,7 +98,7 @@ def motor_submit():
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
             if len(str(Mobile))!=10:
-                flash("Moile Number is wrong")
+                flash("Mobile Number is wrong")
                 return redirect('/service')
             Color=request.form['COLOR']
             MotorHP=request.form['HPI']
@@ -110,7 +110,7 @@ def motor_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
                 con.commit()
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -142,7 +142,7 @@ def powertool_submit():
             PowertoolCompany=request.form['COMPANY']
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -174,7 +174,7 @@ def old_record_search():
 def record_search():
     if request.method=='POST':
         search_element=request.form['SEARCH']
-        cursor.execute(f"select * from service where P_id='{search_element}' or C_name='{search_element.lower()}'")
+        cursor.execute(f"select * from service where P_id='{search_element}' or C_name like'%{search_element.lower()}%'")
         datas=cursor.fetchall()
         return render_template("home.html",infos=datas)
     return redirect("/home")
@@ -234,7 +234,7 @@ def update_item(id):
 def record_search_spare():
     if request.method=='POST':
         search_element=request.form['SEARCH']
-        cursor.execute(f"select * from spares where S_name='{search_element}'")
+        cursor.execute(f"select * from spares where S_name like '%{search_element}%'")
         datas=cursor.fetchall()
         return render_template("spares_update.html",infos=datas)
 
@@ -418,9 +418,9 @@ def spares_look_search():
             return render_template("spares_lookup.html",infos=datas1+datas2)
         else:
             Spare_name=request.form['spl_SEARCH']
-            cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_name='{Spare_name}';")
+            cursor.execute(f"SELECT s.C_name AS spare_name, 'sell' AS id, s.Machine AS total_quantity, s.DateDelivered AS date_delivered FROM service s WHERE s.C_name like '%{Spare_name}%';")
             data1=list(cursor.fetchall())
-            cursor.execute(f"SELECT e.S_name AS spare_name, s.P_id AS id, SUM(e.Quantity) AS total_quantity, s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE e.S_name = '{Spare_name}' AND s.DeliveryStatus = 'on' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
+            cursor.execute(f"SELECT e.S_name AS spare_name, s.P_id AS id, SUM(e.Quantity) AS total_quantity, s.DateDelivered AS date_delivered FROM expences e JOIN service s ON e.P_id = s.P_id WHERE e.S_name like '%{Spare_name}%' AND s.DeliveryStatus = 'on' GROUP BY e.S_name, s.P_id, s.DateDelivered;")
             data2=list(cursor.fetchall())
             return render_template("spares_lookup.html",infos=data1+data2)
     return redirect("/lookup")
