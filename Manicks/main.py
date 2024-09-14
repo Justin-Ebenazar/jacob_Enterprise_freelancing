@@ -79,7 +79,7 @@ def fan_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
                 con.commit()
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -98,7 +98,7 @@ def motor_submit():
             Name=request.form['NAME']
             Mobile=int(request.form['MOBILE'])
             if len(str(Mobile))!=10:
-                flash("Moile Number is wrong")
+                flash("Mobile Number is wrong")
                 return redirect('/service')
             Color=request.form['COLOR']
             MotorHP=request.form['HPI']
@@ -110,7 +110,7 @@ def motor_submit():
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
                 con.commit()
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -142,7 +142,7 @@ def powertool_submit():
             PowertoolCompany=request.form['COMPANY']
             Missingparts=request.form['MISSINGPARTS']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name.lower()}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,P_type,DateGiven,Advance,P_company,P_model,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{PowertoolType}','{Dategiven}',{Advance},'{PowertoolCompany}','{Modelno}','PowerTool','{Missingparts}');")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -174,7 +174,7 @@ def old_record_search():
 def record_search():
     if request.method=='POST':
         search_element=request.form['SEARCH']
-        cursor.execute(f"select * from service where P_id='{search_element}' or C_name='{search_element.lower()}'")
+        cursor.execute(f"select * from service where P_id='{search_element}' or C_name like'%{search_element.lower()}%'")
         datas=cursor.fetchall()
         return render_template("home.html",infos=datas)
     return redirect("/home")
