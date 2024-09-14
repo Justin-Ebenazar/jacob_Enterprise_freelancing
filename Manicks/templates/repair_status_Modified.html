@@ -88,7 +88,7 @@
                                     
                                     <datalist id="suggestions">
                                         {% for info1 in infos%}
-                                            <option value="{{info1.S_name}}">{{info1.S_name}}</option>
+                                            <option value="{{info1.S_name}}">{{info1.S_name}} - {{info1.S_Cost}}</option>
                                         {% endfor %}
                                     </datalist>
                                     <input type="text" placeholder="Search" id="spare_search_rpstat" name="EXPNSPARE" autocomplete="off"  list="suggestions" >
