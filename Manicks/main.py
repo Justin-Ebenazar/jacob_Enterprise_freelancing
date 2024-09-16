@@ -156,7 +156,7 @@ def powertool_submit():
 
 @app.route('/old_record',methods=['POST','GET'])
 def old_record():
-    cursor.execute("select * from service where DeliveryStatus='on' and C_mobile is not null")
+    cursor.execute("select * from service where paymentStatus='on' and C_mobile is not null")
     datas=cursor.fetchall()
     return render_template('old_records.html',infos=datas)
 
@@ -165,7 +165,7 @@ def old_record_search():
     if request.method=='POST':
         Start_date=request.form['Start_date']
         End_date=request.form['End_date']
-        cursor.execute(f"select * from service where DateGiven between '{Start_date}' and '{End_date}' and DeliveryStatus='on'")
+        cursor.execute(f"select * from service where DateGiven between '{Start_date}' and '{End_date}' and paymentstatus='on'")
         datas=cursor.fetchall()
         return render_template("old_records.html",infos=datas)
     return redirect("/old_record")
@@ -174,7 +174,7 @@ def old_record_search():
 def record_search():
     if request.method=='POST':
         search_element=request.form['SEARCH']
-        cursor.execute(f"select * from service where P_id='{search_element}' or C_name like'%{search_element.lower()}%'")
+        cursor.execute(f"select * from service where P_id='{search_element}' or C_name like'%{search_element.lower()}%' and paymentstatus='off'")
         datas=cursor.fetchall()
         return render_template("home.html",infos=datas)
     return redirect("/home")
@@ -187,8 +187,9 @@ def add_new_item():
             UseCase=request.form['USECASE']
             Available=int(request.form['SPAREAVAILABLE'])
             Cost=int(request.form['SPARECOST'])
+            serno=int(request.form['serno'])
             try:
-                cursor.execute(f"insert into spares(S_name,S_stock,S_use,S_Cost) values('{Name}',{Available},'{UseCase}',{Cost})")
+                cursor.execute(f"insert into spares(S_name,S_stock,S_use,S_Cost,S_serno) values('{Name}',{Available},'{UseCase}',{Cost},{serno})")
                 con.commit();
                 flash("Record added successfully.")
                 return redirect("/spares_update")
@@ -219,8 +220,9 @@ def update_item(id):
         UseCase=request.form['USECASE']
         Available=int(request.form['SPAREAVAILABLE'])
         Cost=int(request.form['SPARECOST'])
+        serno=int(request.form['serno'])
         try:
-            cursor.execute(f"update spares set  S_name='{Name}' , S_stock={Available} , S_use='{UseCase}' , S_Cost={Cost} where S_id={id};")
+            cursor.execute(f"update spares set  S_name='{Name}' , S_stock={Available} , S_use='{UseCase}' , S_Cost={Cost}, S_serno={serno} where S_id={id};")
             con.commit();
             flash("Record updated successfully.")
         except:
@@ -425,6 +427,14 @@ def spares_look_search():
             return render_template("spares_lookup.html",infos=data1+data2)
     return redirect("/lookup")
 
+@app.route('/spares_search',methods=['POST','GET'])
+def spares_search():
+    if request.method=='POST':
+        sps_search=request.form['SEARCH']
+        cursor.execute(f"select * from spares where S_name like '%{sps_search}%'")
+        datas=cursor.fetchall()
+        return render_template("spares.html",infos=datas)
+    
 @app.route('/about')
 def about():
     return render_template('about.html')
