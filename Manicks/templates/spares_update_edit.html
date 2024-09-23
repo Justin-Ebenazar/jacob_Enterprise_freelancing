@@ -41,9 +41,9 @@
                             <td>Used for:</td>
                             <td>
                                 <select name="USECASE">
+                                    <option value="powertool">Powertool</option>
                                     <option value="fan">Fan</option>
                                     <option value="motor">Motor</option>
-                                    <option value="powertool">Powertool</option>
                                 </select>
                             </td>
                         </tr>
@@ -54,6 +54,10 @@
                         <tr>
                             <td>Price</td>
                             <td><input type="number" name="SPARECOST" value="{{infos.S_Cost}}"></td>
+                        </tr>
+                        <tr>
+                            <td>Serial no.</td>
+                            <td><input type="text" value="{{infos.S_serno}}" name="serno"></td>
                         </tr>
                     </table>
                     <br>
@@ -77,10 +81,20 @@
                     </center>
                 </form>
                 <br>
-                <a href="{{url_for("spares_update")}}" style="color: red;
-                font-family: tablefont;
-                text-decoration: underline;">
+                <a href="{{url_for("spares_update")}}" id="cancel">
                  Cancel</a>
+                <style>
+                    #cancel{
+                        color: red;
+                        font-family: tablefont;
+                        text-decoration: underline;
+                        transition: 0.5s;
+                    }
+                    #cancel:hover{
+                        color: white;
+                        text-shadow: 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 80px rgb(255, 0, 0);
+                    }
+                </style>
             </div>
         </div>
         </section>

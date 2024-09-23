@@ -33,6 +33,19 @@
             </nav>
         </header>
         <section onclick="closeNav()">
+            <div class="home-bar">
+                <datalist id="suggestions">
+                    {% for info in infos%}
+                        <option>{{info.C_name}}</option>
+                    {% endfor %}
+                </datalist> 
+                    <div>
+                        <form action="/spares_search" method="post">
+                            <input id="home-serch" type="search" name="SEARCH" placeholder="Search by Name , ID or Phno" list="suggestions">
+                            <input id="search-btn" type="submit" value="Search" style="width: 50px;">
+                        </form>
+                    </div>
+                </div>
             <div>
                 <div class="spares-sale-table">
                     <table cellspacing="10px" class="spare-detail-table">
