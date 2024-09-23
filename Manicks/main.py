@@ -9,9 +9,9 @@ import numpy as np
 
 #DATABASE CCONNECCTION
 try:
-    con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
-    con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 init_pointer=0
@@ -46,7 +46,7 @@ def home():
         @after_this_request
         def play_wav_file_after_render(response):
             global init_pointer
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/welcome.wav")
             init_pointer+=1
             return response
     return render_template("home.html", infos=datas)
@@ -293,7 +293,7 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
+        play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -308,20 +308,22 @@ def repair_status(id):
 
     cursor.execute(f"select * from expences where P_id='{id}'")
     datas2=cursor.fetchall()
-    print(datas2,123)
 
     cursor.execute(f"select coalesce(sum(Cost),0) as tot from expences where P_id='{id}'")
     total=cursor.fetchone()
+    print("TOTAL:",total)
     try:
         cursor.execute(f"update service set Totalbill={total['tot']} where P_id='{id}'")
         con.commit()
     except:
         pass
     discount=0
-    print(datas2,456)
     try:
         discount=datas2[0]['Discount']
+        cursor.execute(f"update service set Totalbill={total['tot']-discount} where P_id='{id}'")
+        con.commit()
     except:
+        print('hello')
         discount=0
     return render_template("repair_status_Modified.html",info=datas,infos=datas1,expns=datas2,bill=total,disc=discount)
 
@@ -380,7 +382,7 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -395,7 +397,7 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/money.wav") 
             return redirect('/spares')
         except:
             pass 
@@ -431,5 +433,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    # webview.start()
