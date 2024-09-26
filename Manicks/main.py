@@ -27,14 +27,13 @@ def play_wav_file(file_path):
 
     # Play the sound
     sd.play(data, samplerate)
-    sd.wait()  # Wait until the sound has finished playing
 
 
 today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
 
 app=Flask(__name__)#DEFINING INITIALIZE
-window=webview.create_window("justin",app)
+window=webview.create_window("Jacob Enterprises",app)
 
 @app.route('/')
 @app.route('/home')
@@ -46,7 +45,10 @@ def home():
         @after_this_request
         def play_wav_file_after_render(response):
             global init_pointer
-            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            try:
+                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
+            except: 
+                play_wav_file("C:/Users/User/Documents/fl/Manicks/static/audio/welcome.wav")
             init_pointer+=1
             return response
     return render_template("home.html", infos=datas)
@@ -441,5 +443,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    #webview.start()
