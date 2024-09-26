@@ -9,7 +9,7 @@ import numpy as np
 
 #DATABASE CCONNECCTION
 try:
-    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
     con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
@@ -297,7 +297,10 @@ def repair_status(id):
                 flash("Cannot add item.")
         except:
             pass
-        play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/update.wav")
+        try:
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/update.wav")
+        except:
+            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/update.wav")
         try:
             DiscountAmt=int(request.form['DISCOUNTAMOUNT'])
             cursor.execute(f"update expences set Discount={DiscountAmt} where P_id='{id}' ")
@@ -386,7 +389,10 @@ def sell_spare(id):
     if request.method=='POST':
         qunantity=int(request.form['quantity'])
         if qunantity<=0 :
-            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/no.wav")
+            try:
+                play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/no.wav")
+            except:
+                play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/no.wav")
             return redirect('/spares')
         try:
             cursor.execute(f"select S_name,S_stock,S_Cost,S_id from spares where S_id={id}")
@@ -401,7 +407,7 @@ def sell_spare(id):
             con.commit()
             cursor.execute(f"insert into service (C_name,Machine,DeliveryStatus,DateDelivered,Totalbill) values('{datas['S_name']}','{qunantity}','on','{day}',{price})")
             con.commit()
-            play_wav_file("C:/Users/manik/Desktop/store/mama_kadai/Manicks/static/audio/money.wav") 
+            play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/money.wav") 
             return redirect('/spares')
         except:
             pass 
