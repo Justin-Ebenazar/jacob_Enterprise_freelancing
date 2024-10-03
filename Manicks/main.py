@@ -453,5 +453,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    # app.run(debug=True)
-    webview.start()
+    app.run(debug=True)
+    # webview.start()
