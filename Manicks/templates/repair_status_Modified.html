@@ -67,6 +67,12 @@
                                     <td>{{info.P_type}}</td>
                                 {% endif %}
 
+                                {% if info.Machine=='Motor' %}
+                                <tr>
+                                    <td>Delivery Challan:</td>
+                                    <td>{{info.S_dc}}</td>
+                                </tr>
+                                {% endif %}
 
                                 <tr>
                                     <td>Missing parts:</td>
