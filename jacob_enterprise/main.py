@@ -2,8 +2,8 @@ from flask import Flask,render_template,request,redirect,flash
 from flask import after_this_request
 import pymysql as ps
 import datetime as dt
-import webview
-import sounddevice as sd
+# import webview
+# import sounddevice as sd
 from scipy.io import wavfile
 import numpy as np
 
@@ -11,7 +11,7 @@ import numpy as np
 try:
     con=ps.connect(host="localhost",user="root",password="blessy3010",database="shop",cursorclass=ps.cursors.DictCursor)
 except:
-    con=ps.connect(host="localhost",user="root",password="h13143m17",database="shop",cursorclass=ps.cursors.DictCursor)
+    con=ps.connect(host="localhost",user="root",password="12345678",database="shop",cursorclass=ps.cursors.DictCursor)
 cursor=con.cursor()
 
 init_pointer=0
@@ -33,7 +33,7 @@ today=dt.datetime.now()
 day=today.strftime("20%y-%m-%d")
 
 app=Flask(__name__)#DEFINING INITIALIZE
-window=webview.create_window("Jacob Enterprises",app)
+# window=webview.create_window("Jacob Enterprises",app)
 
 @app.route('/')
 @app.route('/home')
@@ -48,7 +48,8 @@ def home():
             try:
                 play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
             except: 
-                play_wav_file("C:/Users/User/Documents/fl/Manicks/static/audio/welcome.wav")
+                # play_wav_file("C:/Users/User/Documents/fl/Manicks/static/audio/welcome.wav")
+                pass
             init_pointer+=1
             return response
     return render_template("home.html", infos=datas)
@@ -80,8 +81,13 @@ def fan_submit():
                 Dategiven=day
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
+            DeliveryChallan=request.form['DC']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}');")
+                DeliveryChallan=int(DeliveryChallan)
+            except:
+                DeliveryChallan=None
+            try:
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,F_type,DateGiven,Advance,Machine,MachineParts,S_cdno) values ('{Name}',{Mobile},'{Color}','{Fantype}','{Dategiven}',{Advance},'Fan','{Missingparts}',{DeliveryChallan});")
                 con.commit()
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -451,5 +457,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    #app.run(debug=True)
-    webview.start()
+    app.run(debug=False)
+    # webview.start()
