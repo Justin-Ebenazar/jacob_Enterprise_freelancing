@@ -48,7 +48,8 @@ def home():
             try:
                 play_wav_file("C:/Users/Jonathan Asir/OneDrive/Documents/jacob_enterprises/Manicks/static/audio/welcome.wav")
             except: 
-                # play_wav_file("C:/Users/User/Documents/fl/Manicks/static/audio/welcome.wav")
+                # # play_wav_file("C:/Users/User/Documents/fl/Manicks/static/audio/welcome.wav")
+                pass
                 pass
             init_pointer+=1
             return response
@@ -117,8 +118,9 @@ def motor_submit():
                 Dategiven=day
             Advance=int(request.form['ADVANCE'])
             Missingparts=request.form['MISSINGPARTS']
+            Delivery_Challan = request.form['Delivery Challan']
             try:
-                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts) values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}');")
+                cursor.execute(f"insert into service (C_name,C_mobile,P_color,M_hp,DateGiven,Advance,Machine,MachineParts,S_dc)  values ('{Name}',{Mobile},'{Color}','{MotorHP}','{Dategiven}',{Advance},'Motor','{Missingparts}','{Delivery_Challan}');")
                 con.commit()
                 flash("Record added successfully.")
                 return redirect("/home")
@@ -457,5 +459,5 @@ def about():
 
 if __name__=="__main__":
     app.secret_key="admin480"
-    app.run(debug=False)
-    # webview.start()
+    #app.run(debug=True)
+    webview.start()
