@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroHarmony - Supporting Neurodiverse Individuals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comfortaa:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS will go here */
+        :root {
+            --primary: #5D9CEC;
+            --secondary: #A0D9D9;
+            --accent: #FF9F43;
+            --light: #F5F7FA;
+            --dark: #2D3436;
+            --success: #55EFC4;
+            --warning: #FDCB6E;
+            --error: #FF7675;
+            --text: #2D3436;
+            --text-light: #636E72;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Main container styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Comfortaa', cursive;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        /* Navigation styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-family: 'Comfortaa', cursive;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 159, 67, 0.4);
+        }
+        
+        /* Features section */
+        .features {
+            padding: 50px 0;
+            background-color: white;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Comfortaa', cursive;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Main functionality section */
+        .main-functionality {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 50px 0;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .functionality-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+        }
+        
+        .functionality-video {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .video-placeholder {
+            width: 90%;
+            height: 80%;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .video-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Tips section */
+        .tips-section {
+            padding: 50px 0;
+        }
+        
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tip-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-card h3 i {
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            border-radius: 20px 20px 0 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-family: 'Comfortaa', cursive;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: flex;
+                justify-content: center;
+            }
+            
+            .hero-text, .hero-image {
+                flex: 100%;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* Accessibility features */
+        .accessibility-tools {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .accessibility-btn {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .accessibility-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .accessibility-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            width: 250px;
+        }
+        
+        .accessibility-menu.active {
+            display: block;
+        }
+        
+        .accessibility-menu h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .accessibility-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .accessibility-option input {
+            margin-right: 10px;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .features,
+        body.dark-mode .main-functionality,
+        body.dark-mode .tip-card {
+            background-color: #2d2d2d;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .feature-card {
+            background-color: #333;
+        }
+        
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode .feature-card h3,
+        body.dark-mode .tip-card h3 {
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode p {
+            color: #ccc;
+        }
+        
+        /* High contrast mode */
+        body.high-contrast {
+            background-color: black;
+            color: white;
+        }
+        
+        body.high-contrast .features,
+        body.high-contrast .main-functionality,
+        body.high-contrast .tip-card {
+            background-color: black;
+            color: white;
+            border: 2px solid yellow;
+        }
+        
+        body.high-contrast .feature-card {
+            background-color: black;
+            border: 2px solid yellow;
+        }
+        
+        body.high-contrast h1,
+        body.high-contrast h2,
+        body.high-contrast h3,
+        body.high-contrast .feature-card h3,
+        body.high-contrast .tip-card h3 {
+            color: yellow;
+        }
+        
+        body.high-contrast p {
+            color: white;
+        }
+        
+        body.high-contrast a {
+            color: cyan;
+        }
+        
+        /* Text size adjustment classes */
+        .text-small {
+            font-size: 0.8rem;
+        }
+        
+        .text-medium {
+            font-size: 1rem;
+        }
+        
+        .text-large {
+            font-size: 1.2rem;
+        }
+        
+        .text-xlarge {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>NeuroHarmony</span>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero" id="home">
+            <div class="hero-text">
+                <h1>Bridging Communication Gaps with AI</h1>
+                <p>Our innovative platform combines sign language translation with early autism detection to support neurodiverse individuals and their families. Using computer vision and deep learning, we're creating a more inclusive world.</p>
+                <div class="cta-buttons">
+                    <a href="#how-it-works" class="btn">Try Sign Translation</a>
+                    <a href="#features" class="btn" style="background-color: var(--primary); margin-left: 10px;">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400/5D9CEC/FFFFFF?text=Happy+Children+Communicating" alt="Children using sign language with AI assistance">
+            </div>
+        </section>
+        
+        <section class="features" id="features">
+            <h2 class="section-title">Our Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sign-language"></i>
+                    </div>
+                    <h3>Real-time Sign Translation</h3>
+                    <p>Our AI interprets hand gestures instantly, helping speech-impaired individuals communicate more effectively.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Autism Traits Detection</h3>
+                    <p>Advanced algorithms analyze behavioral cues to identify potential autism spectrum traits for early intervention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Personalized Education</h3>
+                    <p>Customized learning tips and activities tailored to each individual's needs and development stage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Family Support</h3>
+                    <p>Resources and guidance to help families better understand and support their neurodiverse loved ones.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="main-functionality" id="how-it-works">
+            <div class="functionality-text">
+                <h2>How It Works</h2>
+                <p>Our system uses your device's camera to analyze both sign language gestures and behavioral patterns. The process is simple, private, and designed to be accessible to everyone.</p>
+                <ol style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Allow camera access when prompted</li>
+                    <li>Perform signs or natural movements</li>
+                    <li>Receive instant translation or analysis</li>
+                    <li>View personalized recommendations</li>
+                </ol>
+                <p>The system works in real-time with no need for expensive hardware - just your smartphone, tablet, or computer.</p>
+                <a href="#" class="btn" style="background-color: var(--primary);">Start Detection Now</a>
+            </div>
+            <div class="functionality-video">
+                <div class="video-placeholder">
+                    <div>
+                        <i class="fas fa-video"></i>
+                        <p>Live camera feed will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tips-section" id="tips">
+            <h2 class="section-title">Educational Tips & Resources</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <h3><i class="fas fa-hands"></i> Sign Language Basics</h3>
+                    <p>Learn the fundamental signs that can help you communicate basic needs and feelings. Start with simple signs like "eat", "drink", and "more".</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-child"></i> Sensory Activities</h3>
+                    <p>Engage in sensory play activities that can help with focus and emotional regulation. Try textured materials or calming sensory bottles.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-comments"></i> Communication Strategies</h3>
+                    <p>Discover alternative communication methods like picture exchange systems or speech-generating devices.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-clock"></i> Routine Building</h3>
+                    <p>Create visual schedules to help establish predictable routines that can reduce anxiety and improve independence.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-smile"></i> Social Interaction</h3>
+                    <p>Practice social stories and role-playing to help understand social cues and appropriate responses in different situations.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-book"></i> Learning Techniques</h3>
+                    <p>Implement multi-sensory learning approaches that engage different senses to enhance understanding and retention.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>NeuroHarmony</h3>
+                <p>Revolutionizing support for neurodiverse individuals through AI and compassionate technology.</p>
+                <div class="social-icons" style="margin-top: 15px;">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#tips">Tips & Resources</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@neuroharmony.org</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Accessibility Ave, Tech City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 NeuroHarmony. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <div class="accessibility-tools">
+        <div class="accessibility-btn" id="accessibilityBtn">
+            <i class="fas fa-universal-access"></i>
+        </div>
+        <div class="accessibility-menu" id="accessibilityMenu">
+            <h4>Accessibility Options</h4>
+            <div class="accessibility-option">
+                <input type="checkbox" id="darkModeToggle">
+                <label for="darkModeToggle">Dark Mode</label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="highContrastToggle">
+                <label for="highContrastToggle">High Contrast</label>
+            </div>
+            <div class="accessibility-option">
+                <label for="textSize">Text Size:</label>
+                <select id="textSize">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                    <option value="xlarge">Extra Large</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Accessibility tools
+        const accessibilityBtn = document.getElementById('accessibilityBtn');
+        const accessibilityMenu = document.getElementById('accessibilityMenu');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const highContrastToggle = document.getElementById('highContrastToggle');
+        const textSizeSelect = document.getElementById('textSize');
+        
+        accessibilityBtn.addEventListener('click', () => {
+            accessibilityMenu.classList.toggle('active');
+        });
+        
+        darkModeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+        
+        highContrastToggle.addEventListener('change', () => {
+            document.body.classList.toggle('high-contrast');
+        });
+        
+        textSizeSelect.addEventListener('change', () => {
+            // Remove all text size classes first
+            document.body.classList.remove('text-small', 'text-medium', 'text-large', 'text-xlarge');
+            
+            // Add selected class
+            switch(textSizeSelect.value) {
+                case 'small':
+                    document.body.classList.add('text-small');
+                    break;
+                case 'medium':
+                    document.body.classList.add('text-medium');
+                    break;
+                case 'large':
+                    document.body.classList.add('text-large');
+                    break;
+                case 'xlarge':
+                    document.body.classList.add('text-xlarge');
+                    break;
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
