@@ -54,6 +54,33 @@
                         </tr>
                         </thead>
                         <tbody>
+                            {% set infos = [
+    {
+        "P_id": "301",
+        "C_name": "Arun Kumar",
+        "Machine": "Motor",
+        "Totalbill": "₹4500"
+    },
+    {
+        "P_id": "302",
+        "C_name": "Priya Sharma",
+        "Machine": "Fan",
+        "Totalbill": "₹2200"
+    },
+    {
+        "P_id": -1,
+        "C_name": "Walk-in Customer",
+        "Machine": "Bearing x 2",
+        "Totalbill": "₹300"
+    },
+    {
+        "P_id": "303",
+        "C_name": "Rahul Mehta",
+        "Machine": "PowerTool",
+        "Totalbill": "₹3800"
+    }
+] %}
+
                         {% for info in infos %}
                             <tr {% if info.P_id == -1 %} style="background-color: rgba(87, 179, 240, 0.548);"{% endif %}>
                                 <td>{%if info.P_id==-1%}Spare sale

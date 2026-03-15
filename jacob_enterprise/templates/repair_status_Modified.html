@@ -33,12 +33,24 @@
             </nav>
         </header>
         <section onclick="closeNav()">
+            {% set info = 
+    {
+        "C_name": "Arun Kumar",
+        "C_mobile": "9876543210",
+        "Machine": "Motor",
+        "M_hp": "5 HP",
+        "S_dc": "DC-101",
+        "MachineParts": "Rotor, Bearing",
+        "Advance": "₹2000"
+    }
+ %}
             <div class="repair_status">
                 <div id="heading_for_repairstatus">
                     <p id="machine_code" style="-webkit-text-stroke:0.5px white;color: black;  background-color: {{info.P_color}};">{{info.P_id}}</p>
                 </div>
                 <div class="repair_status_details" style="gap: 10px;">
                     <div id="left_half_rpstatus"> 
+
                             <table class="rp_status_custinfo">
                                 <tr>
                                     <td>Customer name:</td>
@@ -159,7 +171,7 @@
                         </div>
                         <div class="footer-details">
                             <p id="tot_amt">Total :</p> <br>
-                            <p class="BILLAMOUNT">{{bill.tot-info.Advance-disc}}</p>
+                            <p class="BILLAMOUNT">123</p>
                         </div>
                         <div class="footer-details" style="width: 80px;">
                             <button type="submit" style="background: rgb(159, 254, 64); width: 70px;height: 30px; border: none; border-radius: 15px;">Update</button>

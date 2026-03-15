@@ -55,6 +55,33 @@
                     </tr>
                     </thead>
                     <tbody>
+                        {% set infos = [
+    {
+        "spare_name": "Motor Coil",
+        "id": "501",
+        "total_quantity": "10",
+        "date_delivered": "2026-03-01"
+    },
+    {
+        "spare_name": "Fan Blade",
+        "id": "502",
+        "total_quantity": "25",
+        "date_delivered": "2026-03-05"
+    },
+    {
+        "spare_name": "Drill Chuck",
+        "id": "503",
+        "total_quantity": "5",
+        "date_delivered": "2026-03-10"
+    },
+    {
+        "spare_name": "Bearing",
+        "id": "504",
+        "total_quantity": "40",
+        "date_delivered": "2026-03-12"
+    }
+] %}
+
                         {% for info in infos %}
                             <tr>
                                 <td>{{info.spare_name}}</td>

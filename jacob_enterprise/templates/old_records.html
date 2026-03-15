@@ -57,6 +57,50 @@
                             <th class="home-detail-th">Date delivered</th>
                             <th class="home-detail-th">Edit</th>
                         </tr>
+
+                        {% set infos = [
+    {
+        "P_id": "701",
+        "C_name": "Arun Kumar",
+        "C_mobile": "9876543210",
+        "P_color": "blue",
+        "Machine": "Motor",
+        "DateGiven": "2026-03-01",
+        "DateDelivered": "2026-03-10",
+        "RepairStatus": "on"
+    },
+    {
+        "P_id": "702",
+        "C_name": "Priya Sharma",
+        "C_mobile": "9123456780",
+        "P_color": "red",
+        "Machine": "Fan",
+        "DateGiven": "2026-03-05",
+        "DateDelivered": "2026-03-12",
+        "RepairStatus": "off"
+    },
+    {
+        "P_id": "703",
+        "C_name": "Rahul Mehta",
+        "C_mobile": "9988776655",
+        "P_color": "green",
+        "Machine": "PowerTool",
+        "DateGiven": "2026-03-08",
+        "DateDelivered": "2026-03-15",
+        "RepairStatus": "on"
+    },
+    {
+        "P_id": "704",
+        "C_name": "Sneha Reddy",
+        "C_mobile": "9911223344",
+        "P_color": "orange",
+        "Machine": "Air Conditioner",
+        "DateGiven": "2026-03-02",
+        "DateDelivered": "2026-03-09",
+        "RepairStatus": "off"
+    }
+] %}
+
                         {% for info in infos %}
                                 <tr {% if info.RepairStatus!='on' %}
                                 style="background-color: rgba(255,0,0,0.5);"

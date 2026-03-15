@@ -34,6 +34,37 @@
         </header>
         <section onclick="closeNav()">
             <div class="home-bar">
+                {% set infos = [
+    {
+        "S_id": "201",
+        "S_name": "Motor Coil",
+        "S_use": "Used in 5HP motors",
+        "S_stock": "15",
+        "S_Cost": "₹1200"
+    },
+    {
+        "S_id": "202",
+        "S_name": "Fan Blade",
+        "S_use": "Ceiling fan replacement",
+        "S_stock": "30",
+        "S_Cost": "₹350"
+    },
+    {
+        "S_id": "203",
+        "S_name": "Drill Chuck",
+        "S_use": "PowerTool spare part",
+        "S_stock": "8",
+        "S_Cost": "₹800"
+    },
+    {
+        "S_id": "204",
+        "S_name": "Bearing",
+        "S_use": "General machine repair",
+        "S_stock": "50",
+        "S_Cost": "₹150"
+    }
+] %}
+
                 <datalist id="suggestions">
                     {% for info in infos%}
                         <option>{{info.C_name}}</option>
@@ -61,7 +92,7 @@
                         </thead>
                         <tbody>
                         {% for info in infos %}
-                            <form action="{{url_for("sell_spare",id=info.S_id)}}" method="post">
+                            <form >
                                 <tr>
                                     <td>{{info.S_name}}</td>
                                     <td>{{info.S_use}}</td>

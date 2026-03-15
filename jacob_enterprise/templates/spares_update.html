@@ -106,6 +106,41 @@
                             <th class="home-detail-th">Price</th>
                             <th class="home-detail-th" colspan="2">Update controls</th>
                         </tr>
+                        {% set infos = [
+    {
+        "S_serno": "001",
+        "S_id": "601",
+        "S_name": "Motor Coil",
+        "S_use": "Used in 5HP motors",
+        "S_stock": "15",
+        "S_Cost": "₹1200"
+    },
+    {
+        "S_serno": "002",
+        "S_id": "602",
+        "S_name": "Fan Blade",
+        "S_use": "Ceiling fan replacement",
+        "S_stock": "30",
+        "S_Cost": "₹350"
+    },
+    {
+        "S_serno": "003",
+        "S_id": "603",
+        "S_name": "Drill Chuck",
+        "S_use": "PowerTool spare part",
+        "S_stock": "8",
+        "S_Cost": "₹800"
+    },
+    {
+        "S_serno": "004",
+        "S_id": "604",
+        "S_name": "Bearing",
+        "S_use": "General machine repair",
+        "S_stock": "50",
+        "S_Cost": "₹150"
+    }
+] %}
+
                         {% for info in infos %}
                                 <tr>
                                     <td>{{info.S_serno}}</td>

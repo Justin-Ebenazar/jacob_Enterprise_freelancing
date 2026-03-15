@@ -63,6 +63,42 @@
                         </tr>
                         </thead>
                         <tbody>
+                            {% set infos = [
+    {
+        "P_id": "101",
+        "C_name": "Arun Kumar",
+        "C_mobile": "9876543210",
+        "P_color": "blue",
+        "Machine": "Washing Machine",
+        "DateGiven": "2026-03-01",
+        "RepairStatus": "on",
+        "DeliveryStatus": "off",
+        "paymentstatus": "off"
+    },
+    {
+        "P_id": "102",
+        "C_name": "Priya Sharma",
+        "C_mobile": "9123456780",
+        "P_color": "red",
+        "Machine": "Refrigerator",
+        "DateGiven": "2026-03-05",
+        "RepairStatus": "off",
+        "DeliveryStatus": "on",
+        "paymentstatus": "off"
+    },
+    {
+        "P_id": "103",
+        "C_name": "Rahul Mehta",
+        "C_mobile": "9988776655",
+        "P_color": "green",
+        "Machine": "Air Conditioner",
+        "DateGiven": "2026-03-10",
+        "RepairStatus": "on",
+        "DeliveryStatus": "on",
+        "paymentstatus": "on"
+    }
+] %}
+
                         {% for info in infos %}
                             <tr style="
                                 {% if info.RepairStatus == 'on' and info.DeliveryStatus == 'off' and info.paymentstatus == 'off' %}
